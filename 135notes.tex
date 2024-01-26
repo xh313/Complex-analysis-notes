@@ -242,7 +242,8 @@ This means that the Laplacian of this function $u$ is 0!\sidenote{$\Delta u = 0$
 
 \defn Real-valued functions $u: \reg\to \R$ satisfying that the Laplacian $\Delta u= u_{xx}+u_{yy}$ is 0 on $\reg$ is called \textbf{harmonic functions}.
 
-\defn A \textbf{harmonic conjugate} of $u$ is a harmonic function $v: \reg \to \R$ such that $f=u+i\cdot v$ is analytic on $\reg$.
+\defn A \textbf{harmonic conjugate} of $u$ is a harmonic function $v: \reg \to \R$ such that $f=u+i\cdot v$ is \textbf{analytic} on $\reg$.
+\addlink{Harmonic conjugate}
 
 \eg $u=x^2-y^2, v=2xy$.\sidenote{Check it!}
 
@@ -250,6 +251,87 @@ This means that the Laplacian of this function $u$ is 0!\sidenote{$\Delta u = 0$
 
 \rmk If $u$ is harmonic on $\reg$, it does NOT have to have a harmonic conjugate on $\reg$.
 
+\subsection{Finding a harmonic conjugate}
+Recall that the real and imaginary parts of an analytic function are \textbf{harmonic}, in addition to satisfying the Cauchy-Riemann Equations: $u_x=v_y$ and $u_y=-v_x$.
+
+\eg $u(z)=\log |z|$ is harmonic on $\C\backslash\{0\}$.
+\begin{proof}
+    Write $u(x,y)=\log (\sqrt{x^2+y^2})=\frac{1}{2}\log(x^2+y^2)$.
+
+    Then, \begin{align*}
+        u_x&=\frac{\partial}{\partial x}\left(\frac{1}{2}\log (x^2+y^2)\right)\\
+        &= \frac{1}{2}\cdot \frac{2x}{x^2+y^2}\\
+        &= \frac{x}{x^2+y^2}
+    \end{align*}
+
+    Hence,\sidenote{Review quotient rule!}
+    \begin{align*}
+        u_{xx} &= \frac{(x^2+y^2)-x(2x)}{(x^2+y^2)^2}\\
+        &= \frac{y^2-x^2}{(x^2+y^2)^2}
+    \end{align*}
+
+    Symmetrically, we find \begin{align*}
+        u_{yy} & = \frac{x^2-y^2}{(x^2+y^2)^2}
+    \end{align*}
+    Hence $u_{xx}+u_{yy}=0$, implying that the function is harmonic.
+\end{proof}
+
+Now, can we \uline{find a harmonic conjugate for the aforementioned $u$}?\sidenote{There is currently a great \textbf{CAVEAT} in all of these, because $v(z)=\arg(z)$ cannot be defined in a continuous manner in all of $\C\backslash\{0\}$. 
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Axis 2D [id:dp48156480156165227] 
+    \draw  (111,139) -- (285.5,139)(198.5,55) -- (198.5,219) (278.5,134) -- (285.5,139) -- (278.5,144) (193.5,62) -- (198.5,55) -- (203.5,62)  ;
+    %Shape: Circle [id:dp6012967995903811] 
+    \draw   (146.75,139) .. controls (146.75,110.42) and (169.92,87.25) .. (198.5,87.25) .. controls (227.09,87.25) and (250.26,110.42) .. (250.26,139) .. controls (250.26,167.58) and (227.09,190.75) .. (198.5,190.75) .. controls (169.92,190.75) and (146.75,167.58) .. (146.75,139) -- cycle ;
+    \draw   (209.5,92.5) -- (199,87.25) -- (209.5,82) ;
+    \draw   (152.5,128) -- (147.25,138.5) -- (142,128) ;
+    \draw   (187,185) -- (197.5,190.25) -- (187,195.5) ;
+    \draw   (245,150.5) -- (250.25,140) -- (255.5,150.5) ;
+    %Shape: Smiley Face [id:dp013237994815757492] 
+    \draw   (272.5,121.75) .. controls (272.5,116.64) and (276.64,112.5) .. (281.75,112.5) .. controls (286.86,112.5) and (291,116.64) .. (291,121.75) .. controls (291,126.86) and (286.86,131) .. (281.75,131) .. controls (276.64,131) and (272.5,126.86) .. (272.5,121.75) -- cycle ; \draw   (277.68,118.61) .. controls (277.68,118.09) and (278.09,117.68) .. (278.61,117.68) .. controls (279.12,117.68) and (279.53,118.09) .. (279.53,118.61) .. controls (279.53,119.12) and (279.12,119.53) .. (278.61,119.53) .. controls (278.09,119.53) and (277.68,119.12) .. (277.68,118.61) -- cycle ; \draw   (283.97,118.61) .. controls (283.97,118.09) and (284.38,117.68) .. (284.9,117.68) .. controls (285.41,117.68) and (285.82,118.09) .. (285.82,118.61) .. controls (285.82,119.12) and (285.41,119.53) .. (284.9,119.53) .. controls (284.38,119.53) and (283.97,119.12) .. (283.97,118.61) -- cycle ; \draw   (277.13,127.3) .. controls (280.21,124.83) and (283.29,124.83) .. (286.38,127.3) ;
+    
+    % Text Node
+    \draw (256,115.4) node [anchor=north west][inner sep=0.75pt]    {$0$};
+    % Text Node
+    \draw (209,62.4) node [anchor=north west][inner sep=0.75pt]    {$\pi /2$};
+    % Text Node
+    \draw (128,119.4) node [anchor=north west][inner sep=0.75pt]    {$\pi $};
+    % Text Node
+    \draw (150,202.4) node [anchor=north west][inner sep=0.75pt]    {$3\pi /2$};
+    % Text Node
+    \draw (255,155.4) node [anchor=north west][inner sep=0.75pt]    {$2\pi \neq 0??$};
+    
+    
+    \end{tikzpicture}
+    
+
+To be resolved later!}
+
+We could use the two Cauchy-Riemann Equations. One of them:
+\begin{align*}
+    v_y&=u_x\\
+    &= \frac{x}{x^2+y^2}
+\end{align*}
+Therefore, \begin{align*}
+    v(x,y) &= \int v_ydy + C(x) && \text{unknown function of }x\\
+    &= \arctan\left(\frac{y}{x}\right)+C(x)
+\end{align*}
+
+Then, we use the second one: \begin{align*}
+    \frac{y}{x^2+y^2}=u_y=-v_x &= -\frac{\partial}{\partial x} \left( \arctan\left(\frac{y}{x}\right)+C(x)\right)\\
+    &= \frac{y}{x^2+y^2}-C'(x) \implies C'(x)=0
+\end{align*}
+
+Hence, a good harmonic conjugate candidate seems to be \begin{align*}
+    v(x,y) = \arctan\left(\frac{y}{x}\right) + C
+\end{align*}
+where $C$ is a constant. WLOG, let $C=0$. Then $ v(x,y)=\arctan\left(\frac{y}{x}\right)$, meaning that: \begin{align*}
+    v(z)=\arg (z)
+\end{align*}
+
+Therefore, $f(z)=\log |z| + i\cdot \arg(z)$ is analytic!
 %%%%%%%
 
 \subsection{Physics analogies of harmonic functions}
