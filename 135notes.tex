@@ -179,7 +179,76 @@ Let $z_0\in \reg$ such that $f'(z_0)\neq 0$. Let $\gamma_1, \gamma_2$ be two cur
 
 Therefore, $f$ is \textbf{conformal}!
 
+\section{Cauchy-Riemann equations, harmonic functions}
+\subsection{Multivariate notion of complex derivatives}
+Recall: $\displaystyle f'(z_0)=\lim_{h\to 0}\frac{f(z_0+h)-f(z_0)}{h}$.
 
+Now we write each function with complex variables as $f(z)=u(z)+i\, v(z)$ where $u,v$ are real-valued \sidenote{meaning their range is real} functions.
+
+Since $\C\cong \R^2$, we denote every point $z=(x,y)$.
+
+Now we let $f(x,y)=u(x,y)+i\,v(x,y)$. We first let the small distance $h=(r,0)$ be horizontally approaching 0 with $r\in \R$. That is, $z_0+h=(x_0+r,y_0)$.
+\begin{align*}
+    f'(z_0) &= \lim_{r\to 0} \frac{u(x_0+r, y_0)-u(x_0,y_0)}{r} + i\cdot \lim_{r\to 0}\frac{v(x_0+r, y_0)-v(x_0,y_0)}{r}\\
+    &=u_x(x_0,y_0)+i\cdot v_x(x_0,y_0)
+\end{align*}
+
+Similarly, if we vertically let $h=ir=(0,r)$ with $r\to 0, r\in \R$, we would get $f'=v_y-i\cdot u_y$.
+
+\rmk If a derivative exists, the horizontal \& the vertical ones should be equal!
+
+\begin{theorem}[Cauchy-Riemann Equations]
+    \begin{align*}
+        u_x &=v_y\\
+        u_y &= -v_x
+    \end{align*}
+\end{theorem}\addlink{Cauchy-Riemann Equations}
+
+\begin{corollary}
+    If $f:\reg \to \C$ is analytic and $f'=0$ on $\reg$, then $f$ is \textbf{constant}.
+\end{corollary}
+\begin{proof}
+    Since $0=f'=u_x+iv_x$, we see that $u_x=v_x=0$ on $\reg$. By Cauchy-Riemann, $v_y=u_y=0$ is also true on $\reg$. Hence, $\mathbf{u}, \mathbf{v}$ are constant on either horizontal or vertical segments. By the Boxy Path Theorem, $f=u+iv$ cannot assume two distinct values in $\reg$.
+\end{proof}
+
+\subsection{Orientation-preserving as shown by Jacobian}
+Let $f:\reg \to \C$ be analytic. Then $f'=u_x+iv_x$ and hence:\begin{align*}
+    |f'|^2 = \bar f'\cdot f &= (u_x-iv_x)(u_x+iv_x)\\
+    &= u_x^2 + v_x^2\\
+    &= u_xu_x+v_xv_x && \text{and by Cauchy-Riemann,}\\
+    &= u_xv_y-u_yv_x\\
+    &= \det\left(\begin{bmatrix}
+        u_x & u_y\\
+        v_x & v_y
+    \end{bmatrix}\right) && \text{the Jacobian of $f$!}
+\end{align*}
+
+Since $|f'|^2\geq 0$, the determinant of the Jacobian is always $\geq 0$, implying that $f$ is always locally orientation-preserving. Moreover,
+
+\begin{proposition}
+    If $f'(z_0)\neq 0$, then $|f'|^2> 0$ implies:
+    \begin{enumerate}
+        \item $f$ is \textbf{injective} near $z_0$
+        \item $f$ scales $\R$ by $|f'(z_0)|^2$ near $z_0$
+        \item $f$ preserves orientation near $z_0$
+    \end{enumerate}
+\end{proposition}
+
+\subsection{The Laplacian, harmonic functions and conjugates}
+Suppose that $f=u+iv$ is analytic and $u,v$ have continuous second partial derivatives. Then:\begin{align*}
+    u_{xx}+u_{yy} = \Delta u = (v_y)_x + (-v_x)_y = v_{yx}-v_{xy}=0
+\end{align*}
+This means that the Laplacian of this function $u$ is 0!\sidenote{$\Delta u = 0$ characterizes steady-state solutions to heat equations on $\reg$.}
+
+\defn Real-valued functions $u: \reg\to \R$ satisfying that the Laplacian $\Delta u= u_{xx}+u_{yy}$ is 0 on $\reg$ is called \textbf{harmonic functions}.
+
+\defn A \textbf{harmonic conjugate} of $u$ is a harmonic function $v: \reg \to \R$ such that $f=u+i\cdot v$ is analytic on $\reg$.
+
+\eg $u=x^2-y^2, v=2xy$.\sidenote{Check it!}
+
+\rmk Harmonic conjugates are unique up to translation (± constants).
+
+\rmk If $u$ is harmonic on $\reg$, it does NOT have to have a harmonic conjugate on $\reg$.
 
 %%%%%%%
 
