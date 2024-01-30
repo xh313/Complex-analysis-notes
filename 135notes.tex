@@ -370,4 +370,171 @@ We think the system tends towards a thermal equilibrium as $t\to \infty$. At equ
     \end{enumerate}
 \end{theorem}
 
+\section{Möbius transformations}
+\subsection{Möbius transformations, the extended plane}
+\defn[Möbius transformations]
+\begin{align*}
+    f(z)=\frac{az+b}{cz+d}\text{ where } ad-bc\neq 0, a,b,c,d\in \C
+\end{align*}
+Such an $f$ is \textbf{analytic} on $\C\backslash\{\frac{-d}{c}\}$\sidenote{recall that rational functions are analytic except when the denominator vanishes, i.e. $cz+d\neq 0$.} and \textbf{comformal} there since $f'(z)=\frac{ad-bc}{(cz+d)^2}\neq 0$ on $\C\backslash\{\frac{-d}{c}\}$.
+
+\rmk In addition, $f$ is injective (one-to-one)!
+\begin{proof}
+    \begin{align*}
+        f(z)=f(w)\implies \frac{az+b}{cz+d}&=\frac{aw+b}{cw+d}\\
+         (az+b)(cw+d)&= (cz+d)(aw+b)\\
+         aczw+bcw+adz+bd&=aczw+adw+bcz+bd\\
+         (ad-bc)z&=(ad-bc)w\\
+         z&=w
+    \end{align*}
+\end{proof}
+
+\defn[The extended plane] We set the following convention:\begin{align*}
+    f(\frac{-d}{c})&= \infty\\
+    f(\infty) &= \frac{a}{c}
+\end{align*}
+with this, $f$ is a \textbf{bijection} from $\Chat=\C\cup\{\infty\}$ to itself.\sidenote{recall Riemann sphere}
+
+\subsection{Möbius transformations as matrices}
+\rmk We can \textit{associate}\sidenote{this association is not a bijection: it's only so up to scaling} $f(z)=\frac{az+b}{cz+d}$ where $ad-bc\neq 0$ with the matrix $$M_f=\begin{bmatrix}
+    a&b\\c&d
+\end{bmatrix}$$
+
+\rmk $M_{f\circ g}=M_f\cdot M_g$\sidenote{check this!}
+
+\rmk The inverse of $M_f=\begin{bmatrix}
+    a&b\\c&d
+\end{bmatrix}$ is $M_f^{-1}=\frac{1}{ad-bc}\begin{bmatrix}
+    d&-b\\-c&a
+\end{bmatrix}$ and scaling does not matter, so we could write the \textbf{inverse} of such Möbius transformation as: \begin{align*}
+    \inv{f}(w) &=\frac{dw-b}{-cw+a}
+\end{align*}
+
+\begin{theorem}
+    A Möbius transformation $f:\Chat\to\Chat$ with three fixed points in $\Chat$ is the \textbf{identity map} $\mathrm{id}(z)=z=\frac{z+0}{0z+1}$.\sidenote{$I=\begin{bmatrix}
+        1&0\\0&1
+    \end{bmatrix}$}
+\end{theorem}
+\begin{proof}
+    Let $f(z)=\frac{az+b}{cz+d}$ be a Möbius transformation.
+    \begin{enumerate}
+        \item If $\infty$ is fixed, then $c=0$\sidenote{think about that!}. Then $f(z)=\frac{a}{d}z+\frac{b}{d}$, which is a \textbf{linear} transformation.\begin{enumerate}
+            \item If $f(z)=z$, we are done since we get the identity!
+            \item Otherwise the function only has one fixed point at $\infty$.
+        \end{enumerate}
+        \item If $\infty$ is not a fixed point, then $c\neq 0$. Solve:\begin{align*}
+            f(z)+z \Leftrightarrow \frac{az+b}{cz+d}&=z\\
+            az+b&=cz^2+dz\\
+            cz^2+(d-a)z-b&=0
+        \end{align*}
+        is a quadratic which has at most two (distinct) solutions in $\C$. Hence, this transformation fixes at most two points.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Möbius transformations take circles to circles}
+\rmk Lines can be circles (they are just circles that pass through the point at infinity).
+
+\begin{theorem}
+    The image of a circle under a Möbius transformation is still a circle.
+\end{theorem}
+\begin{proof}
+    Let $f(z)=\frac{az+b}{cz+d}$ be a Möbius transformation.
+    \begin{enumerate}
+        \item If $c=0$, then $f(z)=\frac{a}{d}z+\frac{b}{d}$, which is a \textbf{linear/affine} transformation and so we are done\sidenote{since linear transformations preserve circles and lines}.
+        \item Now suppose $c\neq 0$. Then \begin{align*}
+            f(z)&=\frac{a}{d}z+\frac{b}{d}\\
+            &= \frac{\frac{a}{c}(cz+d)-\frac{ad}{c}+b}{cz+d}\\
+            &= \frac{b-\frac{ad}{c}}{cz+d}+\frac{a}{c}
+        \end{align*}
+        which is a composition of affine, inversion and affine:
+        $$z\mapsto cz+d\mapsto \frac{1}{cz+d}\mapsto \frac{b-\frac{ad}{c}}{cz+d}+\frac{a}{c}$$
+        We now only need to show that inversion preserves circles.
+
+        Let a circle in $\R^2$ be $Ax+By+C(x^2+y^2)=D$ where $A,B,C,D\in \R$. If $z=x+iy\in \Chat$, then $\frac{1}{z}=\frac{x}{x^2+y^2}+i\frac{-y}{x^2+y^2}$. Name $\frac{1}{z}=u+iv$, note that $u^2+v^2=\frac{1}{x^2+y^2}$. 
+        
+        Then we note that $Au-Bv+C=D(u^2+v^2)$\sidenote{check this!}, which is still a circle!
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Given two triples $z_1,z_2,z_3$ and $w_1,w_2,w_3$ of \textit{distinct} points in $\Chat$, then there is always a unique Möbius transformation $f$ such that $f(z_i)=w_i$ for all $i=1,2,3$.
+\end{theorem}
+\begin{proof}
+    Claim: the \textit{cross-ratio} $\phi(z)=\frac{z-z_1}{z-z_3}\cdot \underset{\text{const.}}{\underbrace{\frac{z_2-z_3}{z_2-z_1}}}$ is a Möbius transformation that satisfies \circled{$\phi(z_1)=0, \phi(z_2)=1, \phi(z_3)=\infty$}.
+
+    We can also find another Möbius transformation such that $\psi(z_1)=0, \psi(z_2)=1, \psi(z_3)=\infty$. Then:
+    \[\begin{tikzcd}[ampersand replacement=\&,cramped,row sep=tiny]
+        {z_1} \& 0 \& {w_1} \\
+        {z_2} \& 1 \& {w_2} \\
+        {z_3} \& \infty \& {w_3}
+        \arrow["\phi", maps to, from=1-1, to=1-2]
+        \arrow["{\psi^{-1}}", maps to, from=1-2, to=1-3]
+        \arrow["\phi", maps to, from=2-1, to=2-2]
+        \arrow["{\psi^{-1}}", maps to, from=2-2, to=2-3]
+        \arrow["\phi", maps to, from=3-1, to=3-2]
+        \arrow["{\psi^{-1}}", maps to, from=3-2, to=3-3]
+    \end{tikzcd}\]
+
+    and we could simply let $f=\psi^{-1}\circ \phi$.
+\end{proof}
+
+\eg Let $f(z)=\frac{z+1}{-z+1}$. We compute:\begin{align*}
+    f(0)&=1\\
+    f(-1)&=0\\
+    f(1)&=\infty\\
+    f(i)&=i\\
+    f(-i)&=-i\\
+\end{align*}
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp46487660565461075] 
+\draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 87; blue, 184 }  ,fill opacity=0.3 ][line width=1.5]  (96,156.01) .. controls (96,133.37) and (114.36,115.01) .. (137.01,115.01) .. controls (159.65,115.01) and (178.01,133.37) .. (178.01,156.01) .. controls (178.01,178.66) and (159.65,197.02) .. (137.01,197.02) .. controls (114.36,197.02) and (96,178.66) .. (96,156.01) -- cycle ;
+%Curve Lines [id:da6037660096213038] 
+\draw    (264,80) .. controls (303.6,50.3) and (320.91,51.23) .. (362.73,79.15) ;
+\draw [shift={(364,80)}, rotate = 213.92] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (12,-3) -- (0,0) -- (12,3) -- cycle    ;
+%Straight Lines [id:da30485423184171] 
+\draw    (55.75,156.01) -- (216.26,156.01) ;
+\draw [shift={(218.26,156.01)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da03496103337291223] 
+\draw    (387.75,153.01) -- (548.26,153.01) ;
+\draw [shift={(550.26,153.01)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da11880027193931353] 
+\draw    (137.01,246.26) -- (137.01,77.26) ;
+\draw [shift={(137.01,75.26)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da4256972022746721] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]    (469.01,238.51) -- (469.01,70.51) ;
+\draw [shift={(469.01,67.51)}, rotate = 90] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]    (14.21,-4.28) .. controls (9.04,-1.82) and (4.3,-0.39) .. (0,0) .. controls (4.3,0.39) and (9.04,1.82) .. (14.21,4.28)   ;
+%Shape: Rectangle [id:dp17327106892852906] 
+\draw  [draw opacity=0][fill={rgb, 255:red, 0; green, 87; blue, 184 }  ,fill opacity=0.3 ] (469.01,67.51) -- (578.26,67.51) -- (578.26,236.26) -- (469.01,236.26) -- cycle ;
+
+% Text Node
+\draw (142,95.4) node [anchor=north west][inner sep=0.75pt]    {$i$};
+% Text Node
+\draw (181,136.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,opacity=1 ]  {$1$};
+% Text Node
+\draw (139.01,200.42) node [anchor=north west][inner sep=0.75pt]    {$-i$};
+% Text Node
+\draw (72,134.4) node [anchor=north west][inner sep=0.75pt]    {$-1$};
+% Text Node
+\draw (126,156.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,opacity=1 ]  {$0$};
+% Text Node
+\draw (484,93.4) node [anchor=north west][inner sep=0.75pt]    {$i$};
+% Text Node
+\draw (523,135.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,opacity=1 ]  {$1$};
+% Text Node
+\draw (481.01,198.42) node [anchor=north west][inner sep=0.75pt]    {$-i$};
+% Text Node
+\draw (468,154.4) node [anchor=north west][inner sep=0.75pt]    {$0$};
+% Text Node
+\draw (201,55.4) node [anchor=north west][inner sep=0.75pt]    {$\infty $};
+% Text Node
+\draw (306,67.4) node [anchor=north west][inner sep=0.75pt]    {$f$};
+% Text Node
+\draw (589,50.4) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.96,0.65,0.14}{\infty }$};
+
+
+\end{tikzpicture}
+
 \end{document} 
