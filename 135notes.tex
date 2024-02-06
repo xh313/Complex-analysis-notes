@@ -641,4 +641,112 @@ But this only works if both series are absolutely convergent, in which case the 
     Let $f_n:X\to \C$ satisfy $|f_n(z)|\leq M_n$ for all $z\in X$ and $n\in \N$. If $\sum_{n=1}^{\infty}M_n$ converges, then $\sum_{n=1}^{\infty}f_n(z)$ converges both \textbf{absolutely} and \textbf{uniformly} on $X$.
 \end{theorem}
 
+\section{Power series}
+\defn A \textbf{power series} is a series of the form $\sum_{n=0}^{\infty}a_n(z-z_0)^n$. The $a_n$ is the \textit{coefficient} and $z_0$ is the \textit{center}.
+
+\subsection{Convergence of geometric series}
+
+\begin{theorem}
+    The \textit{geometric series} ($a_n=1, z_0=0$) $\sum_{n=0}^{\infty}z^n$ converges absolutely to $\frac{1}{1-z}$ if $|z|<1$, and it diverges otherwise. 
+
+    Moreover, for each $r\in [0,1[$, the convergence is \textbf{uniform} on $|z|\leq r$.
+\end{theorem}
+\begin{proof}
+    If $|z|\geq 1$, then $z^n\not\to 0$, so by the test of divergence, the series diverges.
+
+    Now suppose $|z|<1$. Then\sidenote{The fact that we can find a formula for this sum is quite rare! } \begin{align*}
+        \sum_{n=0}^{\infty}z^n &= \lim_{N\to \infty}\sum_{n=0}^{N-1}z^n\\
+        &= \lim_{N\to \infty}(1+z+z^2+\dots+z^{N-1})\\
+        &= \lim_{N\to \infty}\frac{1-z^N}{1-z}\\
+        &= \frac{1}{1-z} &\text{since }|z|<1
+    \end{align*}
+    Which gives us point-wise convergence. Then, for any $r$ such that $|z|\leq r<1$, we have \begin{align*}
+        \sum_{n=0}^{\infty}|z^n|\leq \sum_{n=0}^{\infty}r^n =\frac{1}{1-r}<\infty
+    \end{align*}
+    Hence, by the Weierstrass $M$-test, the series converges \textit{absolutely and uniformly} on $|z|\leq r$.
+\end{proof}
+
+\rmk Moral of the story: \begin{itemize}
+    \item The \textit{radius of convergence} $R=1$ has the property that the series converges on $|z|<R$, and diverges if $|z|>R$.
+    
+    \item The series converges \textit{uniformly} on $|z|\leq r<1$ but not on $|z|<1$ itself. Why?
+    
+    Let $r=1$; we need be able to get $N\in \N$ such that for all $n\geq N$, we have $\left|\frac{1-z^N}{1-z}-\frac{1}{1-z}\right|<1$ for all $|z|<1$. However, this is not gonna work: as $z\to 1$, observe that this is going to eventually exceed 1. 
+
+    \item The limit function $\displaystyle \frac{1}{1-z}$ is \textbf{analytic} on $\C\backslash\{1\}$\sidenote{the limit function is well-defined way beyond the $\mathbb{D}$!}. But the geometric series represents this function \underline{only} on $|z|<1$. In a smaller set, the power series represents the function that might originally be defined on a much larger set. The limit function is the \textit{analytic continuation} of the series.
+    
+    \item The limit function $\displaystyle \frac{1}{1-z}$ is cool if $z\neq 1$\sidenote{in the complex number sense!}, but as long as $|z|=1$ (\textbf{even} if $z\neq 1$), the geometric series diverges!
+\end{itemize}
+
+\subsection{Radius of convergence}
+\defn The \textbf{limit superior} ($\limsup$) of a sequence of nonnegative real numbers $x_n$ is the largest \textit{limit point}\sidenote{limits of a subsequence of $x_n$} of the $x_n$: $$\limsup_{n\to \infty}x_n=\inf_{n\geq 0}\sup_{m\geq n}x_m$$\sidenote{the RHS as in real analysis}\addlink{Limit superior}
+If the sequence is unbounded, the $\limsup$ would be $\infty$.
+
+\eg If $x_n$ is the sequence $0,1,0,1,\dots$ then $\displaystyle\limsup_{n\to \infty}x_n=1$.
+
+\eg If $x_n$ is the sequence $0,1,0,\frac{1}{2}, 0, \frac{1}{3},\dots$, then $\displaystyle\limsup_{n\to \infty}x_n=0$.
+
+\rmk If $x_n$ are nonnegative, then \begin{itemize}
+    \item $\displaystyle \limsup_{n\to \infty}(a_n+b_n)=\limsup_{n\to \infty}a_n+\limsup_{n\to \infty}b_n$
+    \item $\displaystyle \limsup_{n\to \infty}(a_nb_n)\leq (\limsup_{n\to \infty}a_n)(\limsup_{n\to \infty}b_n)$
+\end{itemize}
+
+\addlink{Cauchy-Hadamard formula}
+\begin{theorem}[Cauchy-Hadamard]
+    Let $\sum_{n=0}^{\infty}a_n(z-z_0)^n$ be a power series. Define $R\in [0,\infty]$ by \sidenote{interpret $\frac{1}{0}=\infty$}\begin{align*}
+        \frac{1}{R}=\limsup_{n\to \infty}\sqrt[n]{|a_n|}
+    \end{align*}
+    Then the $R$ is the \textit{radius of convergence}.
+    \begin{enumerate}[label=(\alph*)]
+        \item On $|z-z_0|<R$, the series converges \textbf{absolutely}.\sidenote{\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.6,xscale=.6]
+            %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+            
+            %Shape: Axis 2D [id:dp5858755410080565] 
+            \draw  (50,212.68) -- (255.26,212.68)(82.26,77.28) -- (82.26,267.03) (248.26,207.68) -- (255.26,212.68) -- (248.26,217.68) (77.26,84.28) -- (82.26,77.28) -- (87.26,84.28)  ;
+            %Shape: Circle [id:dp24544423482988642] 
+            \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][dash pattern={on 4.5pt off 4.5pt}] (100,173.64) .. controls (100,134.09) and (132.06,102.03) .. (171.61,102.03) .. controls (211.17,102.03) and (243.23,134.09) .. (243.23,173.64) .. controls (243.23,213.19) and (211.17,245.26) .. (171.61,245.26) .. controls (132.06,245.26) and (100,213.19) .. (100,173.64) -- cycle ;
+            %Shape: Circle [id:dp09425242443966897] 
+            \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (168.46,173.64) .. controls (168.46,171.9) and (169.87,170.48) .. (171.61,170.48) .. controls (173.36,170.48) and (174.77,171.9) .. (174.77,173.64) .. controls (174.77,175.39) and (173.36,176.8) .. (171.61,176.8) .. controls (169.87,176.8) and (168.46,175.39) .. (168.46,173.64) -- cycle ;
+            %Straight Lines [id:da3698233641764985] 
+            \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (203.26,110.07) -- (171.61,173.64) ;
+            %Shape: Circle [id:dp40259923856296376] 
+            \draw  [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ] (128.79,173.64) .. controls (128.79,149.99) and (147.96,130.81) .. (171.61,130.81) .. controls (195.27,130.81) and (214.44,149.99) .. (214.44,173.64) .. controls (214.44,197.29) and (195.27,216.47) .. (171.61,216.47) .. controls (147.96,216.47) and (128.79,197.29) .. (128.79,173.64) -- cycle ;
+            
+            % Text Node
+            \draw (198,120.82) node [anchor=north west][inner sep=0.75pt]    {$R$};
+            % Text Node
+            \draw (173.61,173.88) node [anchor=north west][inner sep=0.75pt]    {$z_{0}$};
+            % Text Node
+            \draw (110.8,246.42) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ] [align=left] {{\scriptsize Converges absolutely}};
+            % Text Node
+            \draw (110.8,214.62) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize \textcolor[rgb]{0.56,0.07,1}{Converges uniformly}}};
+            
+            
+            \end{tikzpicture}} 
+            For each $r\in [0,R[$, the convergence is \textbf{uniform} on $|z-z_0|\leq r$.        
+        \item If $|z-z_0|>R$ then the series diverges. \rt{For $|z-z_0|=R$ anything could happen!}
+    \end{enumerate}
+\end{theorem}
+
+\eg We claim that $\exp(z)=\sum_{n=0}^{\infty}\frac{z^n}{n!}$ has an infinite radius of convergence $R=\infty$. To check:
+\begin{align*}
+    \sqrt[n]{|a_n|} =\sqrt[n]{\frac{1}{n!}} = \frac{1}{\sqrt[n]{n!}}\to 0
+\end{align*}
+This is because $\sqrt[n]{n!} = \sqrt[n]{1\cdot 2\cdot\dots \cdot n}$, and in $n!$, there are at least $\frac{1}{2}$ terms that are $>\frac{n}{2}$. Thus, $\sqrt[n]{n!}\geq \left(\left(\frac{n}{2}\right)^{\frac{n}{2}}\right)^{\frac{1}{n}}=\left(\frac{n}{2}\right)^{1/2}\to \infty$.
+
+So $R=\infty$ and we are done \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-.2,xscale=.2]%Shape: Smiley Face [id:dp9495597583093132] 
+    \draw   (80,136) .. controls (80,116.67) and (95.67,101) .. (115,101) .. controls (134.33,101) and (150,116.67) .. (150,136) .. controls (150,155.33) and (134.33,171) .. (115,171) .. controls (95.67,171) and (80,155.33) .. (80,136) -- cycle ; \draw   (99.6,124.1) .. controls (99.6,122.17) and (101.17,120.6) .. (103.1,120.6) .. controls (105.03,120.6) and (106.6,122.17) .. (106.6,124.1) .. controls (106.6,126.03) and (105.03,127.6) .. (103.1,127.6) .. controls (101.17,127.6) and (99.6,126.03) .. (99.6,124.1) -- cycle ; \draw   (123.4,124.1) .. controls (123.4,122.17) and (124.97,120.6) .. (126.9,120.6) .. controls (128.83,120.6) and (130.4,122.17) .. (130.4,124.1) .. controls (130.4,126.03) and (128.83,127.6) .. (126.9,127.6) .. controls (124.97,127.6) and (123.4,126.03) .. (123.4,124.1) -- cycle ; \draw   (97.5,150) .. controls (109.17,159.33) and (120.83,159.33) .. (132.5,150) ;
+    \end{tikzpicture}. We have that $\exp(z)$ has absolute convergence on the entire complex plane!
+
+Absolute convergence means that we can multiply term-by-term:
+\begin{align*}
+    \exp(z)\exp(w) & = \left(\sum_{n=0}^{\infty}\frac{z^n}{n!}\right)\left(\sum_{n=0}^{\infty}\frac{w^n}{n!}\right)\\
+    &= \sum_{n=0}^{\infty}\left(\sum_{k=0}^{\infty}\frac{z^k}{k!}\cdot\frac{w^{n-k}}{(n-k)!}\right)\\
+    &= \sum_{n=0}^{\infty}\rt{\frac{1}{n!}}\underset{\text{binomial theorem}}{\underbrace{\sum_{k=0}^{\infty}\frac{\rt{n!}}{k!(n-k)!}z^kw^{n-k}}}\\
+    &= \sum_{n=0}^{\infty}{\frac{1}{n!}}(z+w)^n\\
+    &= \exp(z+w)
+\end{align*}
+
+Now define $e=\exp(1)=\sum_{n=0}^{\infty}\frac{1}{n!}$.
+
 \end{document} 
