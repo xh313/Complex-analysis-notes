@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \input{customcommands}
+\renewcommand{\d}{\ensuremath{\operatorname{d}}}
 
 %=============
 
@@ -748,5 +749,127 @@ Absolute convergence means that we can multiply term-by-term:
 \end{align*}
 
 Now define $e=\exp(1)=\sum_{n=0}^{\infty}\frac{1}{n!}$.
+
+\subsection{Term-by-term differentiation of power series}
+
+\begin{lemma}
+    $n^{\frac{1}{n}}\to 1$
+\end{lemma}
+\begin{proof}[Proof 1] $e^{\log (n^{\frac{1}{n}})}=e^{\frac{\log n}{n}}\to e^{0}=1$ by l'Hopital. So $n^{\frac{1}{n}}\to 1$.
+\end{proof}
+\begin{proof}[Proof 2 (better)] Write $n^{\frac{1}{n}}=1+\delta_n$ where $\delta_n\geq 0$. The binomial theorem says:
+\begin{align*}
+    n&= (1+\delta_n)^n\\
+    &= \sum_{k=0}^{\infty}{n\choose k}\delta_n^k\cdot 1^{n-k}\\
+    &= 1+n\delta_n+\frac{n(n-1)}{2}\delta_n^2+\dots\\
+    &\geq 1+\frac{n(n-1)}{2}\delta_n^2
+\end{align*}
+    Therefore, $n-1\geq \frac{n(n-1)}{2}\delta_n^2$ and we get $\frac{2}{n}\geq \delta_n^2\geq 0$ hence $\delta_n\to 0$.
+
+    Hence $n^{\frac{1}{n}}\to 1$.
+\end{proof}
+
+\addlink{Derivative series have the same radius of convergence}
+\begin{theorem}
+    If $f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^{n}$ has radius of convergence $R$, then \[f'(z)=\sum_{n=0}^{\infty}na_n(z-z_0)^{n-1}\] for $|z-z_0|<R$. Moreover, the new series also has a radius of convergence $R$.
+\end{theorem}
+\begin{proof}
+    WLOG $R>0$ and $z_0=0$\sidenote{we just translate it; also $R=0$ isn't that meaningful}. 
+    
+    For $|z|<R$ we write:\sidenote{just splitting the function into two parts}
+    \[f(z)=\underset{S_N(z)}{\underbrace{\sum_{n=0}^{N-1}a_nz^n}} + \underset{R_N(z)}{\underbrace{ \sum_{n=N}^{\infty}a_nz^n}}\]
+    and the `new series'\[g(z)=\sum_{n=0}^{\infty}na_nz^{n-1}=\lim_{N\to \infty}S'_N(z)\]
+
+    We first prove that the radius of convergence for $g$ is the same as $f$. By Cauchy-Hadamard:
+    \begin{align*}
+        \frac{1}{R_g}&=\limsup_{n\to \infty}\sqrt[n]{n|a_n|}\\
+        &=\limsup_{n\to \infty}(n^{\frac{1}{n}})\sqrt[n]{|a_n|} & \text{by the previous lemma,}\\
+        &= \limsup_{n\to \infty}\sqrt[n]{|a_n|}\\
+        &= \frac{1}{R}
+    \end{align*}
+    Thus, $R_g=R$ by Cauchy-Hadamard.
+
+    Next, we need to show that $f'=g$ with $|z|<R$.
+
+    Fix $0\leq |w|<R$ and $\varepsilon>0$. We want a $\delta>0$ such that whenever $|z-w|<\delta$,  we have $\left|\frac{f(z)-f(w)}{z-w}-g(w)\right|<\varepsilon$.\sidenote{just saying that the derivative at any $w$ gets close to $g(w)$}
+
+    We rewrite:\begin{align*}
+        \left|\frac{f(z)-f(w)}{z-w}-g(w)\right|
+        &= \left| \frac{
+            [S_N(z)+R_N(z)]-[S_N(w)+R_N(w)]
+        }
+        {z-w}
+        -g(w)\right|\\
+        &= \left|
+            \frac{S_N(z)-S_N(w)}{z-w} +
+            \frac{R_N(z)-R_N(w)}{z-w} +
+            \gt{S'_N(w)-S'_N(w)} -
+            g(w)
+            \right|\\
+        &\leq \left| S'_N(w)-g(w)
+            \right| + 
+            \left| \frac{R_N(z)-R_N(w)}{z-w}
+            \right| + 
+            \left| \frac{S_N(z)-S_N(w)}{z-w} - S'_N(w)
+            \right|
+    \end{align*}
+
+    \begin{itemize}
+        \item \textbf{1st term}: by def of $g$ and $g(z)=\lim_{N\to \infty}S'_N(z)$, we can always find some $N_1\in \N$ such that any $N\geq N_1$ gives us $\left| S'_N(w)-g(w)\right| <\frac{\varepsilon}{3} $.
+        \item \textbf{2nd term}: since $|w|<R$, there is an $r$ such that $|w|<r<R$.\sidenote{work on a smaller disk}
+        
+        For $|z|<r$, we have \begin{align*}
+            \left| \frac{R_N(z)-R_N(w)}{z-w}
+            \right| &= \frac{1}{|z-w|}\left|\sum_{n=N}^{\infty}a_nz^n= - \sum_{n=N}^{\infty} a_nw^n\right|\\
+            &\leq \sum_{n=N}^{\infty} |a_n| \left|\frac{z^n-w^n}{z-w}\right|\\
+            &= \sum_{n=N}^{\infty} |a_n| \left|\frac{z^n}{z}\cdot \frac{1-\frac{w^n}{z^n}}{1-\frac{w}{z}}\right| & \text{by geometric sequence}\\
+            &= \sum_{n=N}^{\infty} |a_n| \left|\frac{z^n}{z}\cdot \left(
+                1+\left(\frac{w}{z}\right) + \left(\frac{w}{z}\right)^2 + \dots + \left(\frac{w}{z}\right)^{n-1}
+            \right)\right|\\
+            &= \sum_{n=N}^{\infty} |a_n| \left|
+                z^{n-1}+z^{n-2}w+\dots + zw^{n-2}+w^{n-1}
+            \right|\\
+            &\leq \sum_{n=N}^{\infty} |a_n|\cdot n\cdot r^{n-1} \text{by }|z|,|w|<r<R
+        \end{align*}
+        Thus, there exists an $N_2\in \N$ such that any $N\geq N_2$ gives us $$\left| \frac{R_N(z)-R_N(w)}{z-w}
+        \right|<\frac{\varepsilon}{3}$$
+        \item \textbf{3rd term}: let $N=\max\{N_1,N_2\}$. The definition\sidenote{review def of derivatives!} of $S'_N(w)$ provides $\gamma>0$ such that if $|z-w|<\gamma$, then we have $\left| \frac{S_N(z)-S_N(w)}{z-w} - S'_N(w)
+        \right|<\frac{\varepsilon}{3}$.
+    \end{itemize}
+
+    Now if $0<\delta<\min\{\gamma, r-|w|\}$, then the 3 terms above are all $<\frac{\varepsilon}{3}$. Hence, $\left|\frac{f(z)-f(w)}{z-w}-g(w)\right|<\varepsilon$ holds for this $\delta$.
+\end{proof}
+
+\addlink{Power series are infinitely differentiable}
+\begin{corollary}
+    A power series $f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n$ with $R>0$ is \dashuline{infinitely differentiable} on $|z-z_0|<R$. Moreover, \[a_n = \frac{f^{(n)}(z_0)}{n!}\] are the coefficients of the terms of the power series. \sidenote{prove by keep taking derivatives!}
+\end{corollary}
+
+\addlink{Power series expansions are unique}
+\begin{corollary}
+    Power series expansions are unique.\sidenote{because there is a unique formula for coeffs.} That is, if $r>0$ and \[\sum_{n=0}^{\infty}a_n(z-z_0)^{n} = \sum_{n=0}^{\infty}b_n(z-z_0)^{n}\]
+    on $|z-z_0|<r$, then $a_n=b_n$ for $n\geq 0$.
+\end{corollary}
+
+\rmk Recall that $\exp(z)=\sum_{n=0}^{\infty}\frac{z^n}{n!}$ has a radius of convergence $\infty$ (it's an \textit{entire} function). Now, if we differentiate it term-by-term:
+\begin{align*}
+    \frac{\d}{\d z}\exp(z)&=\frac{\d}{\d z}\sum_{n=0}^{\infty}\frac{z^n}{n!}\\
+    &= \sum_{n=0}^{\infty}\frac{z^{n-1}}{(n-1)!} &\text{let }k=n-1\\
+    &= \sum_{k=0}^{\infty} \frac{z^k}{k!}\\
+    &= \exp(z)
+\end{align*}
+Thus, the derivative of $\exp(z)$ is itself! Moreover, $\exp(1)=\sum_{n=0}^{\infty}\frac{1}{n!}=e$.
+
+\rmk We claim that $\exp(z)=e^z$.
+
+Since $e^ze^{c-z}$ is a constant for all constant $c,z$, we have \[\frac{\d}{\d z}(e^ze^{c-z})=0\]
+to recover the constant $e^ze^{c-z}$, we let $z=0$, giving us \[e^{z}e^{c-z}=e^{c}\]
+which is the addition formula!
+
+Therefore, \begin{align*}
+    \exp(n) &= \exp(1+1+\dots+1)\\
+    &= exp(1)^{n}\\
+    &=e^n
+\end{align*}
 
 \end{document} 
