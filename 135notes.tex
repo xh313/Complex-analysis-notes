@@ -872,4 +872,169 @@ Therefore, \begin{align*}
     &=e^n
 \end{align*}
 
+Now that we have derived $e$, we could use it to derive $\sin$ and $\cos$:
+
+\addlink{Trig functions in terms of \textit{e}}
+\defn \begin{align*}
+    \cos(z) &= \frac{e^{iz}+e^{-iz}}{2}\\
+    &= \sum_{n=0}^{\infty}\frac{(-1)^nz^{2n}}{(2n)!}
+\end{align*}
+\begin{align*}
+    \sin(z) &= \frac{e^{iz}-e^{-iz}}{2i}\\
+    &= \sum_{n=0}^{\infty}\frac{(-1)^nz^{2n+1}}{(2n+1)!}
+\end{align*}
+We observe that we have the following property:
+\begin{itemize}
+    \item Radius of convergence $R=\infty$
+    \item $(\cos z)'=-\sin z, (\sin z)'=\cos z$
+    \item $\cos x= \mathrm{Re~}(e^{ix}), \sin x = \mathrm{Im~} e^{ix}$ for all $x\in \R$
+    \item $\cos (-z)=\cos z, \sin(-z)=-\sin z$
+    \item $\cosh x = \frac{e^x+e^{-x}}{2}$ so $\cosh (ix)=\cos x$
+    \item $e^{iz}=\cos z+i\sin z$
+    \item \begin{align*}
+        \cos^2z+\sin^2z &= \left(\frac{e^{iz}+e^{-iz}}{2}\right)^2 + \left(\frac{e^{iz}-e^{-iz}}{2i}\right)^2\\
+        &= \frac{1}{4}(e^{2iz}+2+e^{-2iz})-\frac{1}{4}(e^{2iz}-2+e^{-2iz})\\
+        &= 1\qquad \forall z\in \C
+    \end{align*}
+    \item \begin{align*}
+        \cos^2z &= \left(\frac{e^{iz}+e^{-iz}}{2}\right)^2\\
+        &= \frac{1}{4}(e^{2iz}+2+e^{-2iz})\\
+        &= \frac{1}{2} + \frac{e^{2iz}+e^{-2iz}}{4}\\
+        &= \frac{1}{2}(1+\cos 2z)
+    \end{align*}
+    \item If $x\in \R$ then $\cos x, \sin x$ are real. We get $|\sin x|,|\cos x|\leq 1$.
+\end{itemize}
+
+\addlink{Periodicity of functions}
+\defn $f:\C\to\C$ is \textbf{periodic} with a \textit{period} $\omega$ if $f(z+\omega)=f(z)$ for all $z\in \C$.
+
+\addlink{Definition of π}
+\begin{theorem}
+    There exists a positive real number $\pi$ such that:\begin{enumerate}[label=(\alph *)]
+        \item $\cos z, \sin z$ have period $2\pi$
+        \item $e^z$ is periodic with period $2\pi i$
+        \item $\pi$ is the area of the unit circle
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    By Euler's formula, it suffices to consider $e^{iz}$ only. If $\omega$ is a period of $e^{iz}$, then \[e^{iz}=e^{i(z+\omega)}=e^{iz}e^{i\omega}\] which only happens if $e^{i\omega}=1$. Conversely, if $e^{i\omega}=1$, then $e^{i(z+\omega)}=e^{iz}$.
+
+    Hence, $\omega$ is a period of $e^{iz}$ \ifnif $e^{iw}=1$.
+\end{proof}
+
+\proposition $\sin x\leq x$ for all $x\geq 0$.\sidenote{This is the first term in the power series \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Axis 2D [id:dp008141030370613311] 
+    \draw  (50,162.51) -- (150,162.51)(60.26,78) -- (60.26,178) (143,157.51) -- (150,162.51) -- (143,167.51) (55.26,85) -- (60.26,78) -- (65.26,85)  ;
+    %Straight Lines [id:da3006663806705201] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (60.26,162.51) -- (142.51,80.26) ;
+    %Shape: Wave [id:dp8304296493911976] 
+    \draw   (104.26,138) .. controls (88.39,138) and (74.44,149.34) .. (60.26,162.59) ;
+    
+    % Text Node
+    \draw (131,56.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+    % Text Node
+    \draw (109,129.4) node [anchor=north west][inner sep=0.75pt]    {$\sin \ x$};
+    
+    
+    \end{tikzpicture}
+    }
+\begin{proof}
+    Since $|\cos t|\leq 1$, \begin{align*}
+        x-\sin x &= (x-\sin x)-(0-\sin 0)\\
+        &= \int_{0}^{x}\underset{\geq 0}{\underbrace{1-\cos t}}\d t \qquad \text{by FTC}\\
+        &\geq 0
+    \end{align*}
+\end{proof}
+
+\proposition
+In addition, $\cos x\geq 1-\frac{x^2}{2}$ for $x\geq 0$.\sidenote{These are the first 2 terms in the power series
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Axis 2D [id:dp008141030370613311] 
+    \draw  (50,162.51) -- (150,162.51)(60.26,78) -- (60.26,178) (143,157.51) -- (150,162.51) -- (143,167.51) (55.26,85) -- (60.26,78) -- (65.26,85)  ;
+    %Curve Lines [id:da027619260095050446] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (60.13,121.51) .. controls (82.26,121.51) and (98.26,152.51) .. (112,188) ;
+    %Shape: Wave [id:dp87403708438032] 
+    \draw   (60.26,121) .. controls (76.54,121) and (90.58,138.44) .. (105.26,156.76) .. controls (111.96,165.13) and (118.54,173.32) .. (125.26,179.74) ;
+    
+    % Text Node
+    \draw (114,191.4) node [anchor=north west][inner sep=0.75pt]    {$1-\frac{x^{2}}{2}$};
+    % Text Node
+    \draw (103,125.4) node [anchor=north west][inner sep=0.75pt]    {$\cos x$};
+    
+    
+    \end{tikzpicture}
+    }
+\begin{proof}
+    The previous prop gives:
+    \begin{align*}
+        \cos x -1 &= \cos x -\cos 0\\
+        &= \int_{0}^{x}-\sin t\d t\\
+        &\geq \int_{0}^{x}- t\d t\\
+        &= \frac{-x^2}{2}
+    \end{align*}
+\end{proof}
+
+\proposition Furthermore, for $x\geq 0$: \begin{itemize}
+    \item $\sin x\geq x^3-\frac{x^3}{6}$
+    \item $\cos x\leq 1-\frac{x^2}{2}+\frac{x^4}{24}$
+\end{itemize}
+
+\begin{proposition}
+    There exists $x_0\in (0,\sqrt{3})$ such that $\cos x_0=0$.
+   \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Axis 2D [id:dp008141030370613311] 
+    \draw  (50,162.51) -- (150,162.51)(60.26,78) -- (60.26,178) (143,157.51) -- (150,162.51) -- (143,167.51) (55.26,85) -- (60.26,78) -- (65.26,85)  ;
+    %Curve Lines [id:da027619260095050446] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (60.13,121.51) .. controls (82.26,121.51) and (98.26,152.51) .. (112,188) ;
+    %Shape: Wave [id:dp87403708438032] 
+    \draw   (60.26,121) .. controls (76.54,121) and (90.58,138.44) .. (105.26,156.76) .. controls (111.96,165.13) and (118.54,173.32) .. (125.26,179.74) ;
+    %Curve Lines [id:da00092922647570437] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (60.13,121.51) .. controls (80.26,103.51) and (123.26,179.51) .. (144.26,178.51) .. controls (165.26,177.51) and (188.26,134.51) .. (194.26,94) ;
+    
+    % Text Node
+    \draw (47,190.4) node [anchor=north west][inner sep=0.75pt]    {$1-\frac{x^{2}}{2}$};
+    % Text Node
+    \draw (127,185.4) node [anchor=north west][inner sep=0.75pt]    {$\cos x$};
+    % Text Node
+    \draw (177,56.4) node [anchor=north west][inner sep=0.75pt]    {$1-\frac{x^{2}}{2} +\frac{x^{4}}{24}$};
+    
+    
+    \end{tikzpicture}
+    \]
+\end{proposition}
+\begin{proof}
+    By the previous prop, we have $\cos \sqrt{3}\leq  1-\frac{\sqrt 3^2}{2}+\frac{\sqrt 3^4}{24}=\frac{1}{8}< 0$. Moreover, $\cos 0=1>0$, by IVT, there exists $x_0\in (0,\sqrt{3})$ such that $\cos x_0=0$.
+\end{proof}
+
+\begin{proposition}
+    $\omega_0=4x_0$ is a period of $e^{iz}$. 
+\end{proposition}
+\begin{proof}
+    Since $\cos x_0=0$, we have $\sin x_0=\pm 1$. Then $e^{ix_0}=\pm i$. We have $(\pm i)^4=1$, so $e^{4ix_0}=1=e^{0}$, so $\omega_0=4x_0$ is a period of $e^{iz}$.
+\end{proof}
+
+\begin{proposition}
+    $\omega_0$ is the \textit{smallest} positive period of $e^{iz}$.
+\end{proposition}
+
+\begin{proposition}
+    All periods of $e^{iz}$ are integer multiples of $2\pi=4x_0$.
+\end{proposition}
+
+\begin{proof}
+    Define $\pi=2x_0$. The area of unit circle is \begin{align*}
+        4\int_{0}^{1}\sqrt{1-x^2}\d x &= 4\int_{0}^{\frac{\pi}{2}}\sqrt{1-\sin^2 \theta}\d \theta\\
+        &= 4\int_{0}^{\frac{\pi}{2}}\frac{1}{2}(1+\cos 2\theta)\d \theta\\
+        &= \pi
+    \end{align*}
+\end{proof}
+
 \end{document} 
