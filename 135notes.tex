@@ -872,6 +872,8 @@ Therefore, \begin{align*}
     &=e^n
 \end{align*}
 
+\section{Elementary functions}
+
 Now that we have derived $e$, we could use it to derive $\sin$ and $\cos$:
 
 \addlink{Trig functions in terms of \textit{e}}
@@ -1036,5 +1038,187 @@ In addition, $\cos x\geq 1-\frac{x^2}{2}$ for $x\geq 0$.\sidenote{These are the 
         &= \pi
     \end{align*}
 \end{proof}
+
+\subsection{Complex logarithm}
+We know: $e^0=1,e^1=\sum_{n=0}^{\infty}\frac{1}{n!}=2.718\dots$
+
+Since $\frac{\d}{\d x}e^x=e^x$, it is positive. If $x>0$, we conclude that $e^x$ is strictly increasing! As $e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!}>1+x$, so $\lim_{x\to \infty}e^x=\infty$,
+
+Therefore, $e^x$ is a \textbf{bijection} from $\R$ to $(0,\infty)$. This means it has an inverse that is a bijection from $(0,\infty)$ to $\R$.
+
+\defn $\ln x$ is the inverse of $e^x$ for $x\in (0,+\infty)$.
+
+Now what about the complex case? Let $z\neq 0$ and $z=re^{i\theta}$\sidenote{cf. trig properties} where $r=|z|>0$ and $\theta=\arg z\in \R$.\sidenote{Only determined up to addition of multiples of $2\pi$}
+
+Hence, $z=re^{i\theta}=e^{\ln r}e^{i\theta}=e^{\ln r+i\theta}$. However, the $\theta$ is ambiguous to addition of multiples of $2\pi$!
+
+\addlink{Logarithm}
+\defn If $z\neq 0$, a \textbf{logarithm} of $z$ is a $w\in \C$ such that $e^{w}=z$.
+
+We could graph the function $e^z$ with $z\in \C$:       
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Straight Lines [id:da8785590871760756] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (145.63,130.39) -- (201.55,130.39) ;
+    \draw [shift={(203.55,130.39)}, rotate = 180] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da1618236675525775] 
+    \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (119.98,130.39) -- (54.75,130.39) ;
+    \draw [shift={(52.75,130.39)}, rotate = 360] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(119.98,130.39)}, rotate = 180] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da8267712506988469] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (119.98,130.39) -- (145.63,130.39) ;
+    \draw [shift={(145.63,130.39)}, rotate = 0] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][fill={rgb, 255:red, 144; green, 19; blue, 254 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da2374921790479616] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (145.63,199.6) -- (201.55,199.6) ;
+    \draw [shift={(203.55,199.6)}, rotate = 180] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da03468902350963088] 
+    \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (119.98,199.6) -- (54.75,199.6) ;
+    \draw [shift={(52.75,199.6)}, rotate = 360] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(119.98,199.6)}, rotate = 180] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da3208922622885413] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (119.98,199.6) -- (145.63,199.6) ;
+    \draw [shift={(145.63,199.6)}, rotate = 0] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][fill={rgb, 255:red, 144; green, 19; blue, 254 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da4709032693595072] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (145.63,60.46) -- (201.55,60.46) ;
+    \draw [shift={(203.55,60.46)}, rotate = 180] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da05828217640270972] 
+    \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (119.98,60.46) -- (54.75,60.46) ;
+    \draw [shift={(52.75,60.46)}, rotate = 360] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(119.98,60.46)}, rotate = 180] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da6226539504724369] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (119.98,60.46) -- (145.63,60.46) ;
+    \draw [shift={(145.63,60.46)}, rotate = 0] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][fill={rgb, 255:red, 144; green, 19; blue, 254 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da35528692959663144] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (119.98,130.39) -- (120.15,95.86) ;
+    \draw [shift={(120.1,107.13)}, rotate = 90.28] [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Straight Lines [id:da8648044267590989] 
+    \draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (120.15,95.86) -- (120.15,60.46) ;
+    \draw [shift={(120.15,72.16)}, rotate = 90] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(120.15,95.86)}, rotate = 270] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][fill={rgb, 255:red, 65; green, 117; blue, 5 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da878911184832804] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (119.98,199.6) -- (120.15,165.07) ;
+    \draw [shift={(120.1,176.34)}, rotate = 90.28] [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Straight Lines [id:da0013946467543932695] 
+    \draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (120.15,165.07) -- (119.98,130.39) ;
+    \draw [shift={(120.04,141.73)}, rotate = 89.72] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(120.15,165.07)}, rotate = 269.72] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][fill={rgb, 255:red, 65; green, 117; blue, 5 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da6431192925230409] 
+    \draw    (120.15,60.46) -- (120.15,21.72) ;
+    \draw [shift={(120.15,19.72)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da4817110891560017] 
+    \draw    (119.98,225.34) -- (119.98,199.6) ;
+    %Curve Lines [id:da15130320225307914] 
+    \draw    (220.8,56) .. controls (260.4,26.3) and (277.71,27.23) .. (319.53,55.15) ;
+    \draw [shift={(320.8,56)}, rotate = 213.92] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (12,-3) -- (0,0) -- (12,3) -- cycle    ;
+    %Shape: Axis 2D [id:dp10703039654547442] 
+    \draw  (268.95,134.06) -- (469.75,134.06)(371.35,37.26) -- (371.35,229.26) (462.75,129.06) -- (469.75,134.06) -- (462.75,139.06) (366.35,44.26) -- (371.35,37.26) -- (376.35,44.26)  ;
+    %Straight Lines [id:da39023709471268675] 
+    \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (373.7,134.06) -- (403.35,134.06) ;
+    \draw [shift={(403.35,134.06)}, rotate = 0] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(371.35,134.06)}, rotate = 0] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da20992201553768708] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (435.35,134.06) -- (467.35,134.06) ;
+    \draw [shift={(435.35,134.06)}, rotate = 0] [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][fill={rgb, 255:red, 144; green, 19; blue, 254 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da895300882766211] 
+    \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ]   (403.35,134.06) -- (435.35,134.06) ;
+    %Shape: Arc [id:dp17152249012602994] 
+    \draw  [draw opacity=0] (341.35,134.06) .. controls (341.35,134.06) and (341.35,134.06) .. (341.35,134.06) .. controls (341.35,117.49) and (354.78,104.06) .. (371.35,104.06) .. controls (387.92,104.06) and (401.35,117.49) .. (401.35,134.06) .. controls (401.35,134.06) and (401.35,134.06) .. (401.35,134.06) -- (371.35,134.06) -- cycle ; \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (341.35,134.06) .. controls (341.35,117.49) and (354.78,104.06) .. (371.35,104.06) .. controls (387.92,104.06) and (401.35,117.49) .. (401.35,134.06) ;  
+    %Shape: Arc [id:dp054572774151422365] 
+    \draw  [draw opacity=0] (401.35,134.06) .. controls (401.35,134.06) and (401.35,134.06) .. (401.35,134.06) .. controls (401.35,150.63) and (387.92,164.06) .. (371.35,164.06) .. controls (354.78,164.06) and (341.35,150.63) .. (341.35,134.06) .. controls (341.35,134.06) and (341.35,134.06) .. (341.35,134.06) -- (371.35,134.06) -- cycle ; \draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (401.35,134.06) .. controls (401.35,150.63) and (387.92,164.06) .. (371.35,164.06) .. controls (354.78,164.06) and (341.35,150.63) .. (341.35,134.06) ;  
+    %Straight Lines [id:da7090062681421083] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (145.63,60.46) -- (145.63,130.39) ;
+    %Shape: Circle [id:dp2705523730959791] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ] (308.15,134.46) .. controls (308.15,99.34) and (336.63,70.86) .. (371.75,70.86) .. controls (406.88,70.86) and (435.35,99.34) .. (435.35,134.46) .. controls (435.35,169.59) and (406.88,198.06) .. (371.75,198.06) .. controls (336.63,198.06) and (308.15,169.59) .. (308.15,134.46) -- cycle ;
+    
+    % Text Node
+    \draw (102,132.4) node [anchor=north west][inner sep=0.75pt]    {$0$};
+    % Text Node
+    \draw (147.63,133.79) node [anchor=north west][inner sep=0.75pt]    {$1$};
+    % Text Node
+    \draw (88.4,40) node [anchor=north west][inner sep=0.75pt]    {$2\pi i$};
+    % Text Node
+    \draw (97.2,85.6) node [anchor=north west][inner sep=0.75pt]    {$\pi i$};
+    % Text Node
+    \draw (84.4,156) node [anchor=north west][inner sep=0.75pt]    {$-\pi i$};
+    % Text Node
+    \draw (262.8,43.4) node [anchor=north west][inner sep=0.75pt]    {$e^{z}$};
+    % Text Node
+    \draw (405.35,137.46) node [anchor=north west][inner sep=0.75pt]    {$1$};
+    % Text Node
+    \draw (437.35,137.46) node [anchor=north west][inner sep=0.75pt]    {$e$};
+    
+    
+    \end{tikzpicture}
+    \]
+
+\defn If $\Omega$ is a region in $\C$, then a continuous $l:\Omega \to \C$ is a \textbf{branch} of the logarithm if $e^{l(z)}=z$ for all $z\in \Omega$.\sidenote{note $0\notin \Omega$}
+
+\addlink{Principal branch of the logarithm}
+\eg If $\Omega=\C\backslash(-\infty, 0]$ such that $\theta\in (-\pi,\pi)$, a logarithm could be defined on it. This is the \textbf{principal branch} of the logarithm.\sidenote{See \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture10.pdf}{graphed Riemann surface}}
+
+\addlink{First derivative of ln}
+\rmk Suppose $l(z)$ is a branch of the logarithm and $l$ is analytic, then: \[e^{l(z)}=z\implies \frac{\d}{\d z}e^{l(z)} = l'(z)e^{l(z)}=1\]
+
+Since $e^{l(z)}=z$, we conclude $l'(z)=\frac{1}{z}$.
+
+\subsection{Complex power}
+\defn If $z\neq 0$, \textit{define} $z^{a}=e^{a\log z}$.\sidenote{NOT well-defined!}
+
+\rmk The definition of complex powers should coincide with the old one: $z^n=\underset{n}{\underbrace{z\cdot z\cdot\dots\cdot z}=r^ne^{in\theta}}$.
+
+Check: \begin{align*}
+    z^n&=e^{n\log z}=e^{n(\ln r+i\theta+i2\pi k)}\\
+    &= e^{n\ln r}e^{in\theta}\underset{=1}{\underbrace{e^{i2\pi nk}}}\\
+    &= r^ne^{in\theta}
+\end{align*} is true for any $k\in \Z$.
+
+How about $n$-th roots?
+\begin{align*}
+    z^{\frac{1}{n}} &= e^{\frac{1}{n}\log z}\\
+    &= e^{\frac{1}{n}(\ln r+i\theta+i2\pi k)}\\
+    &= e^{\frac{1}{n}\ln r}e^{\frac{i\theta}{n}}\underset{\text{$n$ distinct}}{\underbrace{e^{\frac{i2\pi k}{n}}}}\\
+    &= r^{\frac{1}{n}} e^{i\left(\frac{\theta+2\pi k}{n}\right)}
+\end{align*}
+
+\subsection{Riemann surface}
+We still have a problem: $\ln z$ is still not a function on $\C$! The branch depends on the arbitrary choice of domain. What shall we do to make it not dependent on a choice?
+
+Answer: let $\ln$ not live on the complex plane, but  infinitely many copies of the slit plane $\C\backslash(-\infty, 0]$, each
+one being glued to the next along the slit $(-\infty, 0]$.
+
+\eg $z^{1/2}$ would live on a surface:
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Straight Lines [id:da9680702032506614] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (124.85,130) -- (33.35,130) ;
+    \draw [shift={(31.35,130)}, rotate = 360] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(127.2,130)}, rotate = 180] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Arc [id:dp6906978961263923] 
+    \draw  [draw opacity=0] (86.68,130) .. controls (86.68,130) and (86.68,130) .. (86.68,130) .. controls (86.68,107.62) and (104.82,89.48) .. (127.2,89.48) .. controls (149.58,89.48) and (167.72,107.62) .. (167.72,130) -- (127.2,130) -- cycle ; \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (86.68,130) .. controls (86.68,130) and (86.68,130) .. (86.68,130) .. controls (86.68,107.62) and (104.82,89.48) .. (127.2,89.48) .. controls (149.58,89.48) and (167.72,107.62) .. (167.72,130) ;  
+    %Shape: Arc [id:dp9861691627816211] 
+    \draw  [draw opacity=0] (167.72,130) .. controls (167.72,130) and (167.72,130) .. (167.72,130) .. controls (167.72,152.38) and (149.58,170.52) .. (127.2,170.52) .. controls (104.82,170.52) and (86.68,152.38) .. (86.68,130) -- (127.2,130) -- cycle ; \draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (167.72,130) .. controls (167.72,130) and (167.72,130) .. (167.72,130) .. controls (167.72,152.38) and (149.58,170.52) .. (127.2,170.52) .. controls (104.82,170.52) and (86.68,152.38) .. (86.68,130) ;  
+    %Straight Lines [id:da9124411332810323] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (318.45,130) -- (226.95,130) ;
+    \draw [shift={(224.95,130)}, rotate = 360] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(320.8,130)}, rotate = 180] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Arc [id:dp05520981510099365] 
+    \draw  [draw opacity=0] (280.28,130) .. controls (280.28,107.62) and (298.42,89.48) .. (320.8,89.48) .. controls (343.18,89.48) and (361.32,107.62) .. (361.32,130) -- (320.8,130) -- cycle ; \draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (280.28,130) .. controls (280.28,107.62) and (298.42,89.48) .. (320.8,89.48) .. controls (343.18,89.48) and (361.32,107.62) .. (361.32,130) ;  
+    %Shape: Arc [id:dp5073887586255386] 
+    \draw  [draw opacity=0] (361.32,130) .. controls (361.32,130) and (361.32,130) .. (361.32,130) .. controls (361.32,130) and (361.32,130) .. (361.32,130) .. controls (361.32,152.38) and (343.18,170.52) .. (320.8,170.52) .. controls (298.42,170.52) and (280.28,152.38) .. (280.28,130) -- (320.8,130) -- cycle ; \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (361.32,130) .. controls (361.32,130) and (361.32,130) .. (361.32,130) .. controls (361.32,152.38) and (343.18,170.52) .. (320.8,170.52) .. controls (298.42,170.52) and (280.28,152.38) .. (280.28,130) ;  
+    
+    % Text Node
+    \draw (171.6,124.6) node [anchor=north west][inner sep=0.75pt]    {$1$};
+    % Text Node
+    \draw (70.8,109.2) node [anchor=north west][inner sep=0.75pt]    {$i$};
+    % Text Node
+    \draw (367.6,122.8) node [anchor=north west][inner sep=0.75pt]    {$-1$};
+    % Text Node
+    \draw (258.8,106.8) node [anchor=north west][inner sep=0.75pt]    {$-i$};
+    
+    
+    \end{tikzpicture}
+    \]
 
 \end{document} 
