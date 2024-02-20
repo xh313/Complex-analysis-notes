@@ -558,9 +558,9 @@ with this, $f$ is a \textbf{bijection} from $\Chat=\C\cup\{\infty\}$ to itself.\
 
 \subsection{Integral test}
 
-\defn[Integral test] Define $a_n=f(n)$ for $n\in \N$, where $f:[1,\infty[ \to \R$ is (piecewise) continuous, positive and decreasing. Then $\int_{1}^{\infty}f(x)\, \mathrm{d}x$ converges \ifnif $\sum_{n=1}^{\infty}a_n$ converges.\sidenote{do an improper integral!}
+\defn[Integral test] Define $a_n=f(n)$ for $n\in \N$, where $f:[1,\infty[ \to \R$ is (piecewise) continuous, positive and decreasing. Then $\int_{1}^{\infty}f(x)\, \d x$ converges \ifnif $\sum_{n=1}^{\infty}a_n$ converges.\sidenote{do an improper integral!}
 
-Moreover, $\int_{1}^{N}f(x)\,\mathrm{d}x\leq a_1+\dots+a_N\leq a_1+\int_{1}^{N}f(x)\,\mathrm{d}x$.
+Moreover, $\int_{1}^{N}f(x)\,\d x\leq a_1+\dots+a_N\leq a_1+\int_{1}^{N}f(x)\,\d x$.
 
 \eg Apply the above with $f(x)=\frac{1}{x}$.\sidenote{$a_n=\frac{1}{n}$} Then \begin{align*}
     \ln N\leq 1+\frac{1}{2}+\dots+\frac{1}{N}\leq 1+\ln N
@@ -630,7 +630,7 @@ But this only works if both series are absolutely convergent, in which case the 
 \addlink{Integrals work with uniform convergence}
 \begin{theorem}
     If $f_n:[a,b]\to \C$ are continuous and converge uniformly on $[a,b]$ to $f$, then\sidenote{Integrals work with uniform convergence} $$
-    \lim_{n\to \infty}\int_{a}^{b}f_n(x)\,\mathrm{d}x = \int_{a}^{b}f(x)\,\mathrm{d}x
+    \lim_{n\to \infty}\int_{a}^{b}f_n(x)\,\d x = \int_{a}^{b}f(x)\,\d x
     $$
 \end{theorem}
 
@@ -1220,5 +1220,180 @@ one being glued to the next along the slit $(-\infty, 0]$.
     
     \end{tikzpicture}
     \]
+
+\section{Cauchy's theorem and its consequences}
+
+\subsection{Complex integration}
+\addlink{Piecewise continuity}
+\defn A complex-valued function $\gamma:[a,b]\to \C$ is \textbf{piecewise} continuous if $\gamma$ is continuous at all but \textit{finitely many} points of $[a,b]$ and $\gamma$ has one-sided limits that are \textit{finite} at each point (of discontinuity).
+
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Axis 2D [id:dp7003951674563056] 
+    \draw  (50,158.26) -- (150,158.26)(65.26,78) -- (65.26,178) (143,153.26) -- (150,158.26) -- (143,163.26) (60.26,85) -- (65.26,78) -- (70.26,85)  ;
+    %Curve Lines [id:da5314714499980906] 
+    \draw    (78,139) .. controls (90.01,119.66) and (90.25,145.2) .. (112.84,122.7) ;
+    \draw [shift={(114.26,121.26)}, rotate = 313.83] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(78,139)}, rotate = 301.84] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Curve Lines [id:da27910409809362413] 
+    \draw    (115,87) .. controls (128.26,114.26) and (143.26,94.26) .. (147.26,77.26) ;
+    \draw [shift={(147.26,77.26)}, rotate = 283.24] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(115,87)}, rotate = 64.07] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Axis 2D [id:dp8923800564332263] 
+    \draw  (265,158.26) -- (365,158.26)(283.26,73) -- (283.26,173) (358,153.26) -- (365,158.26) -- (358,163.26) (278.26,80) -- (283.26,73) -- (288.26,80)  ;
+    %Curve Lines [id:da7330323189044972] 
+    \draw    (270.26,122.26) .. controls (298.26,110.26) and (307.26,143.26) .. (308.26,223.26) ;
+    \draw [shift={(270.26,122.26)}, rotate = 336.8] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Curve Lines [id:da7451055597374061] 
+    \draw    (354.26,127.26) .. controls (320.26,123.26) and (317.26,110.26) .. (316.26,55.26) ;
+    \draw [shift={(354.26,127.26)}, rotate = 186.71] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    
+    % Text Node
+    \draw (38,188) node [anchor=north west][inner sep=0.75pt]   [align=left] {Piecewise continuous};
+    % Text Node
+    \draw (249,185) node [anchor=north west][inner sep=0.75pt]   [align=left] {NOT piecewise continuous};
+    
+    
+    \end{tikzpicture}\]
+
+If $\gamma$ is piecewise continuous, then $\int_{a}^{b}\re \gamma(t)\d t$ and $\int_{a}^{b}\im \gamma(t)\d t$ exist. Then we define \textbf{complex integration}:
+\[\int_{a}^{b}\gamma(t)\d t = \int_{a}^{b}\re \gamma(t)\d t +i\cdot \int_{a}^{b}\im \gamma(t)\d t\]
+
+That is, \begin{align*}
+    \re \left(\int_{a}^{b}\gamma(t)\d t\right)&=\int_{a}^{b}\re \gamma(t)\d t\\
+    \im \left(\int_{a}^{b}\gamma(t)\d t\right)&=\int_{a}^{b}\im \gamma(t)\d t\\
+\end{align*}
+
+In addition, if $\gamma_1,\gamma_2$ are both $[a,b]\to \C$ and piecewise cont., and $c_1,c_2\in\C$, then \[\int_{a}^{b}\left( c_1\gamma_1(t)+c_2\gamma_2(t) \right)\d t=c_1\int_{a}^{b}\gamma_1(t)\d t+c_2\int_{a}^{b}\gamma_2(t)\d t\]
+
+\addlink{Triangle inequality}
+\begin{proposition}[Triangle inequality]
+    If $\gamma:[a,b]\to \C$ is {piecewise} continuous, then \[\left|\int_{a}^{b}\gamma(t)\d t \right|\leq \int_{a}^{b}|\gamma(t)|\d t \]
+\end{proposition}
+\begin{proof}
+    WLOG assume $ \int_{a}^{b}\gamma(t)\d t \neq 0$. Define $\lambda = \frac{\left|\int_{a}^{b}\gamma(t)\d t\right|}{\int_{a}^{b}\gamma(t)\d t}$ and note $|\lambda|=1$.
+
+    Thus, \begin{align*}
+        \left|\int_{a}^{b}\gamma(t)\d t\right| &= \lambda\int_{a}^{b}\gamma(t)\d t\\
+        &= \int_{a}^{b}\lambda\gamma(t)\d t &&\text{because LHS is }\in \R\\
+        &= \re \int_{a}^{b}\lambda\gamma(t)\d t\\
+        &\leq \int_{a}^{b}|\lambda\gamma(t)|\d t &&\because \re z\leq |z|\\
+        &= \int_{a}^{b}|\gamma(t)|\d t&& \because |\lambda|=1
+    \end{align*}
+\end{proof}
+
+\subsubsection{Complex differentiability}
+\defn $\gamma:[a,b]\to \C$ is \textbf{differentiable} at $t\in [a,b]$ if $\re \gamma$ and $\im \gamma$ are differentiable (in the sense of real variables). We define \[\gamma'(t)=(\re \gamma)'(t)+i\cdot (\im \gamma)'(t)\]
+
+\defn $\gamma:[a,b]\to \C$ is \textbf{piecewise} $C^1$\sidenote{$C^1$ is one-time differentiable} if: \begin{enumerate}[label=(\alph*)]
+    \item $\gamma$ is continuous on $[a,b]$.
+    \item $\gamma$ is differentiable at all but finitely many points of $[a,b]$.
+    \item $\gamma'$ is continuous at each point where it exists.
+    \item $\gamma'$ has finite one-sided limits at every point of discontinuity.
+\end{enumerate}
+
+\subsubsection{Fundamental theorem of calculus, complex edition}
+If $\gamma:[a,b]\to\C$ is piecewise $C^1$, then:
+\[\int_{a}^{b}\gamma'(t)\d t=\gamma(b)-\gamma(a)\]
+
+\defn If $\gamma$ is $C^1$, then the arclength
+\sidenote{\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
+    %uncomment if require: \path (0,286); %set diagram left start at 0, and has height of 286
+    
+    %Shape: Axis 2D [id:dp5992461788507699] 
+    \draw  (50,141.08) -- (239.26,141.08)(140.26,64) -- (140.26,226.51) (232.26,136.08) -- (239.26,141.08) -- (232.26,146.08) (135.26,71) -- (140.26,64) -- (145.26,71)  ;
+    %Curve Lines [id:da8169369769076535] 
+    \draw    (118.26,193.51) .. controls (210.26,202.51) and (113.26,128.51) .. (195.26,87.51) ;
+    \draw [shift={(195.26,87.51)}, rotate = 333.43] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(118.26,193.51)}, rotate = 5.59] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da7279313778056917] 
+    \draw    (166.26,111.51) -- (136.05,160.92) ;
+    \draw [shift={(135,162.63)}, rotate = 301.44] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    
+    % Text Node
+    \draw (199,63.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma ( a)$};
+    % Text Node
+    \draw (94,203.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma ( b)$};
+    % Text Node
+    \draw (94,114.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma '( t_{0})$};
+    % Text Node
+    \draw (43,231) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \gamma '( t)$ is instantaneous\\ velocity, so its absolute\\ value is the speed};
+    
+    
+    \end{tikzpicture}
+    } 
+    of $\gamma$ is: \[L(\gamma)=\int_{a}^{b}|\gamma'(t)|\d t\]
+
+\defn If $\gamma:[a,b]\to \reg$ is piecewise $C^1$ and $f:\reg \to\C$ is continuous, then \[\int_{\gamma}f(z)\d z=\int_{a}^{b}f(\gamma(t))\gamma'(t)\d t\]
+where $z=\gamma(t)$ and $\d z=\gamma'(t)\d t$
+
+We have \textbf{linearity} w.r.t. $f$: \[\int_{\gamma}\left( c_1f_1(z)+c_2f_2(z) \right)\d z=c_1\int_{\gamma}f_1(z)\d z+c_2\int_{\gamma}f_2(z)\d z\]
+
+\rmk Arclength is independent from parameterization.
+\begin{proof}
+    Let $\gamma:[a,b]\to \reg$ be piecewise $C^1$. Let $\alpha:[c,d] \to [a,b]$ is an increasing, piecewise $C^1$ surjection such that $\alpha(c)=a, \alpha(d)=b$. Then $\phi=\gamma\circ \alpha:[c,d]\to \reg$ is also piecewise $C^1$. Hence, by substituting $s=\alpha(t), \d s=\alpha'(t)\d t$:
+    \begin{align*}
+        \int_{\phi}f(z)\d z&=\int_{c}^{d}f(\phi(t))\phi'(t)\d t\\
+        &= \int_{c}^{d}f(\gamma(\alpha(t)))\gamma'(\alpha(t))\alpha'(t)\d t\\
+        &= \int_{a}^{b}f(\gamma(s))\gamma'(s)\d s\\
+        &= \int_{\gamma}f(z)\d z
+    \end{align*}
+\end{proof}
+
+\subsubsection{An important estimate}
+Let $f$ be continuous. Since \(\int_{\gamma}f(z)\d z=\int_{a}^{b}f(\gamma(t))\gamma'(t)\d t\), we observe: \begin{align*}
+    \left|\int_{\gamma}f(z)\d z\right|&=\left|\int_{a}^{b}f(\gamma(t))\gamma'(t)\d t\right|\\
+    &\leq \int_{a}^{b}|f(\gamma(t))|\,|\gamma'(t)|\d t\\
+    &\leq \max_{t\in [a,b]}|f(\gamma(t))| \int_{a}^{b}|\gamma'(t)|\d t\\
+    &= \rt{\max_{z\in \gamma}|f(z)|\cdot L(\gamma)}
+\end{align*}
+
+
+\defn If $\gamma:[a,b]\to\C$, the reverse of $\gamma$ is $(-\gamma):[-b,-a]\to\C$ defined by $(-\gamma)(t)=\gamma(-t)$. \sidenote{going around the track backwards} Hence, \[\int_{-\gamma}f(z)\d z= -\int_{\gamma}f(z)\d z\]
+
+\rmk We can also break up the curve and integral the two parts separately: \sidenote{\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.5,xscale=0.5]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Curve Lines [id:da6510647213107017] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (144.26,215.76) .. controls (184.26,185.76) and (141.26,160.76) .. (181.26,130.76) ;
+    \draw [shift={(181.26,130.76)}, rotate = 323.13] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(162.49,167.07)}, rotate = 87.57] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(144.26,215.76)}, rotate = 323.13] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Curve Lines [id:da6697996530017996] 
+    \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (183.56,128.97) .. controls (219.57,99.76) and (179.06,75.16) .. (218.26,45.76) ;
+    \draw [shift={(218.26,45.76)}, rotate = 323.13] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(199.47,80.56)}, rotate = 88.14] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(181.26,130.76)}, rotate = 323.13] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    
+    % Text Node
+    \draw (135,151.4) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.82,0.01,0.11}{\gamma _{1}}$};
+    % Text Node
+    \draw (166,64.4) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.29,0.56,0.89}{\gamma _{2}}$};
+    
+    
+    \end{tikzpicture}
+    }
+\[\int_{\gamma}f(z)\d z = \int_{\gamma_1}f(z)\d z + \int_{\gamma_2}f(z)\d z\]
+
+\subsubsection{Fundamental theorem of calculus for contour integrals}
+If $\gamma:[a,b]\to\C$ is piecewise $C^1$, and $f:\reg\to \C$ is analytic \sidenote{Assuming $f'$ continuous, which we would prove later},
+then \[\int_{\gamma}f'(z)\d z=f(\gamma(b))-f(\gamma(a))\]
+
+If $\gamma(a)=\gamma(b)$, then $\int_{\gamma}f'(z)\d z=0$.
+
+\begin{proof}
+    \begin{align*}
+        \int_{\gamma}f'(z)\d z&= \int_{a}^{b}f'(\gamma(t))\gamma'(t)\d t\\
+        &= \int_{a}^{b}(f\circ \gamma)'(t)\d t &&\text{chain rule}\\
+        &= f(\gamma(b))-f(\gamma(a))
+    \end{align*}
+\end{proof}
+
+\eg Let $\gamma$ be a circle of radius $R$ centered at $z_0$: $\gamma(t)=z_0+Re^{it}\, ,t\in [0,2\pi]$. We would like to find \(\int_{\gamma}(z-z_0)^n\d z\).
+
+If $n\neq -1$, then $\left(\frac{(z-z_0)^{n+1}}{n+1}\right)' = (z-z_0)^n$. Thus, \[\int_{\gamma}(z-z_0)^n\d z = \int_{\gamma}\left(\frac{(z-z_0)^{n+1}}{n+1}\right)'\d z =0\] by FTC. 
+
+If $n=-1$, \[int_{\gamma}(z-z_0)^n\d z= int_{\gamma}\frac{1}{z-z_0}\d z = \int_{0}^{2\pi}i\d t=2\pi i\]
 
 \end{document} 
