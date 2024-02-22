@@ -1396,4 +1396,173 @@ If $n\neq -1$, then $\left(\frac{(z-z_0)^{n+1}}{n+1}\right)' = (z-z_0)^n$. Thus,
 
 If $n=-1$, \[int_{\gamma}(z-z_0)^n\d z= int_{\gamma}\frac{1}{z-z_0}\d z = \int_{0}^{2\pi}i\d t=2\pi i\]
 
+\subsection{Cauchy's theorem}
+\subsubsection{Take 1}
+\begin{theorem}[Cauchy's]\label[theorem]{cauchys-take1}
+    Let $\reg$ be a region in $\C$ containing a \textit{simple}\sidenote{does not self-intersect} piecewise $C^1$ \textit{closed} curve $\gamma$ and its interior\sidenote{holes not allowed in the interior}.
+
+    If $f:\reg \to \C$ is analytic, then $\int_{\gamma}f(z)\d z=0$.
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Polygon Curved [id:ds9387894112968782] 
+        \draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.28 ] (163.26,91.51) .. controls (173.26,86.51) and (206.26,51.51) .. (230,70) .. controls (253.74,88.49) and (210,100) .. (230,130) .. controls (250,160) and (153.74,143.49) .. (140,130) .. controls (126.26,116.51) and (126.44,104.14) .. (132.26,99.51) .. controls (138.07,94.89) and (153.26,96.51) .. (163.26,91.51) -- cycle ;
+        %Shape: Polygon Curved [id:ds6099513547861319] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (93,64) .. controls (113,54) and (207.26,32.51) .. (242.26,51.51) .. controls (277.26,70.51) and (268.26,163.51) .. (248.26,178.51) .. controls (228.26,193.51) and (113,154) .. (93,124) .. controls (73,94) and (73,74) .. (93,64) -- cycle ;
+        
+        % Text Node
+        \draw (89,70.4) node [anchor=north west][inner sep=0.75pt]    {${\Omega}$};
+        % Text Node
+        \draw (174,105.4) node [anchor=north west][inner sep=0.75pt]    {$U$};
+        % Text Node
+        \draw (155,70.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma $};
+        
+        
+        \end{tikzpicture}
+        \]
+\end{theorem}
+\begin{proof}[``Proof'']
+    Let $U$ be the union of $\gamma$ and its interior. Let $f=u+iv$ as usual, write $\d z = \d x + i\d y$:\begin{align*}
+        \int_{\gamma}f(z)\d z &= \int_\gamma (u+iv)(\d x + i\d y)\\
+        &= \int_\gamma u\d x-v\d y + i\int_{\gamma}v\d x +u\d y\\
+        &= \int\int_{U}(-v_x-u_y)\d x\d y+i\int\int_{U}(u_x-v_y)\d x\d y &&\text{by Green's thm}\\
+        &= 0 &&\text{by Cauchy-Riemann}
+    \end{align*}
+\end{proof}
+However, this `proof' heavily relies on the fact that $u,v$ are $C^1$ and that the partial derivatives are continuous. This assumes $f'$ is continuous, but we aren't sure about that yet!
+
+\subsubsection{Take 2: deformation version}
+\begin{theorem}[Cauchy's]\label[theorem]{cauchys-take2-deform}
+    Let $\gamma_1,\gamma_2$ be piecewise $C^1$ curves in a region $\Omega$ with the same start and end points. If $\gamma_1$ can be continuously deformed to $\gamma_2$ without ever passing outside of $\Omega$, then \[\int_{\gamma_1}f(z)\d z=\int_{\gamma_2}f(z)\d z\]
+\end{theorem}
+By the \textit{previous} statement of Cauchy's theorem (in \cref{cauchys-take1}), we observe that $\int_{\gamma_1-\gamma_2}f(z)\d z=0$, so this one falls out.
+
+\noneg The $\gamma_1,\gamma_2$ in the picture below cannot be continuously deformed into each other!
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Polygon Curved [id:ds6460613846150254] 
+    \draw  [dash pattern={on 4.5pt off 4.5pt}] (116,80) .. controls (136,70) and (230.26,48.51) .. (265.26,67.51) .. controls (300.26,86.51) and (291.26,179.51) .. (271.26,194.51) .. controls (251.26,209.51) and (136,170) .. (116,140) .. controls (96,110) and (96,90) .. (116,80) -- cycle ;
+    %Curve Lines [id:da29780021147999514] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (157,123) .. controls (179.26,98.01) and (206.26,87.01) .. (219.26,102.01) .. controls (232.26,117.01) and (256.51,99.03) .. (268.26,144.01) ;
+    \draw [shift={(190.93,97.76)}, rotate = 156.33] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(255.72,118.67)}, rotate = 218.7] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Curve Lines [id:da7249434898522338] 
+    \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (157,123) .. controls (142.26,154.01) and (203.26,145.01) .. (216.26,160.01) .. controls (229.26,175.01) and (295.26,189.01) .. (268.26,144.01) ;
+    \draw [shift={(184.59,149.25)}, rotate = 191.44] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(263.11,173.95)}, rotate = 174.82] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Shape: Circle [id:dp10939024496763072] 
+    \draw  [dash pattern={on 4.5pt off 4.5pt}] (202,128.01) .. controls (202,119.73) and (208.71,113.01) .. (216.99,113.01) .. controls (225.27,113.01) and (231.99,119.73) .. (231.99,128.01) .. controls (231.99,136.29) and (225.27,143) .. (216.99,143) .. controls (208.71,143) and (202,136.29) .. (202,128.01) -- cycle ;
+    
+    % Text Node
+    \draw (109,90.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+    % Text Node
+    \draw (224,78.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{1}$};
+    % Text Node
+    \draw (192,157.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{2}$};
+    
+    
+    \end{tikzpicture}
+    \]
+
+\subsection{Fresnel integrals}
+Consider:
+\[\int_{0}^{\infty}\sin (t^2)\d t \qquad \text{and} \qquad \int_{0}^{\infty}\cos (t^2)\d t\]
+aka.
+\[\lim_{R\to \infty}\int_{0}^{R}\sin (t^2)\d t \qquad \text{and} \qquad \lim_{R\to \infty}\int_{0}^{R}\cos (t^2)\d t\]
+It's not obvious that these integrals converge!
+
+Solution: PIZZA!
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Straight Lines [id:da23065699869402656] 
+    \draw    (100,126) -- (206.26,126) ;
+    \draw [shift={(159.13,126)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Shape: Arc [id:dp010225998094383515] 
+    \draw  [draw opacity=0] (205.5,126.02) .. controls (205.5,126.01) and (205.5,126.01) .. (205.5,126) .. controls (205.5,100.56) and (196.5,77.23) .. (181.5,59.01) -- (100,126) -- cycle ; \draw   (205.5,126.02) .. controls (205.5,126.01) and (205.5,126.01) .. (205.5,126) .. controls (205.5,100.56) and (196.5,77.23) .. (181.5,59.01) ;  
+    %Straight Lines [id:da5834097312816091] 
+    \draw    (100,126) -- (181.5,59.01) ;
+    \draw [shift={(135.34,96.95)}, rotate = 320.58] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Straight Lines [id:da6100230617755076] 
+    \draw    (197.26,102.01) -- (200.26,92.01) -- (208.26,101.01) ;
+    
+    
+    
+    
+    \end{tikzpicture}
+Let $\gamma$ be the `sum' of all 3 curves as shown. Let $R\to \infty$. Then, by Cauchy's theorem, \(\int_\gamma e^{iz^2}\d z =0\).    
+
+\ontangent{
+
+\rmk We don't know how to write out the antiderivative of $f(z)=e^{iz^2}$ but we can use series!
+\begin{align*}
+    f(z) &= e^{iz^2}\\
+    &= \sum_{n=0}^{\infty}\frac{(iz^2)^n}{n!}\\
+    &= \sum_{n=0}^{\infty}\frac{i^nz^{2n}}{n!}
+\end{align*}
+And so \[F(z)=\sum_{n=0}^{\infty}\frac{i^nz^{2n+1}}{(2n+1)n!}\]
+
+}
+
+Now we return to the integral. Strategy: \[0= \int_\gamma e^{iz^2}\d  = \underset{I_1(R)}{\underbrace{\int_{\gamma_1} e^{iz^2}\d z}} + \underset{I_2(R)}{\underbrace{\int_{\gamma_2} e^{iz^2}\d z}} + \underset{I_3(R)}{\underbrace{\int_{\gamma_3} e^{iz^2}\d z}}\]
+
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Straight Lines [id:da23065699869402656] 
+    \draw    (100,126) -- (206.26,126) ;
+    \draw [shift={(159.13,126)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Shape: Arc [id:dp010225998094383515] 
+    \draw  [draw opacity=0] (205.5,126.02) .. controls (205.5,126.01) and (205.5,126.01) .. (205.5,126) .. controls (205.5,100.56) and (196.5,77.23) .. (181.5,59.01) -- (100,126) -- cycle ; \draw   (205.5,126.02) .. controls (205.5,126.01) and (205.5,126.01) .. (205.5,126) .. controls (205.5,100.56) and (196.5,77.23) .. (181.5,59.01) ;  
+    %Straight Lines [id:da5834097312816091] 
+    \draw    (100,126) -- (181.5,59.01) ;
+    \draw [shift={(135.34,96.95)}, rotate = 320.58] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Straight Lines [id:da6100230617755076] 
+    \draw    (197.26,102.01) -- (200.26,92.01) -- (208.26,101.01) ;
+    
+    % Text Node
+    \draw (155.13,129.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{1}$};
+    % Text Node
+    \draw (210.26,104.41) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{2}$};
+    % Text Node
+    \draw (116.26,76.41) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{3}$};
+    
+    
+    \end{tikzpicture}
+    \]
+
+Evaluate $I_1(R)$: We observe that $z$ is real for this one. Parameterize $z=t$ where $t$ is a real variable.
+\begin{align*}
+    I_1(R) &= \int_{\gamma_1} e^{it^2}\d t\\
+    &= \int_{0}^{R}\cos (t^2)\d t + i\cdot \int_{0}^{R}\sin (t^2)\d t\\
+\end{align*}
+Hence, $\lim_{R\to \infty}I_1(R)= \int_{0}^{\infty}\cos (t^2)\d t + i\cdot \int_{0}^{\infty}\sin (t^2)\d t$.
+
+Evaluate $I_2(R)$:
+
+Parameterize $\gamma_2$ as $z=Re^{i\theta}$ where $\theta\in[0,\frac{\pi}{4}]$. Hence, $\d z = iRe^{i\theta}\d \theta$. Then:
+\begin{align*}
+    |I_2(R)| &= \left|\int_{\gamma_2} e^{i\theta^2}\d \theta\right|\\
+    &= \left|\int_{0}^{\frac{\pi}{4}}e^{i(R e^{i\theta})^2}iRe^{i\theta}\d \theta\right|\\
+    &= \left|R\int_{0}^{\frac{\pi}{4}}e^{iR^2e^{i2\theta}}e^{i\theta}\d \theta\right|\\
+    &\leq R\int_{0}^{\frac{\pi}{4}}\left|e^{iR^2e^{i2\theta}}\right|\d \theta &&\text{by tri. ineq.}\\
+    &\leq R\int_{0}^{\frac{\pi}{4}}e^{-R^2\sin2\theta}\d \theta&&\text{since when }x,y\in \R,\; \left|e^{x+iy}\right|=e^{x}\\
+    &\leq  R\int_{0}^{\frac{\pi}{4}} e^{-R^2\frac{4\theta}{\pi}}\d \theta &&\text{since when }x\in [0,\frac{\pi}{2}],\; \frac{2}{\pi}x\leq \sin x\\
+    &= \frac{-R\pi}{R^2 4}e^{-R\frac{4\theta}{\pi}}\bigg |_{\theta=0}^{\theta=\frac{\pi}{4}}\\
+    &\to 0 \text{ as }R\to \infty
+\end{align*}
+Thus, $\lim_{R\to \infty}I_2(R)=0$. :)
+
+Evaluate $I_3(R)$:
+\begin{align*}
+    I_3(R) &=\int_{\gamma_3} e^{iz^2}\d z\\
+    &= \int_{R}^{0}e^{i(e^{i\frac{\pi}{4}}t)^2}e^{i\frac{\pi}{4}}\d t\\
+    &= -e^{i\frac{\pi}{4}} \int_{0}^{R}e^{-t^2}\d t\\
+    \lim_{R\to \infty} I_3(R) &= -(\frac{\sqrt{2}}{2}+i\frac{\sqrt{2}}{2})\int_{0}^{\infty}e^{-t^2}\d t &&\text{by Gaussian integral, }\int_{0}^{\infty}e^{-t^2}\d t = \frac{\sqrt{\pi}}{2}\\
+    &= -\sqrt{\frac{\pi}{8}}-i\sqrt{\frac{\pi}{8}}
+\end{align*}
+
+Therefore, we see $I_1(R)+I_2(R)+I_3(R)=0$ where $\lim_{R\to \infty}I_1(R)= \int_{0}^{\infty}\cos (t^2)\d t + i\cdot \int_{0}^{\infty}\sin (t^2)\d t$, $I_2(R)\to 0$ and $I_3(R)= -\sqrt{\frac{\pi}{8}}-i\sqrt{\frac{\pi}{8}}$. Hence, we would be able to conclude that \[\int_{0}^{\infty}\sin (t^2)\d t = \sqrt{\frac{\pi}{8}} \qquad \text{and} \qquad \int_{0}^{\infty}\cos (t^2)\d t = \sqrt{\frac{\pi}{8}}\]
+
 \end{document} 
