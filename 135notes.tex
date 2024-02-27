@@ -1429,7 +1429,7 @@ If $n=-1$, \[int_{\gamma}(z-z_0)^n\d z= int_{\gamma}\frac{1}{z-z_0}\d z = \int_{
         &= 0 &&\text{by Cauchy-Riemann}
     \end{align*}
 \end{proof}
-However, this `proof' heavily relies on the fact that $u,v$ are $C^1$ and that the partial derivatives are continuous. This assumes $f'$ is continuous, but we aren't sure about that yet!
+However, this `proof' heavily relies on the fact that $u,v$ are $C^1$ and that the partial derivatives are continuous. This assumes $f'$ is continuous, but we aren't sure about that yet!\sidenote{See \hyperlink{goursats-lemma}{Goursat's Lemma}}
 
 \subsubsection{Take 2: deformation version}
 \begin{theorem}[Cauchy's]\label[theorem]{cauchys-take2-deform}
@@ -1564,5 +1564,194 @@ Evaluate $I_3(R)$:
 \end{align*}
 
 Therefore, we see $I_1(R)+I_2(R)+I_3(R)=0$ where $\lim_{R\to \infty}I_1(R)= \int_{0}^{\infty}\cos (t^2)\d t + i\cdot \int_{0}^{\infty}\sin (t^2)\d t$, $I_2(R)\to 0$ and $I_3(R)= -\sqrt{\frac{\pi}{8}}-i\sqrt{\frac{\pi}{8}}$. Hence, we would be able to conclude that \[\int_{0}^{\infty}\sin (t^2)\d t = \sqrt{\frac{\pi}{8}} \qquad \text{and} \qquad \int_{0}^{\infty}\cos (t^2)\d t = \sqrt{\frac{\pi}{8}}\]
+
+\subsection{Goursat's lemma}
+This lemma patches the hole that we have to assume $f'$ continuous in Cauchy's theorem!
+\begin{lemma}[Goursat's]
+    \hypertarget{goursats-lemma}{If} $f:\Omega\to \C$ is analytic and $\Delta$ is a triangle in $\reg$ whose interior lies inside $\Omega$, then $\int_{\Delta}f(z)\d z=0$.\sidenote{Does not assume $f'$ continuous!}
+\end{lemma}
+\begin{proof}
+    WLOG orient $\Delta_0=\Delta$ counterclockwise. Bisect sides of $\Delta_0$ and construct smaller triangles $\Delta_{0j}$ where $j=1,2,3,4$. Then, \[I=\int_{\Delta_0}f(z)\d z=\sum_{j=1}^{4}\int_{\Delta_{0j}}f(z)\d z\]
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Triangle [id:dp00827622632180569] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]  (170.63,87.51) -- (241.26,160) -- (100,160) -- cycle ;
+        %Shape: Polygon Curved [id:ds3012264222748664] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (74.74,85.49) .. controls (94.74,75.49) and (189,54) .. (224,73) .. controls (259,92) and (250,185) .. (230,200) .. controls (210,215) and (94.74,175.49) .. (74.74,145.49) .. controls (54.74,115.49) and (54.74,95.49) .. (74.74,85.49) -- cycle ;
+        %Shape: Triangle [id:dp8224876385734627] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]  (135.31,123.76) -- (170.63,160) -- (100,160) -- cycle ;
+        %Shape: Triangle [id:dp8894284388389209] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]  (170.63,160) -- (135.31,123.76) -- (205.94,123.76) -- cycle ;
+        %Shape: Triangle [id:dp25960520730846914] 
+        \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]  (205.94,123.76) -- (241.26,160) -- (170.63,160) -- cycle ;
+        
+        % Text Node
+        \draw (74,97.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+        % Text Node
+        \draw (198,140.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ]  {$\Delta _{1}$};
+        % Text Node
+        \draw (191,82.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ]  {$\Delta _{0}$};
+        
+        
+        \end{tikzpicture}
+        \]
+    By triangle inequality, \[|I|\leq \sum_{j=1}^{4}\left|\int_{\Delta_{0j}}f(z)\d z\right|\]
+    Thus, there exists $j\in \{1,2,3,4\}$ such that \[\frac{|I|}{4}\leq \left|\int_{\Delta_{0j}}f(z)\d z\right|\]
+    For this $j$, define $\Delta_1=\Delta_{0j}$.
+
+    We disect $\Delta_1$ again into smaller triangles $\Delta_{1j}$ where $j=1,2,3,4$. Then, \[I=\int_{\Delta_1}f(z)\d z=\sum_{j=1}^{4}\int_{\Delta_{1j}}f(z)\d z\]
+    Again, by triangle inequality, there is a $j\in \{1,2,3,4\}$ such that \[\rt{\frac{|I|}{4^2}}\leq \frac{1}{4}\left|\int_{\Delta_1}f(z)\d z\right|\leq \left|\int_{\Delta_{1j}}f(z)\d z\right|\]
+    For this $j$, define $\Delta_2=\Delta_{1j}$.
+
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Triangle [id:dp00827622632180569] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]  (170.63,87.51) -- (241.26,160) -- (100,160) -- cycle ;
+        %Shape: Polygon Curved [id:ds3012264222748664] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (74.74,85.49) .. controls (94.74,75.49) and (189,54) .. (224,73) .. controls (259,92) and (250,185) .. (230,200) .. controls (210,215) and (94.74,175.49) .. (74.74,145.49) .. controls (54.74,115.49) and (54.74,95.49) .. (74.74,85.49) -- cycle ;
+        %Shape: Triangle [id:dp8224876385734627] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]  (135.31,123.76) -- (170.63,160) -- (100,160) -- cycle ;
+        %Shape: Triangle [id:dp8894284388389209] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]  (170.63,160) -- (135.31,123.76) -- (205.94,123.76) -- cycle ;
+        %Shape: Triangle [id:dp25960520730846914] 
+        \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]  (205.94,123.76) -- (241.26,160) -- (170.63,160) -- cycle ;
+        %Shape: Triangle [id:dp9594922625539553] 
+        \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]  (188.28,141.88) -- (205.94,160) -- (170.63,160) -- cycle ;
+        %Shape: Triangle [id:dp41273457544096503] 
+        \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]  (205.94,160) -- (188.28,141.88) -- (223.6,141.88) -- cycle ;
+        %Shape: Triangle [id:dp4722169823972482] 
+        \draw  [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][line width=1.5]  (223.6,141.88) -- (241.26,160) -- (205.94,160) -- cycle ;
+        
+        % Text Node
+        \draw (74,97.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+        
+        
+        \end{tikzpicture}        
+        \]
+
+    \dots continue in this manner to get nested triangles $\Delta_n$ such that \[\rt{\frac{|I|}{4^{n+1}}}\leq \frac{1}{4}\left|\int_{\Delta_n}f(z)\d z\right|\leq \left|\int_{\Delta_{nj}}f(z)\d z\right|\] for all $n\geq 0$.
+
+    Now let $\ell=L(\Delta_0)$ denote perimeter of the original triangle (blue).\\ Then $L(\Delta_n)=\frac{\ell}{2^n}$\sidenote{Perimeter of $\Delta_n$}. 
+
+    Let $K_n$ denote the triangle $\Delta_n$ union with its interior such that $K_n$ is closed (in fact, compact!). Let $\zeta_n\in K_n$ for $n\geq 0$. Then there is $N\in \N$, such that for all $m,n\geq N$ we have $|\zeta_m-\zeta_n|\leq \operatorname{diam}(K_N)\leq \frac{\ell}{2^N}$. Thus, $\zeta_n$ as a sequence is Cauchy.
+
+    Let $z_0=\lim_{n\to\infty}\zeta_n$, note $z_0\in \bigcap_{n=0}^{\infty} K_n$ and $z_0\in \Omega$. Since $f$ is analytic at $z_0$, given $\varepsilon>0$, there exists some $\delta>0$ such that whenever $|z-z_0|<\delta$, we have \[\left|\frac{f(z)-f(z_0)}{z-z_0}-f'(z_0)\right|<\frac{\varepsilon}{\ell^2}\]
+
+    Now consider multiplying $|z-z_0|$ on both sides:
+    \begin{align*}
+        |f'(z_0)\cdot (z-z_0) - f(z) + f(z_0)| &< \frac{\varepsilon}{\ell^2} |z-z_0|\\
+        |f(z_0) + f'(z_0)(z-z_0)-f(z)| &<\frac{\varepsilon}{\ell^2} |z-z_0|
+    \end{align*}
+    Since $f(z_0) + f'(z_0)(z-z_0)$ is \textbf{linear}, it has an antiderivative on $\C$. Thus, \[\int_{\Delta_n}f(z_0) + f'(z_0)(z-z_0)\d z = 0\]
+    by FTC! Now pick $n$ large enough so that $|z-z_0<\delta$ for all $z\in \Delta_n$. Thus, \begin{align*}
+        |I|&\leq 4^n \left|\int_{\Delta_n}f(z)\d z\right|\\ 
+        &= 4^n\left|\int_{\Delta_n}f(z_0) + f'(z_0)(z-z_0)-f(z)\right|\\
+        &\leq 4^n\frac{\varepsilon}{\ell^2}|z-z_0|\frac{\ell}{2^n} &&\text{by tri. ineq. and }\left|\int_\gamma g(z)\d z\right|\leq \sup_{z\in \gamma}|g(z)|\cdot L(\gamma)\\
+        &< \frac{4^n\epsilon}{\ell 2^n}\cdot \frac{\ell}{2^n}\\
+        &= \varepsilon
+    \end{align*}
+
+   
+\end{proof}
+
+\subsubsection{Local antiderivative}
+\begin{theorem}
+    If $\reg$ is convex and $f:\reg \to \C$ is analytic, then $f$ has an antiderivative on $\reg$.
+\end{theorem}
+\rmk Line segments don't exit the region in convex shapes:\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Pie [id:dp6860240797492949] 
+    \draw   (136.92,115.67) .. controls (136.92,115.67) and (136.92,115.67) .. (136.92,115.67) .. controls (136.92,135) and (121.19,150.67) .. (101.79,150.67) .. controls (82.39,150.67) and (66.67,135) .. (66.67,115.67) .. controls (66.67,96.34) and (82.39,80.67) .. (101.79,80.67) -- (101.79,115.67) -- cycle ;
+    %Straight Lines [id:da6856373582050304] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (85.33,91.67) -- (118.25,125.01) ;
+    \draw [shift={(118.25,125.01)}, rotate = 45.36] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(85.33,91.67)}, rotate = 45.36] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Circle [id:dp6630767252853171] 
+    \draw   (178,115.79) .. controls (178,97.5) and (192.83,82.67) .. (211.13,82.67) .. controls (229.42,82.67) and (244.25,97.5) .. (244.25,115.79) .. controls (244.25,134.09) and (229.42,148.92) .. (211.13,148.92) .. controls (192.83,148.92) and (178,134.09) .. (178,115.79) -- cycle ;
+    %Shape: Circle [id:dp7587345978022606] 
+    \draw   (279.33,115.79) .. controls (279.33,97.5) and (294.16,82.67) .. (312.46,82.67) .. controls (330.76,82.67) and (345.59,97.5) .. (345.59,115.79) .. controls (345.59,134.09) and (330.76,148.92) .. (312.46,148.92) .. controls (294.16,148.92) and (279.33,134.09) .. (279.33,115.79) -- cycle ;
+    %Straight Lines [id:da09760158868609392] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (194.67,99.12) -- (227.59,132.47) ;
+    \draw [shift={(227.59,132.47)}, rotate = 45.36] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(194.67,99.12)}, rotate = 45.36] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da4239725771757499] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (296,99.12) -- (328.92,132.47) ;
+    \draw [shift={(328.92,132.47)}, rotate = 45.36] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(296,99.12)}, rotate = 45.36] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Circle [id:dp6744384543792539] 
+    \draw   (308.17,115.79) .. controls (308.17,113.43) and (310.09,111.5) .. (312.46,111.5) .. controls (314.83,111.5) and (316.75,113.43) .. (316.75,115.79) .. controls (316.75,118.16) and (314.83,120.08) .. (312.46,120.08) .. controls (310.09,120.08) and (308.17,118.16) .. (308.17,115.79) -- cycle ;
+    
+    % Text Node
+    \draw (66,156.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {not convex};
+    % Text Node
+    \draw (187.33,156.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {convex};
+    % Text Node
+    \draw (278.67,157.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {not convex};
+    
+    
+    \end{tikzpicture}
+    \]
+\begin{proof}
+    Fix $w\in \reg$ and define: \[F(z)=\int_{[w,z]}f(\zeta)\d \zeta\] for $z\in \reg$.\sidenote{$[w,z]$ is the line segment from $w$ to $z$.}
+
+    This is well-defined if $\reg$ is convex.
+
+    Now we \dashuline{want to show} that $F'$ is $f$. That is equivalent to showing that for all $\varepsilon>0, z_0\in \reg$, there exists $\delta>0$ s.t. whenever $|z-z_0|<\delta$, we have  \[\left|\frac{F(z)-F(z_0)}{z-z_0}-f(z_0)\right|<{\varepsilon}\]
+    Let $z_0\in \Omega$ be given and $\varepsilon>0$. Goursat says integrals around the triangle is 0, so we suppose $z\in \reg\backslash\{z_0,w\}$ and get a triangle:
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Polygon Curved [id:ds8013551056257879] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (94.74,106.15) .. controls (114.74,96.15) and (209,74.67) .. (244,93.67) .. controls (279,112.67) and (270,205.67) .. (250,220.67) .. controls (230,235.67) and (114.74,196.15) .. (94.74,166.15) .. controls (74.74,136.15) and (74.74,116.15) .. (94.74,106.15) -- cycle ;
+        %Straight Lines [id:da8523806034462806] 
+        \draw    (148.59,131.01) -- (204.59,185.68) ;
+        \draw [shift={(180.88,162.53)}, rotate = 224.31] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        \draw [shift={(148.59,131.01)}, rotate = 44.31] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+        %Straight Lines [id:da16858040739980074] 
+        \draw    (204.59,185.68) -- (196.59,114.34) ;
+        \draw [shift={(199.92,144.05)}, rotate = 83.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        \draw [shift={(204.59,185.68)}, rotate = 263.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+        %Straight Lines [id:da12021387715434817] 
+        \draw    (196.59,114.34) -- (148.59,131.01) ;
+        \draw [shift={(166.92,124.64)}, rotate = 340.85] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        \draw [shift={(196.59,114.34)}, rotate = 160.85] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+        
+        % Text Node
+        \draw (94,117.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+        % Text Node
+        \draw (130,127.07) node [anchor=north west][inner sep=0.75pt]    {$z$};
+        % Text Node
+        \draw (204.67,111.07) node [anchor=north west][inner sep=0.75pt]    {$z_{0}$};
+        % Text Node
+        \draw (206.59,189.08) node [anchor=north west][inner sep=0.75pt]    {$w$};
+        
+        
+        \end{tikzpicture}
+        \]
+        and we know that \[\underset{F(z_0)}{\underbrace{\int_{[w,z_0]}f(\zeta)\d \zeta}} + \int_{[z_0,z]}f(\zeta)\d \zeta + \underset{-F(z)}{\underbrace{\int_{[z,w]}f(\zeta)\d \zeta}}=0\]
+        So $F(z)-F(z_0)=\int_{[z_0,z]}f(\zeta)\d \zeta$. Thus,
+        \begin{align*}
+            \frac{F(z)-F(z_0)}{z-z_0}\rt{-f(z_0)} &= \frac{1}{z-z_0}\int_{[z_0,z]}\left(f(\zeta)-f(z_0)\right)\d \zeta
+        \end{align*}
+        Since $f$ is analytic at $z_0$, it is continuous there. Given $\varepsilon>0$, there exists $\delta>0$ such that whenever $|z-z_0|<\delta$, we have  \(\left|f(z)-f(z_0)\right|<{\varepsilon}\).
+
+        Therefore, whenever $|z-z_0|<\delta$, we have \sidenote{still by \(\left|\int_\gamma g(z)\d z\right|\leq \sup_{z\in \gamma}|g(z)|\cdot L(\gamma)\)}\begin{align*}
+            \left|\frac{F(z)-F(z_0)}{z-z_0}-f(z_0)\right| &\leq \frac{\varepsilon}{|z-z_0|}L([z_0,z])\\
+            &= \frac{\varepsilon}{|z-z_0|}|z-z_0|\\
+            &= \varepsilon
+        \end{align*}
+\end{proof}
+
+\subsection{Cauchy's theorem, Take 3}
+\subsubsection{Cauchy's theorem for convex regions}
+\begin{theorem}
+    If $\reg$ is convex, $f:\reg\to \C$ analytic and $\gamma$ is a piecewise $C^1$ curve in $\reg$, then $\int_{\gamma}f(z)\d z=0$.\sidenote{Since $\reg$ is convex, the interior of $\gamma$ lies inside $\reg$.}
+\end{theorem}
+\begin{proof}
+    Previous theorem says $f$ has an antiderivative $F$ on $\reg$. Thus, \[\int_{\gamma}f(z)\d z = \int_{\gamma}F'(z)\d z=0\] by FTC!
+\end{proof}
 
 \end{document} 
