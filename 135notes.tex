@@ -1754,4 +1754,176 @@ This lemma patches the hole that we have to assume $f'$ continuous in Cauchy's t
     Previous theorem says $f$ has an antiderivative $F$ on $\reg$. Thus, \[\int_{\gamma}f(z)\d z = \int_{\gamma}F'(z)\d z=0\] by FTC!
 \end{proof}
 
+\subsection{Cauchy's integral formula}
+\subsubsection{Cauchy's integral formula for a circle}
+\begin{theorem}\label[theorem]{cif}
+    If $f$ is analytic on a region $\Omega$ that contains the circle $\gamma$ and its interior, then \[f(z)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)\d \zeta}{\zeta-z}\] for all $z$ inside of $\gamma$.\sidenote{this $\reg$ doesn't need to be}
+\end{theorem}
+\begin{proof}
+    Let $r>0$ be small enough so that the closed ball $B_r(z)^-$ is in the interior of $\gamma$. Let $C_r(z)=\{\zeta\in\C :|\zeta-z|=r\}$ traversed clockwise.
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.75,xscale=0.75]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Polygon Curved [id:ds2869580135529062] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (85.36,55.55) .. controls (125.83,35.31) and (316.58,-8.17) .. (387.41,30.28) .. controls (458.25,68.73) and (440.03,256.94) .. (399.56,287.29) .. controls (359.08,317.65) and (125.83,237.68) .. (85.36,176.97) .. controls (44.88,116.26) and (44.88,75.78) .. (85.36,55.55) -- cycle ;
+        %Shape: Ellipse [id:dp5518722967005327] 
+        \draw   (198.69,145.86) .. controls (198.69,93.75) and (240.93,51.5) .. (293.05,51.5) .. controls (345.17,51.5) and (387.41,93.75) .. (387.41,145.86) .. controls (387.41,197.98) and (345.17,240.23) .. (293.05,240.23) .. controls (240.93,240.23) and (198.69,197.98) .. (198.69,145.86) -- cycle ;
+        %Shape: Arc [id:dp14115450919361172] 
+        \draw  [draw opacity=0] (362.61,130.43) .. controls (362.61,158.37) and (339.96,181.02) .. (312.02,181.02) .. controls (284.07,181.02) and (261.42,158.37) .. (261.42,130.43) .. controls (261.42,102.48) and (284.07,79.83) .. (312.02,79.83) .. controls (339.66,79.83) and (362.13,102.01) .. (362.6,129.54) -- (312.02,130.43) -- cycle ; \draw    (362.61,130.43) .. controls (362.61,158.37) and (339.96,181.02) .. (312.02,181.02) .. controls (284.07,181.02) and (261.42,158.37) .. (261.42,130.43) .. controls (261.42,102.48) and (284.07,79.83) .. (312.02,79.83) .. controls (339.11,79.83) and (361.23,101.13) .. (362.55,127.9) ; \draw [shift={(362.6,129.54)}, rotate = 269.02] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+        %Straight Lines [id:da08707833068540416] 
+        \draw    (312.02,79.83) -- (312.02,130.43) ;
+        \draw [shift={(312.02,130.43)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+        
+        % Text Node
+        \draw (79.38,84.37) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+        % Text Node
+        \draw (196.73,60.09) node [anchor=north west][inner sep=0.75pt]    {$\gamma $};
+        % Text Node
+        \draw (322.21,145.09) node [anchor=north west][inner sep=0.75pt]    {$z$};
+        % Text Node
+        \draw (300.95,99.47) node [anchor=north west][inner sep=0.75pt]    {$r$};
+        
+        
+        \end{tikzpicture}
+        \]
+
+        Construct $\gamma_1,\gamma_2,\gamma_3,\gamma_4$ as pictured:
+        \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+            %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+            
+            %Shape: Polygon Curved [id:ds2869580135529062] 
+            \draw  [dash pattern={on 4.5pt off 4.5pt}] (85.36,55.55) .. controls (125.83,35.31) and (316.58,-8.17) .. (387.41,30.28) .. controls (458.25,68.73) and (440.03,256.94) .. (399.56,287.29) .. controls (359.08,317.65) and (125.83,237.68) .. (85.36,176.97) .. controls (44.88,116.26) and (44.88,75.78) .. (85.36,55.55) -- cycle ;
+            %Shape: Arc [id:dp4628794505771803] 
+            \draw  [draw opacity=0] (387.41,145.86) .. controls (387.41,145.86) and (387.41,145.86) .. (387.41,145.86) .. controls (387.41,197.98) and (345.17,240.23) .. (293.05,240.23) .. controls (240.93,240.23) and (198.69,197.98) .. (198.69,145.86) .. controls (198.69,93.75) and (240.93,51.5) .. (293.05,51.5) .. controls (344.62,51.5) and (386.52,92.86) .. (387.4,144.22) -- (293.05,145.86) -- cycle ; \draw    (387.41,145.86) .. controls (387.41,197.98) and (345.17,240.23) .. (293.05,240.23) .. controls (240.93,240.23) and (198.69,197.98) .. (198.69,145.86) .. controls (198.69,93.75) and (240.93,51.5) .. (293.05,51.5) .. controls (344.62,51.5) and (386.52,92.86) .. (387.4,144.22) ;  \draw [shift={(387.41,145.86)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+            %Shape: Arc [id:dp14115450919361172] 
+            \draw  [draw opacity=0] (362.61,130.43) .. controls (362.61,158.37) and (339.96,181.02) .. (312.02,181.02) .. controls (284.07,181.02) and (261.42,158.37) .. (261.42,130.43) .. controls (261.42,102.48) and (284.07,79.83) .. (312.02,79.83) .. controls (339.66,79.83) and (362.13,102.01) .. (362.6,129.54) -- (312.02,130.43) -- cycle ; \draw    (362.61,130.43) .. controls (362.61,158.37) and (339.96,181.02) .. (312.02,181.02) .. controls (284.07,181.02) and (261.42,158.37) .. (261.42,130.43) .. controls (261.42,102.48) and (284.07,79.83) .. (312.02,79.83) .. controls (339.11,79.83) and (361.23,101.13) .. (362.55,127.9) ; \draw [shift={(362.6,129.54)}, rotate = 269.02] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+            %Straight Lines [id:da08707833068540416] 
+            \draw    (312.02,79.83) -- (312.02,130.43) ;
+            \draw [shift={(312.02,130.43)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+            %Straight Lines [id:da42001019106573523] 
+            \draw    (199.26,146) -- (264.26,146) ;
+            %Straight Lines [id:da5050562029853729] 
+            \draw    (360.26,145.86) -- (387.41,145.86) ;
+            %Straight Lines [id:da6466886705419264] 
+            \draw    (302,52) -- (302,80.26) ;
+            %Straight Lines [id:da5525798176108874] 
+            \draw    (302,180) -- (302,239.26) ;
+            %Shape: Arc [id:dp6786536818536373] 
+            \draw  [draw opacity=0] (252.12,206.17) .. controls (253.6,206.71) and (255.2,207) .. (256.87,207) .. controls (264.53,207) and (270.74,200.79) .. (270.74,193.13) .. controls (270.74,185.47) and (264.53,179.26) .. (256.87,179.26) .. controls (249.21,179.26) and (243,185.47) .. (243,193.13) .. controls (243,193.44) and (243.01,193.74) .. (243.03,194.05) -- (256.87,193.13) -- cycle ; \draw    (252.12,206.17) .. controls (253.6,206.71) and (255.2,207) .. (256.87,207) .. controls (264.53,207) and (270.74,200.79) .. (270.74,193.13) .. controls (270.74,185.47) and (264.53,179.26) .. (256.87,179.26) .. controls (249.21,179.26) and (243,185.47) .. (243,193.13) ; \draw [shift={(243.03,194.05)}, rotate = 291.14] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+            %Shape: Arc [id:dp5061770598860282] 
+            \draw  [draw opacity=0] (334.12,211.17) .. controls (335.6,211.71) and (337.2,212) .. (338.87,212) .. controls (346.53,212) and (352.74,205.79) .. (352.74,198.13) .. controls (352.74,190.47) and (346.53,184.26) .. (338.87,184.26) .. controls (331.21,184.26) and (325,190.47) .. (325,198.13) .. controls (325,198.44) and (325.01,198.74) .. (325.03,199.05) -- (338.87,198.13) -- cycle ; \draw    (334.12,211.17) .. controls (335.6,211.71) and (337.2,212) .. (338.87,212) .. controls (346.53,212) and (352.74,205.79) .. (352.74,198.13) .. controls (352.74,190.47) and (346.53,184.26) .. (338.87,184.26) .. controls (331.21,184.26) and (325,190.47) .. (325,198.13) ; \draw [shift={(325.03,199.05)}, rotate = 291.14] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+            %Shape: Arc [id:dp2571796670898707] 
+            \draw  [draw opacity=0] (234.12,129.17) .. controls (235.6,129.71) and (237.2,130) .. (238.87,130) .. controls (246.53,130) and (252.74,123.79) .. (252.74,116.13) .. controls (252.74,108.47) and (246.53,102.26) .. (238.87,102.26) .. controls (231.21,102.26) and (225,108.47) .. (225,116.13) .. controls (225,116.44) and (225.01,116.74) .. (225.03,117.05) -- (238.87,116.13) -- cycle ; \draw    (234.12,129.17) .. controls (235.6,129.71) and (237.2,130) .. (238.87,130) .. controls (246.53,130) and (252.74,123.79) .. (252.74,116.13) .. controls (252.74,108.47) and (246.53,102.26) .. (238.87,102.26) .. controls (231.21,102.26) and (225,108.47) .. (225,116.13) ; \draw [shift={(225.03,117.05)}, rotate = 291.14] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+            %Shape: Arc [id:dp9245710959560463] 
+            \draw  [draw opacity=0] (318.16,77.44) .. controls (319.16,77.8) and (320.24,78) .. (321.37,78) .. controls (326.54,78) and (330.74,73.81) .. (330.74,68.63) .. controls (330.74,63.46) and (326.54,59.26) .. (321.37,59.26) .. controls (316.19,59.26) and (312,63.46) .. (312,68.63) .. controls (312,68.84) and (312.01,69.05) .. (312.02,69.25) -- (321.37,68.63) -- cycle ; \draw    (318.16,77.44) .. controls (319.16,77.8) and (320.24,78) .. (321.37,78) .. controls (326.54,78) and (330.74,73.81) .. (330.74,68.63) .. controls (330.74,63.46) and (326.54,59.26) .. (321.37,59.26) .. controls (316.19,59.26) and (312,63.46) .. (312,68.63) ; \draw [shift={(312.02,69.25)}, rotate = 302.63] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+            
+            % Text Node
+            \draw (79.38,84.37) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+            % Text Node
+            \draw (196.73,59.09) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{2}$};
+            % Text Node
+            \draw (322.21,145.09) node [anchor=north west][inner sep=0.75pt]    {$z$};
+            % Text Node
+            \draw (300.95,99.47) node [anchor=north west][inner sep=0.75pt]    {$r$};
+            % Text Node
+            \draw (351.73,44.09) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{1}$};
+            % Text Node
+            \draw (188.73,195.09) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{3}$};
+            % Text Node
+            \draw (379.73,208.09) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{4}$};
+            
+            
+            \end{tikzpicture}
+            \]
+            Cauchy's theorem for convex regions says $\int_{\gamma_i}\frac{f(\zeta)\d \zeta}{\zeta-z}=0$ for all $i=1,2,3,4$.
+
+            Hence, \[0=\sum_{j=1}^{4}\int_{\gamma_j}\frac{f(\zeta)\d \zeta}{\zeta-z}=\rt{
+                \int_{\gamma}\frac{f(\zeta)\d \zeta}{\zeta-z} - \int_{C_r(z)}\frac{f(\zeta)\d \zeta}{\zeta-z}
+            }\]
+
+            And thus: \[ \int_{\gamma}\frac{f(\zeta)\d \zeta}{\zeta-z}= \int_{C_r(z)}\frac{f(\zeta)\d \zeta}{\zeta-z}\] for all $r>0$ that is \textit{sufficiently} small.
+
+            Therefore:\sidenote{\rt{by HW6 Ex5, or Thm12 Lect 11}} \begin{align*}
+                \left|\frac{1}{2\pi i} \int_{\bt{\gamma}}\frac{f(\zeta)\d \zeta}{\zeta-z}-f(z)\cdot \rt{1}\right| &=  \left|\frac{1}{2\pi i} \int_{\bt{\gamma}}\frac{f(\zeta)\d \zeta}{\zeta-z}-f(z)\cdot \rt{\left(\frac{1}{2\pi i}\int_{C_r(z)}\frac{\d \zeta}{\zeta-z}\right)}\right|\\
+                &= \left|\frac{1}{2\pi i} \int_{\bt{C_r(z)}}\frac{f(\zeta)\d \zeta}{\zeta-z}-f(z)\cdot \rt{\left(\frac{1}{2\pi i}\int_{C_r(z)}\frac{\d \zeta}{\zeta-z}\right)}\right|\\
+                &= \lim_{r\to 0^+}\left|\frac{1}{2\pi i}\int_{C_r(z)}\frac{f(\zeta)-f(z)}{\zeta-z}\right|\\
+                &\leq \gt{\lim_{r\to 0^+}} \max_{|\zeta-z|=r}\left|\frac{f(\zeta)-f(z)}{\zeta-z}\right|\cdot \gt{r}\\
+                &= 0
+            \end{align*}
+\end{proof}
+
+\subsubsection{Mean value properties}
+\begin{corollary}[Mean value property for analytic functions]
+    If $f$ analytic on an open set $\reg$ which contains $B_r(z)^-$, then \[f(z)=\frac{1}{2\pi}\int_{0}^{2\pi}f(z+re^{it})\d t\]
+\end{corollary}
+\begin{proof}
+    Apply \cref{cif} with $\zeta=z+re^{it}$ and $\d \zeta=ire^{it}\d t, t\in [0,2\pi]$ and get \begin{align*}
+        f(z)&= \frac{1}{2\pi i}\int_{C_r(z)}\frac{f(\zeta)\d \zeta}{\zeta-z}\\
+        &= \frac{1}{2\pi i}\int_{C_r(z)}\frac{f(z+re^{it})ire^{it}\d t}{z+re^{it}-z}\\
+        &= \frac{1}{2\pi}\int_{0}^{2\pi}f(z+re^{it})\d t
+    \end{align*}
+\end{proof}
+
+\rmk There is a mean value property for harmonic functions!
+
+\subsection{Existence of power series expansions}
+\begin{theorem}
+    If $f:\reg\to\C$ is analytic and $z_0\in \reg$ then $f$ has a power series expansions \[f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n\] that converges \textbf{locally uniformly} on the disk \[|z-z_0|<\operatorname{dist}(z_0, \reg^C)= \inf_{w\in \reg^C}|z_0-w|\] when $\reg^C$ is nonempty.\sidenote{\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.45,xscale=0.45]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Polygon Curved [id:ds75764139255783] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (105.36,58.25) .. controls (145.83,38.01) and (230.42,18.81) .. (301.26,57.26) .. controls (372.09,95.72) and (287.73,207.91) .. (247.26,238.26) .. controls (206.78,268.62) and (145.83,240.39) .. (105.36,179.68) .. controls (64.88,118.96) and (64.88,78.49) .. (105.36,58.25) -- cycle ;
+        %Shape: Circle [id:dp1108533721802123] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (125,92.13) .. controls (125,61.68) and (149.68,37) .. (180.13,37) .. controls (210.57,37) and (235.26,61.68) .. (235.26,92.13) .. controls (235.26,122.57) and (210.57,147.26) .. (180.13,147.26) .. controls (149.68,147.26) and (125,122.57) .. (125,92.13) -- cycle ;
+        %Straight Lines [id:da9925386809993804] 
+        \draw    (169.26,39.26) -- (180.13,92.13) ;
+        \draw [shift={(180.13,92.13)}, rotate = 78.38] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+        
+        % Text Node
+        \draw (160.38,184.08) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+        % Text Node
+        \draw (62.38,32.08) node [anchor=north west][inner sep=0.75pt]    {$\Omega ^{C}$};
+        % Text Node
+        \draw (182.13,95.53) node [anchor=north west][inner sep=0.75pt]    {$z_{0}$};
+        
+        
+        \end{tikzpicture}
+        }
+
+    Moreover, the radius of convergence is the radius of the largest open disk centered at $z_0$ upon which $f$ could be analytically continued.
+\end{theorem}
+
+\begin{proof}
+    Let $r<\operatorname*{dist}(z_0,\reg^C)$ and $|z-z_0|\leq \rho<r$. Then \[f(z)=\frac{1}{2\pi i} \int_{{C_r(z_0)}}\frac{f(\zeta)\d \zeta}{\zeta-z}\] for all $|z-z_0|<\rho$. 
+
+    As a function of $\zeta$, the series\sidenote{geometric series trick!} \[\frac{1}{\zeta-z}=\frac{1}{(\zeta-z_0)-(z-z_0)}=\frac{1}{\zeta-z_0}\cdot \frac{1}{1-\frac{z-z_0}{\zeta-z_0}}\]
+    and so by geometric series formula:
+    \begin{align*}
+        \frac{1}{\zeta-z} &= \frac{1}{\zeta-z_0}\sum_{n=0}^{\infty}\left(\frac{z-z_0}{\zeta-z_0}\right)^n\\
+        &= \sum_{n=0}^{\infty}\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}} &&\text{for } |z-z_0|\leq \rho
+    \end{align*}
+    converges uniformly on $|\zeta-z_0|=r$ by the Weierstrass M-test with $M_n=\left|\frac{z-z_0}{\zeta-z_0}\right|^n\leq \left(\frac{\rho}{r}\right)^n$.
+
+    Thus, \begin{align*}
+        f(z)&=\frac{1}{2\pi i}\int_{{C_r(z_0)}}\frac{f(\zeta)\d \zeta}{\zeta-z}\\
+        &= \frac{1}{2\pi i}\int_{{C_r(z_0)}}\rt{\sum_{n=0}^{\infty}\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}}\cdot f(\zeta)\d \zeta\\
+        &= \sum_{n=0}^{\infty}(z-z_0)^n\bt{
+            \frac{1}{2\pi i}\int_{{C_r(z_0)}}\frac{f(\zeta)\d \zeta}{(\zeta-z_0)^{n+1}}
+        }
+    \end{align*}
+    And so we have our $\bt{\frac{f^{(n)}(z_0)}{n!}=a_n}$ in the highlighted part above. 
+\end{proof}
+
+\rmk Consequently, we also get Cauchy's theorem of derivatives: \[f^{(n)}(z_0) = \frac{n!}{2\pi i}\int_{{C_r(z_0)}}\frac{f(\zeta)\d \zeta}{(\zeta-z_0)^{n+1}}\]
+
+\eg What is the radius of convergence for the power series of \[f(x)=\frac{e^{\sin x}+e^{-x^2}+x^2+7x^3}{\cos x}\] centered at $x_0=2$?
+
+The theorem guarantees the existence of the power series, and the RoC would simply be the radius of which $f$ could be analytically continued. We observe that $f(x)$ cannot be defined when $\cos x=0$, i.e. $x=\frac{\pi}{2}$. Hence, the radius of convergence is just $2-\frac{\pi}{2}$ -- no need to compute \textit{any} derivatives or coefficients!
+
+\spl
+
+So now we have this result for computing the derivatives and integrals around a circle $C_r(z_0)$. Can we extend this to other closed curves of any shapes?
+
+
+
 \end{document} 
