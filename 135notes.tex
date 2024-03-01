@@ -1394,7 +1394,7 @@ If $\gamma(a)=\gamma(b)$, then $\int_{\gamma}f'(z)\d z=0$.
 
 If $n\neq -1$, then $\left(\frac{(z-z_0)^{n+1}}{n+1}\right)' = (z-z_0)^n$. Thus, \[\int_{\gamma}(z-z_0)^n\d z = \int_{\gamma}\left(\frac{(z-z_0)^{n+1}}{n+1}\right)'\d z =0\] by FTC. 
 
-If $n=-1$, \[int_{\gamma}(z-z_0)^n\d z= int_{\gamma}\frac{1}{z-z_0}\d z = \int_{0}^{2\pi}i\d t=2\pi i\]
+If $n=-1$, \[\int_{\gamma}(z-z_0)^n\d z= \int_{\gamma}\frac{1}{z-z_0}\d z = \int_{0}^{2\pi}i\d t=2\pi i\]
 
 \subsection{Cauchy's theorem}
 \subsubsection{Take 1}
@@ -1924,6 +1924,40 @@ The theorem guarantees the existence of the power series, and the RoC would simp
 
 So now we have this result for computing the derivatives and integrals around a circle $C_r(z_0)$. Can we extend this to other closed curves of any shapes?
 
-
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Curve Lines [id:da21494767258082992] 
+    \draw    (202.26,132.76) .. controls (260.26,132.76) and (232.42,21.55) .. (303.26,60) .. controls (374.09,98.45) and (424.73,204.41) .. (384.26,234.76) .. controls (343.78,265.12) and (293.26,262.76) .. (245.26,241.76) .. controls (197.26,220.76) and (104.26,255.76) .. (80.26,215.76) .. controls (56.26,175.76) and (161.26,132.51) .. (202.26,132.76) -- cycle ;
+    \draw [shift={(250.18,76.55)}, rotate = 112.47] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(380.72,140.93)}, rotate = 240.89] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(309.73,257.48)}, rotate = 0.74] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(153.76,235.89)}, rotate = 357.8] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    \draw [shift={(129.21,152.85)}, rotate = 153.94] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Shape: Arc [id:dp390751992975634] 
+    \draw  [draw opacity=0] (365.61,148.43) .. controls (365.61,176.37) and (342.96,199.02) .. (315.02,199.02) .. controls (287.07,199.02) and (264.42,176.37) .. (264.42,148.43) .. controls (264.42,120.48) and (287.07,97.83) .. (315.02,97.83) .. controls (342.66,97.83) and (365.13,120.01) .. (365.6,147.54) -- (315.02,148.43) -- cycle ; \draw    (365.61,148.43) .. controls (365.61,176.37) and (342.96,199.02) .. (315.02,199.02) .. controls (287.07,199.02) and (264.42,176.37) .. (264.42,148.43) .. controls (264.42,120.48) and (287.07,97.83) .. (315.02,97.83) .. controls (342.11,97.83) and (364.23,119.13) .. (365.55,145.9) ; \draw [shift={(365.55,145.9)}, rotate = 89.02] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ; 
+    %Straight Lines [id:da7884227166046833] 
+    \draw    (315.02,97.83) -- (315.02,148.43) ;
+    \draw [shift={(315.02,148.43)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da21437723713367007] 
+    \draw    (109.26,164) -- (267.26,164) ;
+    %Straight Lines [id:da9640002297232435] 
+    \draw    (363.26,163.86) -- (390.41,163.86) ;
+    %Straight Lines [id:da7394620764040947] 
+    \draw    (305,198) -- (305,257.26) ;
+    %Straight Lines [id:da2656674999162538] 
+    \draw    (304,60) -- (304,99.26) ;
+    %Shape: Arc [id:dp7144254929573495] 
+    \draw  [draw opacity=0] (232.12,221.17) .. controls (233.6,221.71) and (235.2,222) .. (236.87,222) .. controls (244.53,222) and (250.74,215.79) .. (250.74,208.13) .. controls (250.74,200.47) and (244.53,194.26) .. (236.87,194.26) .. controls (229.21,194.26) and (223,200.47) .. (223,208.13) .. controls (223,208.44) and (223.01,208.74) .. (223.03,209.05) -- (236.87,208.13) -- cycle ; \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (234.05,221.71) .. controls (234.96,221.9) and (235.9,222) .. (236.87,222) .. controls (244.53,222) and (250.74,215.79) .. (250.74,208.13) .. controls (250.74,200.47) and (244.53,194.26) .. (236.87,194.26) .. controls (229.21,194.26) and (223,200.47) .. (223,208.13) .. controls (223,208.44) and (223.01,208.74) .. (223.03,209.05) ;  \draw [shift={(232.12,221.17)}, rotate = 355.35] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    
+    % Text Node
+    \draw (317.21,164.09) node [anchor=north west][inner sep=0.75pt]    {$z$};
+    % Text Node
+    \draw (303.95,117.47) node [anchor=north west][inner sep=0.75pt]    {$r$};
+    
+    
+    \end{tikzpicture}
+    \]
+Same techniques! Hence, \[f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)\d \zeta}{(\zeta-z)^{n+1}}\] on any such closed curve $\gamma$.
 
 \end{document} 
