@@ -352,7 +352,7 @@ where $\alpha$ is a constant.
 
 We think the system tends towards a thermal equilibrium as $t\to \infty$. At equilibrium, $\frac{\partial T}{\partial t}$ is \textbf{zero}. Hence, at equilibrium, $\Delta T=T_{xx}+T_{yy}=0$.
 
-\textbf{\underline{Idea}}: Harmonic function behave like equilibrium temperature distributions!
+\textbf{\underline{Idea}}: \hypertarget{physics}{Harmonic function behave like equilibrium temperature distributions!}
 
 \begin{proposition}
     Let $U(x,y)$ be a harmonic function on $\Omega$.
@@ -1757,7 +1757,7 @@ This lemma patches the hole that we have to assume $f'$ continuous in Cauchy's t
 \subsection{Cauchy's integral formula}
 \subsubsection{Cauchy's integral formula for a circle}
 \begin{theorem}\label[theorem]{cif}
-    If $f$ is analytic on a region $\Omega$ that contains the circle $\gamma$ and its interior, then \[f(z)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)\d \zeta}{\zeta-z}\] for all $z$ inside of $\gamma$.\sidenote{this $\reg$ doesn't need to be}
+    If $f$ is analytic on a region $\Omega$ that contains the circle $\gamma$ and its interior, then \[f(z)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)\d \zeta}{\zeta-z}\] for all $z$ inside of $\gamma$.\sidenote{this $\reg$ doesn't need to be convex}
 \end{theorem}
 \begin{proof}
     Let $r>0$ be small enough so that the closed ball $B_r(z)^-$ is in the interior of $\gamma$. Let $C_r(z)=\{\zeta\in\C :|\zeta-z|=r\}$ traversed clockwise.
@@ -1959,5 +1959,136 @@ So now we have this result for computing the derivatives and integrals around a 
     \end{tikzpicture}
     \]
 Same techniques! Hence, \[f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\gamma}\frac{f(\zeta)\d \zeta}{(\zeta-z)^{n+1}}\] on any such closed curve $\gamma$.
+
+\subsection{Liouville's theorem}
+\begin{theorem}[Liouville's]
+    A bounded entire function \sidenote{analytic on \(\C\)} is constant.
+\end{theorem}
+\begin{proof}
+    Suppose $f$ is entire and $|f(z)|\leq M$ is bounded by $M$ for all $z\in \C$. Then \[f'(z)=\frac{1!}{2\pi i}\int_{C_R(z)}\frac{f(\zeta)}{(\zeta-z)^2}\d \zeta\] by Cauchy's integral formula. Hence, $|f'(z)|\leq \frac{1}{2\pi}\cdot \frac{M}{R^2}\cdot 2\pi R=\frac{M}{R}$ by the upper bound. Since $f$ is entire, there is no limit in what $R$ could be, so we let $R\to \infty$ and observe that $|f'(z)|=0$ for all $z\in \C$. Hence, $f'$ is identically 0, and so $f$ is constant.
+\end{proof}
+
+\noneg We know $|\cos x|\leq 1$ for all $x\in \R$, but $\cos z = \frac{e^{iz}+e^{-iz}}{2}$ is \textbf{not} bounded on $\C$. In fact, $\cos(-ix)=\frac{e^x+e^{-x}}{2}$ is unbounded for real $x$, so $\cos x$ is not bounded on the imaginary axis. Hence, we can't use Liouville's theorem here!
+
+\subsection{Fundamental theorem of algebra}
+\begin{theorem}[FToA]
+    Every \textbf{nonconstant} complex polynomial has a zero in $\C$.\sidenote{recall ``$\C$ is an algebraically closed field''}
+\end{theorem}
+\begin{proof}
+    Suppose towards a contradiction that $p$ is a \textbf{nonconstant} polynomial over $\C$ with no zeros in $\C$. Then $f=\frac{1}{p}$ is an entire function because we never divide by 0. Recall HW2 Ex2 showed that $\lim_{|z|\to \infty}p(z)=\infty$. That is, for any $M>0$, there exists $R>0$ such that whenever $|z|>R$, we have $|p(z)|>M$.
+
+    Thus, $\lim_{|z|\to \infty}f(z) =  \lim_{|z|\to \infty}\frac{1}{p(z)}=0$. In particular, we can find a $R>0$ such that whenever $|z|>R$, we have \dashuline{$|f(z)|<1$ is bounded outside of the circle $|z|=R$}. Since the closed disk $|z|\leq R$ is compact and $f$ is continuous, \dashuline{$f$ is bounded inside this closed disk $|z|\leq R$.}\sidenote{Extreme value theorem}
+
+    Hence, $f$ is a bounded entire function, meaning that it is constant by Liouville's theorem, and hence $p$ is \textbf{constant} too. This cause a contradiction.
+\end{proof}
+
+\subsection{Zeros of analytic functions}
+Recall the analytic functions are infinitely differentiable.
+
+Suppose $f:\reg\to\C$ is analytic and $f(z_0)=0$ for some $z_0\in \reg$, and $f$ is not identically 0 on an open neighbourhood of $z_0$. Then \[f(z)=\sum_{j=n}^{\infty}a_j(z-z_0)^j\] for some $n\geq 1$ such that $a_n\neq 0$\sidenote{the lowest power term that has a nonzero coefficient, and also $n$ is the order of the zero $z_0$.}. Hence: \begin{align*}
+    f(z)&=\sum_{j=n}^{\infty}a_j(z-z_0)^j\\
+    &= (z-z_0)^n \sum_{j=n}^{\infty}a_j(z-z_0)^{j-n}\\
+    &= (z-z_0)^n \rt{\sum_{k=0}^{\infty}a_{n+k}(z-z_0)^k}
+\end{align*}
+let $g(z)=\rt{\sum_{k=0}^{\infty}a_{n+k}(z-z_0)^k}$. Observe that $g$ is analytic and $g(z_0)=a_n\neq 0$. This and the continuity of $g$ at $z_0$ ensures that $g$ is nonzero on some open disk $|z-z_0|<\delta$. Therefore, $f(z)=(z-z_0)^n\rt{g(z)}$ does not vanish on $0<|z-z_0|<\delta$.
+
+\rmk The zeros of $f$ are \textbf{isolated} in $\reg$. That is, we can't have a sequence of zeros of $f$ converging to some $z_0\in \reg$, as then we can't find a nonzero disk around $z_0$!
+
+\begin{theorem}
+    If $f:\reg\to\C$ is analytic and not identically zero, then each zero of $f$ is isolated and has finite order. 
+\end{theorem}
+\begin{proof}
+    Assume BWOC that the zeros are not isolated.
+
+    By definition, $\reg$ is connected. By definition$\times 2$, a subset $S\subseteq\reg$ is \textbf{clopen} if it is open and closed as a subset of $\reg$. \sidenote{Example of nontrivial clopen subsets: \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.4,xscale=0.4]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Polygon Curved [id:ds3275739299185525] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (113,73.24) .. controls (133,63.24) and (227.26,41.75) .. (262.26,60.75) .. controls (297.26,79.75) and (219.26,88.26) .. (199.26,103.26) .. controls (179.26,118.26) and (133,163.24) .. (113,133.24) .. controls (93,103.24) and (93,83.24) .. (113,73.24) -- cycle ;
+        %Shape: Polygon Curved [id:ds29563927191425465] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (199.26,154.26) .. controls (219.26,144.26) and (224.26,105.26) .. (259.26,124.26) .. controls (294.26,143.26) and (310.26,174.26) .. (290.26,189.26) .. controls (270.26,204.26) and (173,228.24) .. (153,198.24) .. controls (133,168.24) and (179.26,164.26) .. (199.26,154.26) -- cycle ;
+        %Straight Lines [id:da6767121224748709] 
+        \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (268.26,157.26) -- (318.26,106.26) -- (230.26,81.26) ;
+        
+        % Text Node
+        \draw (136,86.4) node [anchor=north west][inner sep=0.75pt]    {$P_{1}$};
+        % Text Node
+        \draw (198,171.4) node [anchor=north west][inner sep=0.75pt]    {$P_{2}$};
+        % Text Node
+        \draw (324,96.4) node [anchor=north west][inner sep=0.75pt]    {$\Gamma $};
+        
+        
+        \end{tikzpicture}
+        \]In this $\Gamma$ (NOT a region), the clopen subsets are $P_1,P_2,\emptyset,\Gamma$.}
+    In a connected region $\reg$, only $\emptyset, \reg$ are clopen.
+
+    Let $S=\{z\in \reg : f^{(j)}(z)=0 \quad \forall\, j=0,1,2,\dots\}$. If $z_0\in S$ then $f$ is zero on some open disk centered at $z_0$. \dashuline{Hence, $S$ is open!}
+
+    Now suppose $w$ is a limit of a sequence in $S$. Since $f$ is continuous, $f^{(j)}$ is continuous for all $j\in \N$. This enruses that $f^{(j)}(w)=0$. \dashuline{Thus, $S$ is closed!}
+
+    Therefore, $S$ is clopen in $\reg$, so either $S$ is the empty set or $S=\reg$. If $S=\reg$, then $f$ is the zero function, so that cannot happen! Therefore, $S=\emptyset$, and so we don't have a cluster of zeros.
+\end{proof}
+
+\corollary If $f$ is a nonconstant analytic function, its zero set is \textbf{countable}. This is because within an open region, we can have at most countably infinite number of disjoint open sets. We let these open sets be $f^{-1}(\{0\})$.
+
+\subsection{Identity theorem}
+\defn An \textbf{accumulation} point of $S$ is a point that is the limit of a sequence of \textbf{distinct} points of $S$.
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Straight Lines [id:da556992577885977] 
+    \draw    (100,105.76) -- (100,139.76) ;
+    \draw [shift={(100,139.76)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da08524159729103475] 
+    \draw    (100,57.76) -- (100,105.76) ;
+    \draw [shift={(100,105.76)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da41449224969428156] 
+    \draw    (100,139.76) -- (100,165.76) ;
+    \draw [shift={(100,165.76)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da4533906108237473] 
+    \draw    (100,165.76) -- (100,180.76) ;
+    \draw [shift={(100,180.76)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da15251507183156088] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (100,180.76) -- (100,190.76) ;
+    \draw [shift={(100,190.76)}, rotate = 90] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Straight Lines [id:da447461872834491] 
+    \draw    (100,165.76) -- (100,180.76) ;
+    \draw [shift={(100,180.76)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Circle [id:dp7661245715545606] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (252,168.87) .. controls (252,167.29) and (250.71,166) .. (249.13,166) .. controls (247.54,166) and (246.26,167.29) .. (246.26,168.87) .. controls (246.26,170.46) and (247.54,171.74) .. (249.13,171.74) .. controls (250.71,171.74) and (252,170.46) .. (252,168.87) -- cycle ;
+    
+    % Text Node
+    \draw (35,202) node [anchor=north west][inner sep=0.75pt]   [align=left] {accumulation point \\\& limit point};
+    % Text Node
+    \draw (193,195) node [anchor=north west][inner sep=0.75pt]   [align=left] {limit point of the \\trivial sequence, \\but not accumulation};
+    
+    
+    \end{tikzpicture}
+    \]
+
+\begin{theorem}
+    Let $f,g:\reg\to \C$ be analytic. If $f=g$ on a subset of $\reg$ that has an accumulation point in $\reg$, then $f=g$ on the entire $\reg$.
+\end{theorem}
+\begin{proof}
+    If the zero set of $f-g$ has an accumulation point in $\reg$, then $f-g$ has a zero that is not isolated (no open disk around it since some zeros keep converging to that accumulation point), so $f-g$ is identically zero on $\reg$.
+\end{proof}
+
+\eg There is only one way to extend $\cos x, \sin x, \exp x$ from $\R$ to $\C$ because two entire functions that agree on $\R$ agree on $\C$. 
+
+\eg Similarly, there is also only one way to get an analytic continuation of the Riemann zeta function to $\re s>0$. 
+
+\subsection{Maximum modulus principle}
+Recall this handwavy physics application \hyperlink{physics}{here}. We now have a more rigorous way to state this!\sidenote{Not exactly equivalent, though.}
+
+\begin{theorem}[Maximum modulus principle]
+    Let $f$ be analytic on a region $\reg$ that contains a piecewise $C'$ simple closed curve $\gamma$ and its interior. Then \[|f(z)|\leq \max_{\zeta\in \gamma}|f(\zeta)|\] for all $z$ in the interior of $\gamma$.
+\end{theorem}
+\begin{proof}
+    Let $M= \max_{\zeta\in \gamma}|f(\zeta)|$. Fix $z$ inside $\gamma$. Let $L$ denote the length of $\gamma$ and let $r=\inf_{\zeta\in \gamma}|z-\zeta$, which is positive (so $z$ isn't arbitrarily close to $\gamma$). 
+
+    Apply Cauchy's integral formula to the $n$-th power of $f$: \[f(z)^n = \frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)^n\d\zeta}{\zeta-z}\]
+    Thus, \[|f(z)|^n \leq \frac{1}{2\pi}\cdot \frac{M^n}{r}L\]
+    Now we just take the $n$-th root everywhere:\[|f(z)|\leq M\left(\frac{L}{2\pi r}\right)^{1/n}\] We use arbitrarily large $n$ and get $|f(z)|\leq M$.
+\end{proof}
 
 \end{document} 
