@@ -2091,4 +2091,110 @@ Recall this handwavy physics application \hyperlink{physics}{here}. We now have 
     Now we just take the $n$-th root everywhere:\[|f(z)|\leq M\left(\frac{L}{2\pi r}\right)^{1/n}\] We use arbitrarily large $n$ and get $|f(z)|\leq M$.
 \end{proof}
 
+\subsection{Schwarz' lemma}
+\begin{lemma}[Schwarz']
+    Let $f:\D\to \D^-$ be analytic and $f(0)=0$. Then: \begin{enumerate}[label=(\alph*)]
+        \item \(|f'(0)|\leq 1\) and $|f(z)|\leq |z|$ for all $z\in \D$.
+        \item If $|f'(0)|=1$ or $|f(z_0)|=|z_0|$ for some $z_0\neq 0$, then $f(z)=\lambda z$ for some $\lambda$ with $|\lambda|=1$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}[Proof part (a)]
+    Since $f(0)=0$, we have that the constant term of $f$ is 0, and so $f(z)=zg(z)$ for some $g$ analytic on $\D$. Thus, \[f'(z)=g(z)+zg'(z)\] and hence $f'(0)=g(0)$. Hence, \[g(z)=\begin{cases}
+        \frac{f(z)}{z} & z\neq 0\\
+        f'(0) &z=0
+    \end{cases}\]
+    If $|z|\leq r<1$, then by the maximum modulus principle, \begin{align*}
+        |g(z)|&\leq \max_{|\zeta|=r}|g(\zeta)|\\
+        &= \max_{|\zeta|=r}\left|\frac{f(\zeta)}{\zeta}\right|\\
+        &\leq \frac{1}{r} &\text{since }f:\D\to\D^-
+    \end{align*}
+    Let $r\to 1^-$ and get $|g(z)|\leq 1$ for all $z\in \D$, which is the (a) part of our result.
+\end{proof}
+
+\begin{proof}[Proof part (b)]
+    Maximum modulus principle says the given conditions imply $g$ is constant. The constant $\lambda$ has absolute value 1, so $\frac{f(z)}{z}=\lambda$ and so $f(z)=\lambda z$.
+\end{proof}
+
+\subsection{Automorphism group of a region}
+\defn Let $\reg$ be a region in $\C$. We let the automorphism group of the region \(\Aut (\Omega)\) be the set of all \textbf{bijective analytic functions} from $\reg$ to $\reg$.
+\begin{itemize}
+    \item \(\Aut (\Omega)\) contains the identity function $f(z)=z$.
+    \item \(\Aut (\Omega)\) is closed under composition.\sidenote{And composition is a binary operation with associativity}
+    \item \(\Aut (\Omega)\) is closed under inverses: if $f:\reg\to\reg$ is an analytic bijection, then $\inv{f}:\reg\to \reg$ exists and is \textbf{analytic}.
+    \rmk There appears to be a `counterexample': \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Polynomial [id:dp016145053242946572] 
+        \draw   (45,211) .. controls (92.42,73.82) and (139.84,213.69) .. (187.26,76.51) ;
+        %Shape: Axis 2D [id:dp40514861748695963] 
+        \draw  (37,143.51) -- (204.26,143.51)(119.26,54) -- (119.26,224.51) (197.26,138.51) -- (204.26,143.51) -- (197.26,148.51) (114.26,61) -- (119.26,54) -- (124.26,61)  ;
+        %Shape: Axis 2D [id:dp23339690918753542] 
+        \draw  (278,143.51) -- (445.26,143.51)(360.26,54) -- (360.26,224.51) (438.26,138.51) -- (445.26,143.51) -- (438.26,148.51) (355.26,61) -- (360.26,54) -- (365.26,61)  ;
+        %Shape: Polynomial [id:dp9729500065216796] 
+        \draw   (425.26,74.5) .. controls (292.77,120.29) and (427.85,166.09) .. (295.37,211.88) ;
+        %Straight Lines [id:da8672984437837188] 
+        \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (360.26,143.51) -- (398.91,186.03) ;
+        \draw [shift={(400.26,187.51)}, rotate = 227.73] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        \draw [shift={(360.26,143.51)}, rotate = 47.73] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+        
+        % Text Node
+        \draw (162,55.4) node [anchor=north west][inner sep=0.75pt]    {$x^{3}$};
+        % Text Node
+        \draw (433,46.4) node [anchor=north west][inner sep=0.75pt]    {$x^{1/3}$};
+        % Text Node
+        \draw (376,194) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ] [align=left] {not differentiable?};
+        
+        
+        \end{tikzpicture}
+        \]
+        However, this is only true in $\R$. In $\C$, we observe that $z^3$ is \textbf{not} a bijection at $0$, so this function is not in the group at all!
+\end{itemize}
+
+\addlink{Riemann Mapping Theorem}
+\begin{theorem}[Riemann Mapping]
+    If $\reg$ is simply connected (no holes)\sidenote{Except for the entire $\C$, which has only constant functions if bounded (by Liouville thm).}, then it could be conformally mapped to a disk.
+    \drawing{0.5\linewidth}{image-7.png}
+\end{theorem}
+
+\spl
+
+Recall from HW1 that for each $w\in \D$, we have a bijection \[\phi_w(z)=\frac{-z+w}{-\bar w z+1}\] from $\D$ to $\D$ and $\phi\circ \phi=\mathrm{id}$. To see this, observe the matrix representation \[\begin{bmatrix}
+    -1 & w\\ -\bar w & 1
+\end{bmatrix}\cdot \begin{bmatrix}
+    -1 & w\\ -\bar w & 1
+\end{bmatrix} = \begin{bmatrix}
+    1-|w|^2 & 0 \\ 0 &  1-|w|^2
+\end{bmatrix}\sim I\]
+Furthermore, note $\phi_w(0)=w$. Suppose $f\in \Aut(\D)$, then there is a unique $w\in \D$ such that $f(w)=0$. Define $g=f\circ \phi_w\in \Aut(\D)$. Note that $g(0)=f(\phi_w(0))=f(w)=0$. By Schwarz' lemma, we have \rt{$|g(z)|\leq |z|$} for all $z\in \D$. 
+
+Since $\inv g\in \Aut(\D)$, we also have $|\inv g(z)|\leq |z|$ for all $z\in \D$. Now substitute $g(z)$ for $z$ since it's also in the disk. Hence, \bt{$|z|=|\inv g (g(z))|\leq |g(z)|$}. Therefore, we are forced to conclude that $\textcolor{violet}{|z|=|g(z)|}$ for ALL $z\in \D$!
+
+Since $\textcolor{violet}{|z|=|g(z)|}$ for ALL $z\in \D$, Schwarz' lemma says $g(z)=\lambda z$ for some $|\lambda|=1$. Let $\lambda=e^{i\theta}$ for some $\theta\in \R$. Thus, \[g(z)=f(\phi_w(z))=e^{i\theta}z\]
+and so \[e^{i\theta}\phi_w(z)=f(\phi_w(\phi_w(z)))=f(z)\]
+since $\phi_w\circ \phi_w=\mathrm{id}$. Therefore, $\displaystyle f(z)=e^{i\theta}\frac{w-z}{1-\bar wz}$.
+
+Therefore, 
+\begin{proposition}
+    \[\Aut (\D)= \left\{e^{i\theta}\frac{w-z}{1-\bar wz}\; \Bigg \vert\; \theta\in [0,2\pi), w\in \D\right\}\]
+\end{proposition}
+
+\rmk The topological representation of the automorphism group of $\D$ is a `skinless torus' (collection of open disks revolving from 0 to $2\pi$).
+
+\subsection{Morera's theorem}
+\begin{theorem}[Morera]
+    If $f:\reg\to\C$ is continuous and $\int_{\gamma}f(\zeta)\d\zeta=0$ for all \underline{\hspace{2cm}} $\gamma$ in $\reg$, then $f$ is analytic on $\reg$. \sidenote{the blank can be `rectangles', `triangles', `piecewise $C^1$ closed curves', etc.}
+\end{theorem}
+\begin{proof}[Proof see \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture16.pdf}{notes}]
+\end{proof}
+
+\subsection{Weierstrass convergence theorem}
+Let $f_n(z)$ be analytic for every $n\in \N$. We are still not sure that $\sum_{n=1}^{\infty} f_n(z)$ is analytic yet!
+
+\begin{theorem}[Weierstrass convergence]
+    If $f_n:\reg\to \C$ are analytic and $f_n$ converges \textit{locally uniformly} on $\reg$ to the limit function $f$ (\bt{$\Leftrightarrow$ uniform convergence on compact sets}), then \textcolor{darkgray}{$f$ is analytic and for each fixed $m$, $f_n^{m}$ converges to $f^{(m)}$ locally uniformly on $\reg$ and $f$ is infinitely differentiable}. 
+\end{theorem}
+
+\rmk This is a huge contrast with the\textit{ Weierstrass approximation theorem} in real analysis, which says that \textcolor{darkgray}{if $f:[0,1]\to \R$, then there is a sequence of polynomials $p_n$ such that $p_n$ converges to $f$ uniformly on $[0,1]$}. That is, even the most pathological, nowhere-differentiable functions in $\R$ are a limit of some polynomial sequences! However, in the $\C$ world, the limit of any analytic function is still analytic.
+
 \end{document} 
