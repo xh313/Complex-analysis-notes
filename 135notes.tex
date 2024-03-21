@@ -2358,4 +2358,100 @@ for any $r$ such that $R_1<r<R_2$.
 
 \rmk If $n\geq 0$ and $f$ is analytic on $|z|<R_2$, then we should get that the Taylor series expansion and the Laurent expansion for the same function $f$ to match. They indeed do match by Cauchy's integral formula:\[a_{n}=\frac{f^{(n)}(z_{0})}{n!}=\frac{1}{2\pi i}\int_{C_{r}(z_{0})}\frac{f(\zeta)\d\zeta}{(\zeta-z_{0})^{n+1}}\]
 
+\subsection{Isolated singularities}
+\defn If $f$ is analytic on $0<|z-z_0|<R$ (a \underline{deleted neighbourhood} of $z_0$), then $z_0$ is an \textbf{isolated singularity} of $f$.
+
+\defn If the principal part of the Laurent expansion for $f$ at $z_0$ is 0 (i.e. $a_{-1}=a_{-2}=\dots=0)$, then $z_0$ is a \textbf{removable singularity} of $f$. The Laurent expansion for $f$ at $z_0$ is simply a power series \(f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n\) suggests we set $f(z_0)=a_0$, in which case $f$ is analytic at $z_0$.
+
+\eg Observe \begin{align*}
+    \frac{\sin z}{z}&= \frac{1}{z}\left(z-\frac{z^3}{3!}+\frac{z^5}{5!}-\dots\right)\\
+    &= \rt{1}-\frac{z^2}{3!}+\frac{z^4}{5!}-\dots
+\end{align*}
+We define $f(0)=1$, so $\frac{\sin z}{z}$ is actually entire!\sidenote{This agrees with L'H\^opital's rule.}
+
+\addlink{Conditions for removable singularity}
+\begin{theorem}
+    If $z_0$ is an isolated singularity of an analytic function $f$, then $z_0$ is removable \ifnif any of the following hold:\begin{enumerate}[label=(\alph*)]
+        \item $f$ is bounded on some deleted neighbourhood of $z_0$
+        \item $\lim_{z\to z_0}f(z)$ exists\sidenote{$\infty$ doesn't count}
+        \item $\lim_{z\to z_0}(z-z_0)f(z)=0$
+    \end{enumerate}
+\end{theorem}
+\rmk (a) and (b) implies (c), (b) implies (a).
+\begin{proof}It suffices to show that (c) $\iff$ removable.
+    \begin{enumerate}
+        \item[($\implies$)] If $z_0$ is removable, then $f$ is analytic at $z_0$, so all of the above follow.
+        
+        \item[($\impliedby$)]  Suppose (c) holds. Then for all $\varepsilon>0$, there exists $0\leq r<1$ such that whenever $|z-z_0|<2r$, we have $|f(z)(z-z_0)|<\varepsilon$.
+        
+        Then, for all $n\geq 1$, we have \begin{align*}
+            |a_{-n}|&=\left|\frac{1}{2\pi i}\int_{C_r(z_0)}f(\zeta)(\zeta-z_0)^{n-1}\d \zeta\right|\\
+            &= \left|\frac{1}{2\pi i}\int_{C_r(z_0)}\rt{f(\zeta)(\zeta-z_0)}(\zeta-z_0)^{n-2}\d \zeta\right|\\
+            &\leq \frac{1}{2\pi}\cdot \rt{\varepsilon}r^{n-2}2\pi r\\
+            &= \varepsilon r^{n-1}\\
+            &<\varepsilon
+        \end{align*}
+        Thus, $a_{-n}=0$ for all $n\geq 1$. The principal part of the Laurent expansion of $f$ is zero.
+    \end{enumerate}
+\end{proof}
+
+\addlink{Poles}
+\defn If the principal part of $f$ at $z_0$ is of the form \[\frac{a_{-n}}{(z-z_0)^{n}}+\frac{a_{-(n-1)}}{(z-z_0)^{n-1}}+\dots +\frac{a_{-1}}{(z-z_0)}\] where $a_{-n}\neq 0$, then $z_0$ is a \textbf{pole} of $f$ of order $n$.\sidenote{$n$ must be \textbf{finite} such that we can clear the denominator}
+
+\defn A pole of order 1 is a \textbf{simple pole}.
+
+\begin{theorem}
+    If $z_0$ is an isolated singularity of $f$, then $z_0$ is a \textbf{pole} of order $\leq n$ \ifnif there is an analytic $\phi(z)$ on a \textcolor{gray}{deleted}\sidenote{Return to the full neighbourhood by the trick of removable singularity} neighbourhood of $z_0$ such that \[f(z)=\frac{\phi(z)}{(z-z_0)^n}\]
+    This occurs \ifnif any of the following hold: \begin{enumerate}[label=(\alph*)]
+        \item $(z-z_0)^nf(z)$ is bounded on some deleted neighbourhood of $z_0$
+        \item $\lim_{z\to z_0}f(z)(z-z_0)^n$ exists
+        \item $\lim_{z\to z_0}f(z)(z-z_0)^{n+1}=0$
+    \end{enumerate}
+\end{theorem}
+
+\rmk We can think of poles and zeros in the following fashion: 
+
+\begin{tabular}{ll}
+   $f(z)=(z-z_0)^jF(z)$ & $g(z) = \frac{G(z)}{(z-z_0)^k}$\\
+   $f$ has a zero of order $j$ at $z_0$ & $g$ has a pole of order $k$ at $z_0$\\
+   $F$ doesn't vanish at $z_0$ & $G$ doesn't vanish at $z_0$
+\end{tabular}
+Then: \[f(z)g(z)=(z-z_0)^{\rt{j-k}}F(z)G(z)\]
+\begin{itemize}
+    \item If $j=k$, $z_0$ is a removable singularity for $fg$ and is not a zero.
+    \item If $j>k$, then $z_0$ is a zero.
+    \item If $k>j$, then $z_0$ is a pole.
+\end{itemize}
+
+Poles are nice! They could be removed like the denominators of rational functions. However, some other singularities cannot do so.
+
+\defn If the principal part of the Laurent series for $f$ at $z_0$ is $\sum_{n=1}^{\infty}a_{-n}(z-z_0)^{-n}$ where \textbf{infinitely} many $a_{-n}\neq 0$, then $z_0$ is an essential singularity of $f$.
+
+\rmk It is not hard to make an essential singularity: take any entire function with infinite power series. Plug in $\frac{1}{x}$ instead of $x$.
+
+\eg $e^{\frac{1}{x}} = \sum_{n=0}^{\infty}\frac{1}{n!z^n}$ has an essential singularity at $0$.
+
+\begin{theorem}[Casorati-Weierstrass]
+    Let $z_0$ be an essential singularity of $f$. For \textbf{each} $w\in \C$\sidenote{This is wild! $f$ could almost splatter everywhere near $z_0$. There isn't a reasonable value to assign to $f(z_0)$.}, there is a sequence $z_n (n\geq 1)$ such that $z_n\to z_0$ and $f(z_n)\to w$.
+\end{theorem}
+\begin{proof}
+    Suppose towards a contradiction that there exists $w\in \C$ such that no such $z_n$ exists. Then there exists $\varepsilon>0$ and $\delta>0$ such that when $0<|z-z_0|<\delta$, we have $|f(z)-w|\geq \varepsilon$ (that is, $f$ is not getting close to $w$). Thus, $g(z)=\frac{1}{f(z)-w}$ is analytic on $0<|z-z_0|<\delta$ and $|g(z)|\leq \frac{1}{\varepsilon}$ there. \dashuline{The singularity $z_0$ of $g$ is therefore removable.} Then $f(z)=w+\frac{1}{g(z)}$, which is either analytic or has a pole at $z_0$ (if $g(z_0)=0$). This causes a contradiction.
+\end{proof}
+
+\begin{theorem}[Great Picard]
+    If $z_0$ is an essential singularity of $f$, then in any deleted neighbourhood of $z_0$, we have $f$ assuming \textbf{every} complex value \textcolor{gray}{(with at most one exception)} \textbf{infinitely} many times.
+\end{theorem}
+
+\eg $f(z)=e^{\frac{1}{z}}$ has an essential singularity at $z_0=0$. (Note $f(z)\neq 0$ is the \textcolor{gray}{exceptional value} that is never assumed.) Let $w\neq 0$ and let $z=\frac{1}{\log w}$ where $\log w$ is a nonzero logarithm of $w$\sidenote{so no 1 for $w$}. Then \[f(z)=e^{\frac{1}{1/\log w}}=e^{\log w}=w\]
+
+
+\begin{theorem}[Little Picard]
+    If $f$ is entire and nonconstant, then $f$ assumes every complex value, \textcolor{gray}{with at most one exception}.
+\end{theorem}
+\begin{proof}
+    If $f$ is a nonconstant polynomial and $w\in \C$, then the polynomial $f(z)-w$ has a zero in $\C$ by the Fundamental Theorem of Algebra, so $f$ assumes the value of $w$.
+
+    If $f$ is not a polynomial\sidenote{Non-polynomial means the Taylor series is infinite}, then $f(\frac{1}{z})$ has an essential singularity at $0$. Then use Great Picard Thm.
+\end{proof}
+
 \end{document} 
