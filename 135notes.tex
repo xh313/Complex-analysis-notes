@@ -1756,6 +1756,7 @@ This lemma patches the hole that we have to assume $f'$ continuous in Cauchy's t
 
 \subsection{Cauchy's integral formula}
 \subsubsection{Cauchy's integral formula for a circle}
+\hypertarget{cauchys-integral-formula}{}
 \begin{theorem}\label[theorem]{cif}
     If $f$ is analytic on a region $\Omega$ that contains the circle $\gamma$ and its interior, then \[f(z)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(\zeta)\d \zeta}{\zeta-z}\] for all $z$ inside of $\gamma$.\sidenote{this $\reg$ doesn't need to be convex}
 \end{theorem}
@@ -2453,5 +2454,130 @@ Poles are nice! They could be removed like the denominators of rational function
 
     If $f$ is not a polynomial\sidenote{Non-polynomial means the Taylor series is infinite}, then $f(\frac{1}{z})$ has an essential singularity at $0$. Then use Great Picard Thm.
 \end{proof}
+
+% \section{Residue Theory}
+\subsection{Residues}
+\defn Let the Laurent series $f(z)=\sum_{n=-\infty}^{\infty} a_n(z-z_0)^n$ be analytic at $0<|z-z_0|<R$. The coefficient $a_{-1}$ is the \textbf{residue} of $f$ at $z_0$. Notation:\[\Res (f;z_0)=a_{-1}\]
+
+\addlink{Residue theorem (simple version)}
+\begin{theorem}[Residue, simple vers.] Let $f:\Omega\to \C$ analytic except on the isolated singularity $z_0$. Then:\[\frac{1}{2\pi i}\int_{\gamma}f(\zeta)\,d\zeta=\Res(f\cdotp z_{0}) \]
+for any simple closed curve $\gamma$ in $\reg$ with $z_0$ in its interior and whose interior is contained
+in $\reg$.
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.7,xscale=.7]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Curve Lines [id:da5572659059338843] 
+        \draw    (194.26,120.76) .. controls (252.26,120.76) and (224.42,9.55) .. (295.26,48) .. controls (366.09,86.45) and (416.73,192.41) .. (376.26,222.76) .. controls (335.78,253.12) and (285.26,250.76) .. (237.26,229.76) .. controls (189.26,208.76) and (173.26,230.64) .. (149.26,190.64) .. controls (125.26,150.64) and (153.26,120.51) .. (194.26,120.76) -- cycle ;
+        \draw [shift={(242.18,64.55)}, rotate = 112.47] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        \draw [shift={(372.72,128.93)}, rotate = 240.89] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        \draw [shift={(301.73,245.48)}, rotate = 0.74] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        \draw [shift={(182.71,217.06)}, rotate = 8.82] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        \draw [shift={(151.34,135.99)}, rotate = 130.63] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        %Shape: Arc [id:dp6365443389380805] 
+        \draw  [draw opacity=0] (318.31,158.43) .. controls (318.31,158.43) and (318.31,158.43) .. (318.31,158.43) .. controls (318.31,178.47) and (302.06,194.72) .. (282.02,194.72) .. controls (261.97,194.72) and (245.73,178.47) .. (245.73,158.43) .. controls (245.73,138.38) and (261.97,122.13) .. (282.02,122.13) .. controls (301.85,122.13) and (317.96,138.04) .. (318.3,157.79) -- (282.02,158.43) -- cycle ; \draw    (318.31,158.43) .. controls (318.31,158.43) and (318.31,158.43) .. (318.31,158.43) .. controls (318.31,178.47) and (302.06,194.72) .. (282.02,194.72) .. controls (261.97,194.72) and (245.73,178.47) .. (245.73,158.43) .. controls (245.73,138.38) and (261.97,122.13) .. (282.02,122.13) .. controls (301.25,122.13) and (316.99,137.1) .. (318.23,156.03) ; \draw [shift={(318.23,156.03)}, rotate = 89.02] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ; 
+        %Straight Lines [id:da45398740116247227] 
+        \draw    (282.02,121.14) -- (282.02,158.43) ;
+        \draw [shift={(282.02,158.43)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+        %Shape: Circle [id:dp805037477764748] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (178.08,158.43) .. controls (178.08,101.02) and (224.62,54.49) .. (282.02,54.49) .. controls (339.42,54.49) and (385.95,101.02) .. (385.95,158.43) .. controls (385.95,215.83) and (339.42,262.36) .. (282.02,262.36) .. controls (224.62,262.36) and (178.08,215.83) .. (178.08,158.43) -- cycle ;
+        %Straight Lines [id:da797182999934565] 
+        \draw    (282.02,158.43) -- (229.26,248.39) ;
+        %Shape: Polygon Curved [id:ds5262648953621514] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}] (129.26,65.39) .. controls (182.26,9.39) and (318.51,4.79) .. (361.26,34.39) .. controls (404,64) and (442.26,230.39) .. (423.26,257.39) .. controls (404.26,284.39) and (317.26,269.39) .. (261.26,288.39) .. controls (205.26,307.39) and (138.26,285.39) .. (122.26,241.39) .. controls (106.26,197.39) and (76.26,121.39) .. (129.26,65.39) -- cycle ;
+        
+        % Text Node
+        \draw (284.02,161.83) node [anchor=north west][inner sep=0.75pt]    {$z_{0}$};
+        % Text Node
+        \draw (270.95,127.47) node [anchor=north west][inner sep=0.75pt]    {$r$};
+        % Text Node
+        \draw (233.26,197.79) node [anchor=north west][inner sep=0.75pt]    {$R$};
+        % Text Node
+        \draw (125,154.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma $};
+        % Text Node
+        \draw (73,111.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+        
+        
+        \end{tikzpicture}
+        \]
+\end{theorem}
+\begin{proof}
+    The Laurent expansion $f(z)\,=\,\sum_{n=-\infty}^{\infty}\,a_{n}(z\,-\,z_{0})^{n}$ converges locally uniformly on some punctured disk $0 < |z - z_0| < R$. If $r \in (0, R)$ is sufficiently small, then the deformation version of Cauchy's theorem implies \begin{align*}
+        \frac{1}{2\pi i}\int_{\gamma}f(z)\d z&=\frac{1}{2\pi i}\int_{C_{r}(z_{0})}f(z)\d z\\
+        &=\frac{1}{2\pi i}\int_{C_{r}(z_{0})}\sum_{n=-\infty}^{\infty}a_{n}(z-z_{0})^{n}\d z\\
+        &= \sum_{n=-\infty}^{\infty}a_{n}\rt{\left(\frac{1}{2\pi i}\int_{C_{r}(z_{0})}^{}\left(z-z_{0}\right)^{n}d z\right)}
+    \end{align*}
+    Observe \(\rt{\left(\frac{1}{2\pi i}\int_{C_{r}(z_{0})}^{}\left(z-z_{0}\right)^{n}d z\right)}=0\) unless $n=-1$, in which it's 1. Hence:
+    \begin{align*}
+        \frac{1}{2\pi i}\int_{\gamma}f(z)\d z&= a_{-1}\\
+        &=\Res(f;z_0)
+    \end{align*}
+    The interchange of sum and integral is permissible because the Laurent series converges uniformly on $C_{r}(z_0)$.
+    % \tbd{finish this}
+\end{proof}
+
+\begin{lemma}\label[lemma]{residue-formula}
+    If $z_0$ is a \textbf{simple} pole\sidenote{That means the pole is order 1, and the principal part of the Laurent series at that point only has 1 term.} of $f$, then \[\Res(f;z_0)=\lim_{z\to z_0}(z-z_0)f(z)\]
+\end{lemma}
+\begin{proof}
+    Near $z_0$, we have \[f(z) = \frac{a_{-1}}{z-z_0}+a_0+a_1(z-z_0)+\dots\]
+    Thus, $(z-z_0)f(z)=a_{-1}+a_0(z-z_0)+\dots$ tends to $a_{-1}$ when $z\to z_0$. So $a_{-1}=\lim_{z\to z_0}(z-z_0)f(z)$.
+\end{proof}
+
+\rmk \hyperlink{cauchys-integral-formula}{Cauchy's integral formula} is a special case of the residue formula as we rename the function to introduce a simple pole at $z_0$: \begin{align*}
+    \frac{1}{2\pi i}\int_{\gamma}\frac{f(z)\d z}{z-z_0} &= \Res\left(\frac{f(z)}{z-z_0};z_0\right)\\
+    &= \lim_{z\to z_0}(z-z_0)\frac{f(z)}{z-z_0}\\
+    &=f(z_0)
+\end{align*}
+
+\eg Consider the improper integral
+\[\int_{-\infty}^{\infty}{\frac{\cos a x}{1+x^{2}}}\d x\]
+in which $a \neq 0$ is real. We assume that $a > 0$; the case $a < 0$ is similar. Since\[\left|\frac{\cos a x}{1+x^{2}}\right|\leq \frac{1}{1+x^{2}}\] on (-\infty,0] and [0,\infty), it follows that the improper integral converges by the comparison test. 
+
+This allows us to consider the integral from $-\infty$ to $\infty$ directly, without having to consider the improper integrals over the positive and negative parts separately. Therefore, write \[\int_{-\infty}^{\infty}\frac{\cos a x}{1+x^{2}}\,d x=\mathrm{Re}\left(\operatorname*{lim}_{R\rightarrow\infty}\int_{-R}^{R}\frac{e^{i a x}}{1+x^{2}}\,d x\right)
+\] where we let \[f(z)=\frac{e^{i a z}}{1+z^{2}}=\frac{e^{i a z}}{(z-i)(z+i)}\]
+which has two simple poles $z=\pm i$. We focus on $i$ first.
+
+For $R>1$ (so that $i$ is enclosed), let $\Gamma_R$ denote the semicircular curve obtained by joining $[-R, R]$ with $\gamma_R$, the upper half of the circle $|z|=R$: \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Axis 2D [id:dp3985790093437118] 
+    \draw  (50,149.89) -- (250,149.89)(150.51,70) -- (150.51,170) (243,144.89) -- (250,149.89) -- (243,154.89) (145.51,77) -- (150.51,70) -- (155.51,77) (190.51,144.89) -- (190.51,154.89)(230.51,144.89) -- (230.51,154.89)(110.51,144.89) -- (110.51,154.89)(70.51,144.89) -- (70.51,154.89)(145.51,109.89) -- (155.51,109.89) ;
+    \draw   ;
+    %Straight Lines [id:da2085138625465428] 
+    \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (90,150) -- (210,150) ;
+    \draw [shift={(210,150)}, rotate = 0] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    \draw [shift={(156,150)}, rotate = 180] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(90,150)}, rotate = 0] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Arc [id:dp46543149744952506] 
+    \draw  [draw opacity=0] (89.99,150) .. controls (89.99,116.86) and (116.86,89.99) .. (150,89.99) .. controls (183.14,89.99) and (210.01,116.86) .. (210.01,150) -- (150,150) -- cycle ; \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (90.04,147.53) .. controls (91.33,115.53) and (117.68,89.99) .. (150,89.99) .. controls (183.14,89.99) and (210.01,116.86) .. (210.01,150) ;  \draw [shift={(89.99,150)}, rotate = 270] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Shape: Circle [id:dp5979229833068613] 
+    \draw   (147,109.63) .. controls (147,107.62) and (148.62,106) .. (150.63,106) .. controls (152.63,106) and (154.26,107.62) .. (154.26,109.63) .. controls (154.26,111.63) and (152.63,113.26) .. (150.63,113.26) .. controls (148.62,113.26) and (147,111.63) .. (147,109.63) -- cycle ;
+    
+    % Text Node
+    \draw (76,162.4) node [anchor=north west][inner sep=0.75pt]    {$-R$};
+    % Text Node
+    \draw (206,162.4) node [anchor=north west][inner sep=0.75pt]    {$R$};
+    % Text Node
+    \draw (111,72.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{R}$};
+    % Text Node
+    \draw (157,102.4) node [anchor=north west][inner sep=0.75pt]    {$i$};
+    % Text Node
+    \draw (211,100.4) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.82,0.01,0.11}{\Gamma _{R}}$};
+    
+    
+    \end{tikzpicture}
+    \]
+Since $i$ is a pole enclosed in $\Gamma_R$, the residue theorem implies \(\int_{\Gamma_{R}}f(z)\,d z=\,2\pi i\,\mathrm{Res}(f,i)\). By \cref{residue-formula}, \[\mathrm{Res}(f,i)=\operatorname*{lim}_{z\rightarrow i}(z-i)f(z)=\operatorname*{lim}_{z\rightarrow i}\frac{e^{i a z}}{(z+i)}=\frac{e^{-a}}{2i}\] so it follows that 
+\[\rt{\int_{-R}^{R}{\frac{e^{i a x}}{1+x^{2}}}\d x}+\bt{\int_{\gamma_{R}}{\frac{e^{i a z}}{1+z^{2}}}\d z}=2\pi i\,\mathrm{Res}(f,i)=\pi e^{-a}\]
+
+We look at $\bt{\int_{\gamma_{R}}{\frac{e^{i a z}}{1+z^{2}}}\d z}$. If $z=x+i y$ is on $\gamma_R$, then $y \geq 0$ and hence (since $a>0$):
+\[\begin{aligned}
+    \left|\bt{\int_{\gamma_{R}}{\frac{e^{i a z}}{1+z^{2}}}\d z}\right| & =\left|\int_{\gamma_R} \frac{e^{i a z}}{1+z^2} \d z\right| \\
+    & \leq \pi R \sup _{z \in \gamma_R} \frac{\left|e^{i a z}\right|}{\left|1+z^2\right|} &&\text{by upper bound over length of curve}\\
+    & \leq \pi R \sup _{x+i y \in \gamma_R} \frac{e^{-a y}}{R^2-1} &&\text{since }|e^{iax}|=1\\
+    & =\frac{\pi R}{R^2-1}
+    \end{aligned}\]
+which tends to zero as $R \rightarrow \infty$.
+Let $R \rightarrow \infty$ and get \[\rt{\int_{-\infty}^{\infty} \frac{e^{i a x}}{1+x^2} \d x}=\pi e^{-a}\] Thus the real part would be our answer \[\int_{-\infty}^{\infty} \frac{\cos a x}{1+x^2} d x=\pi e^{-a}\]
 
 \end{document} 
