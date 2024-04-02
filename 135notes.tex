@@ -2744,4 +2744,79 @@ Recall \cref{cauchys-take1}. We can now extend beyond simple curves:
     \[\frac{1}{2\pi i}\int_{\gamma}f(\zeta)\,d\zeta=\sum_{j=1}^{n}\mathrm{Res}(f;z_{j})I(\gamma,z_{j})\]
 \end{theorem}
 
+\subsection{The argument principle}
+Suppose $f: \Omega \rightarrow \mathbb{C}$ is analytic and has zeros only at $z_1, z_2, \ldots, z_n \in \Omega$ (repeated according to multiplicity). Write
+\[f(z)=\left(z-z_1\right)\left(z-z_2\right) \cdots\left(z-z_n\right) g(z)\]
+where $g(z)$ is analytic and nonvanishing on $\Omega$. The product formula for derivatives implies
+\[
+\begin{aligned}
+& f^{\prime}(z)=\left(z-z_2\right)\left(z-z_3\right) \cdots\left(z-z_n\right) g(z)+\left(z-z_1\right)\left(z-z_3\right) \cdots\left(z-z_n\right) g(z)+\cdots \\
+&+\left(z-z_1\right)\left(z-z_2\right) \cdots\left(z-z_{n-1}\right) g(z)+\left(z-z_1\right)\left(z-z_2\right) \cdots\left(z-z_n\right) g^{\prime}(z) .
+\end{aligned}
+\]
+
+Divide by $f(z)$ and obtain the \uline{logarithmic derivative of $f$}\sidenote{Since $(\log f)' = f'/f$}:
+\[\rt{\frac{f^{\prime}(z)}{f(z)}}=\frac{1}{z-z_1}+\frac{1}{z-z_2}+\cdots+\frac{1}{z-z_n}+\frac{g^{\prime}(z)}{g(z)} \]
+
+If $\gamma$ is a simple closed curve\sidenote{a simple closed curve can only envelope a finite amount of zeros!} in $\Omega$ whose interior lies in $\Omega$ and which contains each $z_i$ in its interior, then
+\[\begin{aligned}
+    \frac{1}{2 \pi i} \int_\gamma \rt{\frac{f^{\prime}(z)}{f(z)}} \d z & =\bt{\sum_{k=1}^n \frac{1}{2 \pi i} \int_\gamma \frac{\d z}{z-z_k}}+\gt{\frac{1}{2 \pi i} \int_\gamma \frac{g^{\prime}(z)}{g(z)} \d z} \\
+    &= \sum_{k=1}^{n}I(\gamma;z_k) + \gt{0}\\
+    & =\left(\sum_{k=1}^n 1\right)+0 \\
+    & =n 
+    \end{aligned}\]
+
+The \gt{final integral} vanishes by Cauchy's theorem since $g^{\prime} / g$ is analytic on $\Omega$. Integrating the logarithmic derivative $\rt{f^{\prime} / f}$ of an analytic function $f$ around a closed curve $\gamma$ \uline{counts the number of zeros} of $f$, repeated according to multiplicity, inside of $\gamma$.
+
+\theorem[The Argument Principle] Let $\Omega$ be a region in $\mathbb{C}$ and let $\gamma$ be a simple closed curve in $\Omega$ with its interior in $\Omega$. If $f:\Omega\to\mathbb{C}$ is analytic and has no zeros on $\gamma$, then the \underline{number of zeros} $Z_{f}(\gamma)$ of $f$, repeated according to multiplicity, in the interior of $\gamma$ is finite and is given by
+    \[Z_{f}(\gamma)=\frac{1}{2\pi i}\int_{\gamma}\frac{f^{\prime}(z)}{f(z)}\d z\]
+\begin{proof}
+    In light of the preceding discussion, we only need to show that $f$ has only finitely many zeros inside of $\gamma$. Let $G$ denote the union of $\gamma$ and its interior. Since $G$ is closed and bounded, it is compact. If $f$ had infinitely many distinct zeros $z_{n}$ inside of $\gamma$, these would have an accumulation point in $G\subseteq\Omega$. The identity theorem would imply that $f$ is identically zero on $\Omega$, which contradicts the hypothesis that $f$ does not vanish on $\gamma$.
+\end{proof}
+
+\rmk Why \textit{argument} principle? Let $\gamma:[a,b]\rightarrow\mathbb{C}$ be a parametrization and consider the curve $f\circ\gamma:[a,b]\rightarrow\mathbb{C}$. The following computation shows that the number of zeros of $f$ inside $\gamma$ equals the winding number of $f\circ\gamma$ with respect to the origin:
+\begin{align*}
+    Z_{f}(\gamma)&=\frac{1}{2\pi i}\int_{\gamma}\frac{f^{\prime}(z)}{f(z)}\d z\\
+    &=\frac{1}{2\pi i}\int_{a}^{b}\frac{f^{\prime}(\gamma(t))\gamma^{\prime}(t)\d t}{f(\gamma(t))}\\
+    &=\frac{1}{2\pi i}\int_{f\circ\gamma}\frac{\d \zeta}{\zeta-0}\\
+    &=I(f\circ\gamma;0)
+\end{align*}
+
+in which $\zeta=f(\gamma(t))$ and $d\zeta=f^{\prime}(\gamma(t))\gamma^{\prime}(t)\,dt$ by the chain rule.
+
+It allows computers to compute roots with great ease. As soon as we have an error $<\frac{1}{2}$ we are done.
+
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Curve Lines [id:da5005822895298122] 
+    \draw    (179.26,108.14) .. controls (219.26,78.14) and (275.26,100.14) .. (264.26,120.14) .. controls (253.26,140.14) and (224.26,147.14) .. (203.26,140.14) .. controls (182.26,133.14) and (192.26,84.14) .. (220.26,77.14) .. controls (248.26,70.14) and (280.26,109.14) .. (286.26,140.14) .. controls (292.26,171.14) and (203.26,165.14) .. (188.26,157.14) .. controls (173.26,149.14) and (165.26,118.14) .. (179.26,108.14) -- cycle ;
+    \draw [shift={(221.72,93.47)}, rotate = 0.38] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(243.76,137.98)}, rotate = 159.54] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(192.76,111.58)}, rotate = 283.56] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(258.89,91.79)}, rotate = 45.62] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(249.31,162.97)}, rotate = 176.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(175.13,140.76)}, rotate = 252.08] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw [shift={(179.26,108.14)}, rotate = 323.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+    %Shape: Axis 2D [id:dp5544761970205885] 
+    \draw  (132.49,116.48) -- (280.51,116.48)(210.45,60.64) -- (210.45,214) (273.51,111.48) -- (280.51,116.48) -- (273.51,121.48) (205.45,67.64) -- (210.45,60.64) -- (215.45,67.64)  ;
+    
+    % Text Node
+    \draw (127,82.4) node [anchor=north west][inner sep=0.75pt]  [xscale=0.8,yscale=0.8]  {$f( \gamma ( a))$};
+    % Text Node
+    \draw (132,223.4) node [anchor=north west][inner sep=0.75pt]  [xscale=0.8,yscale=0.8]  {$\log \ z\ =\ \log |z|+i\arg z$};
+    
+    
+    \end{tikzpicture}
+    \]  
+
+\addlink{Root counting formula}
+\begin{corollary}[Root counting formula]
+    If $f:\reg\to\C$ is analytic and $\gamma$ is a simple closed curve in $\gamma$ with its interior in $\reg$ such that $f(z)\neq w$ on $\gamma$, then the number of roots of $f(z)=w$ inside $\gamma$ (with multiplicity) is $$Z_{f(z)-w}(\gamma)=\frac{1}{2\pi i}\int_{\gamma}\frac{f^{\prime}(z)}{f(z)-w}\d z$$
+\end{corollary}
+
+\eg Consider the function \[f(z)=z(\frac{z+\frac{1}{2}}{1+\frac{1}{2}\,z})(\frac{z-\frac{3}{4}}{1-\frac{3}{4}\,z})(\frac{z-\frac{4\,i}{5}}{1+\frac{4\,i}{5}\,z})\] Being a product of disk automorphisms, $f$ maps $\D\to\D$. It has roots $0,\frac{-1}{2}, \frac{4i}{5}, \frac{3}{4}$. We could observe the increment of winding number corresponding to how many times zeros are included.
+\drawing{0.8\linewidth}{image-8.png}
+
+
 \end{document} 
