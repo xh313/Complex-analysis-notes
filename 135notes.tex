@@ -3070,7 +3070,7 @@ which oscillates between arbitrarily large positive and negative values \textit{
 Thus, $f$ is neither increasing (nor decreasing) on any open interval containing $0$. In particular, $f$ is not injective on any neighborhood of $0$.
 \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=1,xscale=1]
     \begin{axis}[
-    x=70cm,y=70cm,
+    x=50cm,y=50cm,
     axis lines=middle,
     xmin=-0.08177555075798937,
     xmax=0.09507746322563831,
@@ -3079,9 +3079,9 @@ Thus, $f$ is neither increasing (nor decreasing) on any open interval containing
     xtick={-0.08,-0.07,...,0.09},
     ytick={-0.06,-0.05,...,0.06},]
     \clip(-0.08,-0.07) rectangle (0.1,0.06);
-    \draw[line width=1pt,color=magenta,smooth,samples=100,domain=-0.08177555075798937:0.09507746322563831] plot(\x,{(\x)+2*(\x)^(2)*sin((1/(\x))*180/pi)});
+    \draw[line width=1pt,color=magenta,smooth,samples=200,domain=-0.08177555075798937:0.09507746322563831] plot(\x,{(\x)+2*(\x)^(2)*sin((1/(\x))*180/pi)});
     % \begin{scriptsize}
-    \draw[color=magenta] (-0.07,-0.0648509743249033) node {$f$};
+    \draw[color=magenta] (-0.07,-0.0548509743249033) node {$f$};
     % \end{scriptsize}
     \end{axis}
     \end{tikzpicture}\]
