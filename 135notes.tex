@@ -2567,8 +2567,8 @@ For $R>1$ (so that $i$ is enclosed), let $\Gamma_R$ denote the semicircular curv
     
     \end{tikzpicture}
     \]
-Since $i$ is a pole enclosed in $\Gamma_R$, the residue theorem implies \(\int_{\Gamma_{R}}f(z)\d z=\,2\pi i\,\mathrm{Res}(f,i)\). By \cref{residue-formula}, \[\mathrm{Res}(f,i)=\operatorname*{lim}_{z\rightarrow i}(z-i)f(z)=\operatorname*{lim}_{z\rightarrow i}\frac{e^{i a z}}{(z+i)}=\frac{e^{-a}}{2i}\] so it follows that 
-\[\rt{\int_{-R}^{R}{\frac{e^{i a x}}{1+x^{2}}}\d x}+\bt{\int_{\gamma_{R}}{\frac{e^{i a z}}{1+z^{2}}}\d z}=2\pi i\,\mathrm{Res}(f,i)=\pi e^{-a}\]
+Since $i$ is a pole enclosed in $\Gamma_R$, the residue theorem implies \(\int_{\Gamma_{R}}f(z)\d z=\,2\pi i\,\Res (f,i)\). By \cref{residue-formula}, \[\Res (f,i)=\operatorname*{lim}_{z\rightarrow i}(z-i)f(z)=\operatorname*{lim}_{z\rightarrow i}\frac{e^{i a z}}{(z+i)}=\frac{e^{-a}}{2i}\] so it follows that 
+\[\rt{\int_{-R}^{R}{\frac{e^{i a x}}{1+x^{2}}}\d x}+\bt{\int_{\gamma_{R}}{\frac{e^{i a z}}{1+z^{2}}}\d z}=2\pi i\,\Res (f,i)=\pi e^{-a}\]
 
 We look at $\bt{\int_{\gamma_{R}}{\frac{e^{i a z}}{1+z^{2}}}\d z}$. If $z=x+i y$ is on $\gamma_R$, then $y \geq 0$ and hence (since $a>0$):
 \[\begin{aligned}
@@ -2741,7 +2741,7 @@ Recall \cref{cauchys-take1}. We can now extend beyond simple curves:
 \begin{theorem}[Residue, general case]
     Let $\reg$ be a simply-connected region and let $z_1,z_2,\dots,z_n\in \reg$ be distinct. If $f:\reg\backslash\{z_{1},z_{2},\cdot\cdot\cdot,z_{n}\}\to\mathbb{C}$ is analytic and $\gamma$ is a closed curve in $\reg$ that
     passes through no $z_i$, then
-    \[\frac{1}{2\pi i}\int_{\gamma}f(\zeta)\,d\zeta=\sum_{j=1}^{n}\mathrm{Res}(f;z_{j})I(\gamma,z_{j})\]
+    \[\frac{1}{2\pi i}\int_{\gamma}f(\zeta)\,d\zeta=\sum_{j=1}^{n}\Res (f;z_{j})I(\gamma,z_{j})\]
 \end{theorem}
 
 \subsection{The argument principle}
@@ -3092,5 +3092,153 @@ Thus, $f$ is neither increasing (nor decreasing) on any open interval containing
 \begin{proof}
     If $f^{\prime}(z_{0})=0$, then $f$ assumes the value $w_{0}=f(z_{0})$ at $z_{0}$ with multiplicity at least two. The local mapping theorem implies $f$ is not injective on any neighborhood of $z_{0}$ since $f$ assumes the value $w_{0}$ at at least two distinct points near $z_{0}$.
 \end{proof}
+
+\subsection{Summation via residues}
+\eg \label[example]{cotangent-sum} The function $\sin z$ has a simple zero at $z = 0$. \sidenote{$\sin \pi n=0$, and the derivative $\cos z$ always has $\cos \pi n \neq 0$.} Thus, \[\pi\cot\pi z=\frac{\pi\cos\pi z}{\sin\pi z}\]
+has a simple pole at each integer. This property makes the cotangent useful for summing
+certain infinite series.
+Let $p(z)$ be a polynomial with \dashuline{no integer zeros}. Then 
+$$f(z)=\frac{\pi\cot\pi z}{p(z)}$$
+has an infinite number of simple poles
+$$z=0,\pm1,\pm2,\ldots$$
+from $\cot\pi z$ and a finite number of poles
+$$w_{1},w_{2},\ldots,w_{r},$$
+none of which are integers. Let's find $\Res (f;n), n\in \Z$.
+
+\begin{lemma}
+    If $g/h$ has a \dashuline{simple pole} at $z_0$ and \dashuline{$g(z_0) \neq 0$}, then $$\Res \left(\frac{g(z)}{h(z)};z_{0}\right)=\frac{g(z_{0})}{h^{\prime}(z_{0})}$$
+\end{lemma}
+\begin{proof}
+    Since $z_{0}$ is a simple pole of $g/h$, it is a simple zero of $h$ and $h^{\prime}(z_{0})\neq0$. Thus,
+    \begin{align*}
+        \operatorname{Res}\left(\frac{g(z)}{h(z)};z_{0}\right)&=\lim_{z\to z_{0}}(z-z_{0})\frac{g(z)}{h(z)}\\
+        &=\lim_{z\to z_{0}}g(z)\frac{z-z_{0}}{h(z)-h(z_{0})}\\
+        &=g(z_{0})\lim_{z\to z_{0}}\frac{z-z_{0}}{h(z)-h(z_{0})}\\
+        &=\frac{g(z_{0})}{h^{\prime}(z_{0})}
+    \end{align*}
+
+\end{proof}
+
+Returning to \cref{cotangent-sum}: For each $n\in\mathbb{Z}$, the function $f(z)$ has residues
+\[\text{Res}(f;n)=\text{Res}\left(\frac{\frac{\pi\cos\pi z}{p(z)}}{\sin\pi z};n\right)=\frac{\frac{\pi\cos n\pi}{p(n)}}{\pi\cos n\pi}=\frac{1}{p(n)}\]
+Let $\gamma_N$ be the rectangular curve with vertices $\pm (N+\rt{\frac{1}{2}})\pm iN$\sidenote{we really want to avoid integers because they are poles of $f$}, where $N\in \N$ is so large that all of $p(z)$'s zeros $w_1,\dots,w_r$ are inside $\gamma_N$. 
+\[\begin{tikzpicture}[x=.75pt,y=.75pt]
+    \begin{axis}[
+    x=.9cm,y=.9cm,
+    axis lines=middle,
+    ymajorgrids=true,
+    xmajorgrids=true,
+    xmin=-7.727512941297836,
+    xmax=8.405996615862398,
+    ymin=-5.580265586094737,
+    ymax=6.169462261448943,
+    xtick={-7,-6,...,8},
+    ]
+    \clip(-7.727512941297836,-5.580265586094737) rectangle (8.405996615862398,6.169462261448943);
+    \fill[line width=2pt,color=cyan,fill=cyan,fill opacity=0.1] (-4.5,4) -- (-4.5,-4) -- (4.5,-4) -- (4.5,4) -- cycle;
+    \draw [line width=2pt,color=cyan] (-4.5,4)-- (-4.5,-4);
+    \draw [line width=2pt,color=cyan] (-4.5,-4)-- (4.5,-4);
+    \draw [line width=2pt,color=cyan] (4.5,-4)-- (4.5,4);
+    \draw [line width=2pt,color=cyan] (4.5,4)-- (-4.5,4);
+    \begin{scriptsize}
+    \draw [fill=magenta] (-4.5,4) circle (2.5pt);
+    \draw[color=magenta] (-3.671769318795448,4.32797572696716) node {$(-(N+1/2), N)$};
+    \draw [fill=magenta] (-4.5,-4) circle (2.5pt);
+    \draw[color=magenta] (-3.552482741663025,-3.679135763046743) node {$(-(N+1/2), -N)$};
+    \draw [fill=magenta] (4.5,-4) circle (2.5pt);
+    \draw[color=magenta] (5.215080677570078,-3.679135763046743) node {$(N+1/2, -N)$};
+    \draw [fill=magenta] (4.5,4) circle (2.5pt);
+    \draw[color=magenta] (5.1554373890038665,4.32797572696716) node {$(N+1/2, N)$};
+    \draw [fill=magenta] (-2,2) circle (2.5pt);
+    \draw[color=magenta] (-1.8377381953844423,2.3597472042821788) node {$w_1$};
+    \draw [fill=magenta] (-0.30192351480449386,2.5759541253346954) circle (2.5pt);
+    \draw[color=magenta] (0.137904471247412,2.7412692678027414) node {$w_2$};
+    \draw [fill=magenta] (-0.30192351480449386,-1.7183626514325379) circle (2.5pt);
+    \draw[color=magenta] (-0.137904471247412,-1.3530475089644918) node {$w_3$};
+    \draw [fill=magenta] (3,-1) circle (2.5pt);
+    \draw[color=magenta] (3.157387222035778,-0.6373280461699531) node {$w_r$};
+    \end{scriptsize}
+    \end{axis}
+    \end{tikzpicture}\]
+By the residue theorem,\hypertarget{cotangent-integral}{}
+\begin{align*}
+    {\frac{1}{2\pi i}}\int_{\gamma_{N}}{\frac{\pi\cot\pi z}{p(z)}}\d z&=\sum_{n=-N}^{N}\Res \left({\frac{\pi\cot\pi z}{p(z)}};n\right)+\sum_{j=1}^{r}\Res \left({\frac{\pi\cot\pi z}{p(z)}};w_{j}\right)\\
+    &= \sum_{n=-N}^{N}\Res \left({\frac{\pi\cos\pi z/p(z)}{\sin \pi z}};n\right)+\sum_{j=1}^{r}\Res \left({\frac{\pi\cot\pi z}{p(z)}};w_{j}\right)\\
+    &= \sum_{n=-N}^{N}\frac{1}{p(n)}+\sum_{j=1}^{r}\Res \left(\frac{\pi\cot \pi z}{p(z)}; w_j\right)
+\end{align*}
+\textit{Claim}: the integral tends to 0 as $N\to \infty$ if $\deg p\geq 2$. \hypertarget{integral-of-1-over-pn}{Hence}, \[\sum_{n=-\infty}^{\infty}{\frac{1}{p(n)}}=-\sum_{j=1}^{r}\mathrm{Res}\left({\frac{\pi\cot\pi z}{p(z)}};w_{j}\right)\]
+Observe that $\deg p(z)\geq2$ implies that $\sum_{n=0}^\infty\frac{1}{p(n)}$ and $\sum_{n=-\infty}^{-1}\frac{1}{p(n)}$ converge by the comparison test with just the leading term.
+
+\begin{lemma}
+    There is an $M > 0$ such that $|\cot \pi z|\leq M$ on $\gamma_N$ for all $N\in \N$. 
+\end{lemma}
+\begin{proof}
+    If $z=x+iy$, in which $x,y\in\mathbb{R}$, then
+\[|\cot\pi z|=\left|\frac{e^{i\pi x}+e^{-i\pi z}}{e^{i\pi x}-e^{-i\pi x}}\right|=\left|\frac{1+e^{-2\pi ix}}{1-e^{-2\pi ix}}\right|=\left|\frac{1+e^{-2\pi ix}e^{2\pi y}}{1-e^{-2\pi ix}e^{2\pi y}}\right|\]
+On the \textbf{vertical} sides of $\gamma_{N}$, we have $z=\pm(N+\frac{1}{2})+iy$ where $-N\leq y\leq N$ so that
+\[|\cot\pi z|=\left|\frac{1+e^{\mp2\pi i(N+\frac{1}{2})}e^{2\pi y}}{1-e^{\mp2\pi i(N+\frac{1}{2})}e^{2\pi y}}\right|=\left|\frac{1-e^{2\pi y}}{1+e^{2\pi y}}\right|\]
+This tends to $1$ independently of $N$ as $y\to+\infty$. Thus, there is an $M_1$ such that $|\cot \pi z|\leq M_1$ on the \textbf{vertical} sides of each $\gamma_{N}$.
+On the \textbf{horizontal} sides of $\gamma_{N}$, we have $z=x\pm iN$ where $-(N+\frac{1}{2})\leq x\leq(N+\frac{1}{2})$.
+Thus,
+$$|\cot\pi z|=\left|\frac{1+e^{-2\pi is}e^{\pm2\pi N}}{1-e^{-2\pi is}e^{\pm2\pi N}}\right|\leq\frac{e^{\pm2\pi N}+1}{|e^{\pm2\pi N}-1|}$$
+which tends to $1$ as $N\to\infty$. Consequently, there is an $M_{2}$ such that $|\cot\pi z|\leq M_{2}$ on the vertical sides of each $\gamma_{N}$.
+Set $M=\max\{M_{1},M_{2}\}$ and conclude that
+\[|\cot\pi z|\leq M\]
+on each $\gamma_{N}$ for $N\in\mathbb{N}$.
+\end{proof}
+
+Since $\deg p(z)\geq2$, there exists a constant $C$ such that
+$$\left|\frac{1}{p(z)}\right|\leq\frac{C}{|z|^{2}}$$
+for sufficiently large $|z|$. Thus, for sufficiently large $N$,
+$$\left|\frac{1}{2\pi i}\int_{\gamma}\frac{\pi\cot\pi z}{p(z)}\ dz\right|\leq M\cdot\frac{C}{N^{2}}\cdot\underbrace{(2N+2(N+1))}_{\text{periment of $\gamma_{\infty}$}}\leq\frac{5MC}{N},$$
+which tends to zero as $N\to\infty$. Consequently, the integral ${\frac{1}{2\pi i}}\int_{\gamma_{N}}{\frac{\pi\cot\pi z}{p(z)}}\d z$ \hyperlink{cotangent-integral}{here} tends to zero as $N\to\infty$. This yields \hyperlink{integral-of-1-over-pn}{this result}:\[\sum_{n=-\infty}^{\infty}{\frac{1}{p(n)}}=-\sum_{j=1}^{r}\mathrm{Res}\left({\frac{\pi\cot\pi z}{p(z)}};w_{j}\right)\]
+
+\eg Consider the sum \[\sum_{n=-\infty}^{\infty}\frac{1}{n^2+a^2} = \sum_{n=0}^{\infty}\frac{1}{n^2+a^2}+\sum_{n=1}^{\infty}\frac{1}{(-n)^2+a^2}= \frac{1}{a^2} +2\sum_{n=1}^{\infty}\frac{1}{\rt{n^2+a^2}}\] when $a\neq 0$.
+
+Set $p(z)= z^2+a^2$ which has zeros $w_1=ia, w_2=-ia$. \hyperlink{integral-of-1-over-pn}{This result} implies 
+\[\sum_{n=-\infty}^{\infty}{\frac{1}{n^{2}+a^{2}}}=-\left[\mathrm{Res}\left({\frac{\pi\cot\pi z}{z^{2}+a^{2}}};i a\right)+\mathrm{Res}\left({\frac{\pi\cot\pi z}{z^{2}+a^{2}}};-i a\right)\right]
+\]
+we compute the two residues required:
+\begin{align*}
+    \mathrm{Res}\left(\frac{\pi\cot\pi z}{z^{2}+a^{2}};ia\right)&=\operatorname*{lim}_{z\to ia}\left(z-ia\right)\cdot\frac{\pi\cot\pi z}{z^{2}+a^{2}}\\
+    &=\operatorname*{lim}_{z\to ia}\left(z-ia\right)\cdot\frac{\pi\cot\pi z}{(z-ia)(z+ia)}\\
+    &=\operatorname*{lim}_{z\to ia}\frac{\pi\cot\pi z}{z+ia}\\ &=\frac{\pi\cot\pi ia}{2ia}
+\end{align*}
+and \begin{align*}
+    \mathrm{Res}\left({\frac{\pi\cot\pi z}{z^{2}+a^{2}}};-i a\right)&=\operatorname*{lim}_{z\to-i a}(z-(-i a))\cdot{\frac{\pi\cot\pi z}{z^{2}+a^{2}}}\\
+    &=\operatorname*{lim}_{z\to-i a}(z+i a)\cdot{\frac{\pi\cot\pi z}{(z-i a)(z+i a)}}\\
+    &=\operatorname*{lim}_{z\to-i a}{\frac{\pi\cot\pi z}{z-i a}}\\
+    &={\frac{\pi\cot\pi(-i a)}{-2i a}}\\
+    &={\frac{\pi\cot\pi i a}{2i a}}
+\end{align*}
+Putting this together we obtain \begin{align*}
+    \sum_{n=-\infty}^{\infty}{\frac{1}{n^{2}+a^{2}}}&=-\left[\mathrm{Res}\left({\frac{\pi\cot\pi z}{z^{2}+a^{2}}};i a\right)+\mathrm{Res}\left({\frac{\pi\cot\pi z}{z^{2}+a^{2}}};-i a\right)\right]\\
+    &= -\left(\frac{\pi\cot\pi i a}{2i a}+\frac{\pi\cot\pi i a}{2i a}\right)\\
+    &=-\frac{\pi\cot\pi i a}{i a}\\
+    &=-\frac{\pi}{i a}\cdot\frac{\cos\pi i a}{\sin\pi i a}\\
+    &=-\frac{\pi}{i a}\cdot\frac{e^{i(\pi i a)}+e^{-i(\pi i a)}}{2}\cdot\frac{2i}{e^{i(\pi i a)}-e^{-i(\pi i a)}}\\
+    &=-\frac{\pi}{a}\cdot\frac{e^{-\pi a}+e^{\pi a}}{e^{-\pi a}-e^{\pi a}}\\
+    &=\frac{\pi}{a}\cdot\frac{e^{\pi a}+e^{-\pi a}}{e^{\pi a}-e^{-\pi a}}\\
+    &=\frac{\pi\coth\pi a}{a}
+\end{align*}
+
+Write $$\sum_{n=-\infty}^\infty\frac{1}{n^2+a^2}=\frac{1}{a^2}+2\sum_{n=1}^\infty\frac{1}{n^2+a^2}$$ and observe that $$\frac{1}{a^2}+2\sum_{n=1}^\infty\frac{1}{n^2+a^2}=\frac{\pi\coth\pi a}{a}$$ and hence $$\sum_{n=1}^\infty\frac{1}{n^2+a^2}=\frac{\pi a\coth\pi a-1}{2a^2}$$
+
+We observe that this is actually \textbf{analytic}
+of $a$ on a punctured neighborhood of 0. In fact, we can even show that $a=0$ is a \textbf{removable singularity}.\sidenote{plug in $a=0$, observe that the function is bounded!}
+
+Using the Laurent series:
+$$\coth z=\frac{1}{z}+\frac{z}{3}-\frac{z^{3}}{45}+\frac{2z^{5}}{945}+\cdots$$
+we have
+\begin{align*}
+    \frac{\pi a\coth\pi a-1}{2a^{2}}&=\frac{\pi a\left(\frac{1}{\pi a}+\frac{\pi a}{3}-\frac{(\pi a)^{3}}{45}+\cdots\right)-1}{2a^{2}}\\
+    &=\frac{\left(1+\frac{\pi^{2}a^{2}}{3}-\frac{\pi^{4}a^{4}}{45}+\cdots\right)-1}{2a^{2}}\\
+&=\frac{\frac{\pi^{2}a^{2}}{3}-\frac{\pi^{4}a^{4}}{45}+\cdots}{2a^{2}}\\
+&=\frac{\pi^{2}}{6}-\frac{\pi^{4}a^{2}}{90}+\cdots
+\end{align*}
+Thus, $a=0$ is a removable singularity and it yields Euler's celebrated formula:
+\[\sum_{n=1}^{\infty}\frac{1}{n^2}= \frac{\pi^2}{6}\]
+
+
 
 \end{document} 
