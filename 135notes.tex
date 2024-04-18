@@ -384,7 +384,7 @@ Such an $f$ is \textbf{analytic} on $\C\backslash\{\frac{-d}{c}\}$\sidenote{reca
     \begin{align*}
         f(z)=f(w)\implies \frac{az+b}{cz+d}&=\frac{aw+b}{cw+d}\\
          (az+b)(cw+d)&= (cz+d)(aw+b)\\
-         aczw+bcw+adz+bd&=aczw+adw+bcz+bd\\
+         aczw+bcw+a\d z+bd&=aczw+adw+bcz+bd\\
          (ad-bc)z&=(ad-bc)w\\
          z&=w
     \end{align*}
@@ -425,7 +425,7 @@ with this, $f$ is a \textbf{bijection} from $\Chat=\C\cup\{\infty\}$ to itself.\
         \end{enumerate}
         \item If $\infty$ is not a fixed point, then $c\neq 0$. Solve:\begin{align*}
             f(z)+z \Leftrightarrow \frac{az+b}{cz+d}&=z\\
-            az+b&=cz^2+dz\\
+            az+b&=cz^2+\d z\\
             cz^2+(d-a)z-b&=0
         \end{align*}
         is a quadratic which has at most two (distinct) solutions in $\C$. Hence, this transformation fixes at most two points.
@@ -693,7 +693,7 @@ If the sequence is unbounded, the $\limsup$ would be $\infty$.
 \end{itemize}
 
 \addlink{Cauchy-Hadamard formula}
-\begin{theorem}[Cauchy-Hadamard]
+\begin{theorem}[Cauchy-Hadamard]\hypertarget{cauchy-hadamard}{}
     Let $\sum_{n=0}^{\infty}a_n(z-z_0)^n$ be a power series. Define $R\in [0,\infty]$ by \sidenote{interpret $\frac{1}{0}=\infty$}\begin{align*}
         \frac{1}{R}=\limsup_{n\to \infty}\sqrt[n]{|a_n|}
     \end{align*}
@@ -2871,7 +2871,7 @@ It allows computers to compute roots with great ease. As soon as we have an erro
 Let $$f(z)=e^{z}-3z^{n}\qquad\text{and}\qquad g(z)=-3z^{n}$$ and note that $g$ has precisely $n$ zeros (counted by multiplicity) in $|z|<1$. 
 
 For $|z|=1$,
-$$|\underbrace{(e^{z}-3z^{n})}_{f(z)}-\underbrace{(-3z^{n})}_{g(z)}|=|e^{z}|=e^{\operatorname{Re}z}\leq e<3=|\underbrace{-3z^{n}}_{g(z)}|\leq \underbrace{-3z^{n}}_{g(z)}| + \underbrace{e^{z}-3z^n}_{f(z)}|$$
+$$|\underbrace{(e^{z}-3z^{n})}_{f(z)}-\underbrace{(-3z^{n})}_{g(z)}|=|e^{z}|=e^{\re z}\leq e<3=|\underbrace{-3z^{n}}_{g(z)}|\leq \underbrace{-3z^{n}}_{g(z)}| + \underbrace{e^{z}-3z^n}_{f(z)}|$$
 Rouch\'e's theorem (\cref{rouches-theorem}) implies that $f$ has exactly $n$ roots inside the unit circle.
 
 \rmk We can also use the argument principle to get $Z_f(\gamma)=I(f\circ \gamma; 0)$ and integrate numerically up to a precision of $1/2$, but Rouch\'e's theorem is certainly more computationally light.
@@ -3190,7 +3190,7 @@ on each $\gamma_{N}$ for $N\in\mathbb{N}$.
 Since $\deg p(z)\geq2$, there exists a constant $C$ such that
 $$\left|\frac{1}{p(z)}\right|\leq\frac{C}{|z|^{2}}$$
 for sufficiently large $|z|$. Thus, for sufficiently large $N$,
-$$\left|\frac{1}{2\pi i}\int_{\gamma}\frac{\pi\cot\pi z}{p(z)}\ dz\right|\leq M\cdot\frac{C}{N^{2}}\cdot\underbrace{(2N+2(N+1))}_{\text{periment of $\gamma_{\infty}$}}\leq\frac{5MC}{N},$$
+$$\left|\frac{1}{2\pi i}\int_{\gamma}\frac{\pi\cot\pi z}{p(z)}\ \d z\right|\leq M\cdot\frac{C}{N^{2}}\cdot\underbrace{(2N+2(N+1))}_{\text{periment of $\gamma_{\infty}$}}\leq\frac{5MC}{N},$$
 which tends to zero as $N\to\infty$. Consequently, the integral ${\frac{1}{2\pi i}}\int_{\gamma_{N}}{\frac{\pi\cot\pi z}{p(z)}}\d z$ \hyperlink{cotangent-integral}{here} tends to zero as $N\to\infty$. This yields \hyperlink{integral-of-1-over-pn}{this result}:\[\sum_{n=-\infty}^{\infty}{\frac{1}{p(n)}}=-\sum_{j=1}^{r}\mathrm{Res}\left({\frac{\pi\cot\pi z}{p(z)}};w_{j}\right)\]
 
 \eg Consider the sum \[\sum_{n=-\infty}^{\infty}\frac{1}{n^2+a^2} = \sum_{n=0}^{\infty}\frac{1}{n^2+a^2}+\sum_{n=1}^{\infty}\frac{1}{(-n)^2+a^2}= \frac{1}{a^2} +2\sum_{n=1}^{\infty}\frac{1}{\rt{n^2+a^2}}\] when $a\neq 0$.
@@ -3239,6 +3239,165 @@ we have
 Thus, $a=0$ is a removable singularity and it yields Euler's celebrated formula:
 \[\sum_{n=1}^{\infty}\frac{1}{n^2}= \frac{\pi^2}{6}\]
 
+\section{Prime Number Theorem}
+\subsection{Newman's Tauberian theorem}
+A ``Tauberian theorem'' is a result in which a strong convergence result is deduced from a weaker convergence result and an additional hypothesis. G.H. Hardy and J.E. Littlewood, who coined the term in honor of A. Tauber. 
 
+The following is a Tauberian theorem of D.J. Newman, deduced in 1980.
+\begin{theorem}[Newman's]
+    Let $f:[0,\infty)\to \C$ be \textbf{bounded} and \textbf{piecewise continuous}\sidenote{piecewise cont. means that it has finite amount of discontinuities on any finite intervals}.
+For $\re z > 0$, let the \textbf{Laplace transfomation} of $f$ be
+\begin{equation*}
+g(z) = \int_0^{\infty} f(t) e^{-zt}\d t.
+\end{equation*}
+Suppose $g$ has an \textbf{analytic continuation} to a neighborhood of $\re z \geq 0$\sidenote{this is the \textbf{closed} half plane: plugging in 0 is fine}. Then 
+\begin{equation*}
+g(0) = \lim_{T\to\infty} \int_0^T f(t)\d t.
+\end{equation*}
+In particular, $\displaystyle\int_0^{\infty} f(t)\d t$ converges.\sidenote{Note this is not obvious: if $f$ is the constant function of 1, $g$ has a pole at 0 and so the hyp. is not satisfied. The integral $\int_{0}^{\infty}1\d t$ diverges!}
+\end{theorem}
+\begin{proof}[Proof (behold, this one is long!)]
+    Note that $g(z)$ is analytic on $\re z > 0$ (Exercise 6, HW9).
+    
+    \spl
+    \begin{lemma}\label[lemma]{gt-entire}
+        Let $f:[0,\infty)\to\mathbb{C}$ be piecewise continuous. For each $T>0$, the function\sidenote{a truncated Laplace; can also be proven with technique on Ex6 HW9.} \begin{equation}\label{nt-eq2}
+            g_{T}(z)=\int_{0}^{T}e^{-zt}f(t)\d t
+        \end{equation} is entire.
+    \end{lemma}
+    \begin{proof}
+        Fix $T>0$ and let
+$$M=\sup_{0\leq t\leq T}|f(t)|,$$
+which is finite since $[0,T]$ is compact and $f$ is piecewise continuous.\sidenote{Recall that a piecewise continuous function has only
+finitely many discontinuities, all of which are jump
+discontinuities.} Then,
+$$c_{n}=\int_{0}^{T}f(t)t^{n}\,dt\quad\text{satisfies}\quad|c_{n}|\leq\frac{MT^{n+1}}{n+1}$$
+Since $e^{z}$ is entire, its power series representation converges uniformly on $[0,T]$. Thus,
+$$g_{T}(z)=\int_{0}^{T}f(t)e^{-zt}\d t=\int_{0}^{T}f(t)\left(\sum_{n=0}^{\infty}\frac{(-zt)^{n}}{n!}\right)\d t$$ $$=\sum_{n=0}^{\infty}\frac{(-1)^{n}z^{n}}{n!}\int_{0}^{T}f(t)t^{n}\d t=\sum_{n=0}^{\infty}\frac{(-1)^{n}c_{n}}{n!}z^{n}$$
+defines an entire function since its radius of convergence is the reciprocal of
+$$\limsup_{n\to\infty}\left|\frac{(-1)^{n}c_{n}}{n!}\right|^{\frac{1}{n}}\leq\limsup_{n\to\infty}\frac{M^{\frac{1}{n}}T^{\frac{n+1}{n}}}{(n+1)^{\frac{1}{n}}(n!)^{\frac{1}{n}}}=\frac{1\cdot T}{1\cdot\infty}=0$$\sidenote{recall $n^{1/n}=1$ and $(n!)^{1/n}\to \infty$}
+by the \hyperlink{cauchy-hadamard}{Cauchy-Hadamard formula}.
+    \end{proof}
+    \spl
+
+    Now we must show \begin{equation}\label{nt-eq3}
+        \operatorname*{lim}_{T\rightarrow\infty}g_{T}(0)=g(0)
+    \end{equation}
+\begin{enumerate}[align=left, label=\textit{Step \arabic*:}]
+    \item Let $\|f\|_{\infty}=\sup_{t\geq0}|f(t)|$, which is finite by assumption. For $\re z>0$,\sidenote{We look at the tail of the integral}
+    \begin{equation}\label{nt-eq4}
+        \begin{aligned}
+            |g(z)-g_{T}(z)|&=\left|\int_{0}^{\infty}e^{-zt}f(t)\,dt-\int_{0}^{T}e^{-zt}f(t)\,dt\right|\\
+        &=\left|\int_{T}^{\infty}e^{-zt}f(t)\,dt\right|\\
+        &\leq\int_{T}^{\infty}e^{-\re (zt)}|f(t)|\,dt\\
+        &\leq\|f\|_{\infty}\int_{T}^{\infty}e^{-t\re z}\d t\\
+        &=\|f\|_{\infty}\,\frac{e^{-T\re z}}{\re z}
+        \end{aligned}
+    \end{equation}
+
+    \item For $\re z<0$\sidenote{because $g$ has analytic continuation to an open nbd of any $\re z \geq 0$}, \begin{equation}\label{nt-eq5}
+        \begin{aligned}
+            |g_{T}(z)|&=\left|\int_{0}^{T}e^{-zt}f(t)\,dt\right|\leq\int_{0}^{T}e^{-\re (zt)}|f(t)|\,dt\\
+            &\leq\|f\|_{\infty}\int_{0}^{T}e^{-t\re z}\,dt\\
+            &\leq\|f\|_{\infty}\int_{-\infty}^{T}e^{-t\re z}\,dt\\
+            &=\|f\|_{\infty}\,\frac{\gt{e^{-T\re z}}}{|\re z|}
+        \end{aligned}
+    \end{equation}
+    
+    \item Suppose that $g$ has an analytic continuation to an open region $\Omega$ that contains the closed half plane $\re z\geq0$. Let $R>0$ and let $\delta_{R}>0$ be small enough to ensure that $g$ is analytic on an open region that contains the curve $C_{R}$ (and its interior) formed by intersecting the circle $|z|=R$ with the vertical line $\re z=-\delta_{R}$.\sidenote{The imaginary line segment $[-iR,iR]$ is \textbf{compact} and can be
+    covered by \textbf{finitely} many open disks (yellow) upon which $g$ is analytic. Thus, there is a
+    $\delta_R>0$ such that g is analytic on an open region that contains the curve $C_R$.}\drawing{0.5\linewidth}{image-10.png}
+
+    \item For each $R>0$, Cauchy's integral formula implies \sidenote{\rt{this part} evals to 1 when $z=0$, so they disappear and the rest is from CIF. \textit{This is the clever bit!}}\begin{equation}\label{nt-eq6}
+        g_{T}(0)-g(0)={\frac{1}{2\pi i}}\int_{C_{R}}\left(g_{T}(z)-g(z)\right)\rt{e^{z T}\left(1+{\frac{z^{2}}{R^{2}}}\right)}{\frac{\d z}{z}}
+    \end{equation}
+    We examine the contributions to this integral over the two curves
+    $$C_{R}^{+}=C_{R}\cap\{z:\mathrm{Re}\,z\geq0\}\qquad\text{and}\qquad C_{R}^{-}=C_{R}\cap\{z:\mathrm{Re}\,z\leq0\}.$$
+
+    \item We first examine the contribution of $C_{R}^{+}$ in \cref{nt-eq6}. Let $z=Re^{it}$: \begin{equation}\label{nt-eq7}
+        \begin{aligned}
+            \left|{\frac{1}{z}}\left(1+{\frac{z^{2}}{R^{2}}}\right)\right|&=\left|{\frac{1}{z}}+{\frac{z}{R^{2}}}\right|=\left|{\frac{1}{R e^{i t}}}+{\frac{R e^{i t}}{R^{2}}}\right|\\ 
+            &={\frac{1}{R^{2}}}|R e^{-i t}+R e^{i t}|={\frac{1}{R^{2}}}|\bar{z}+z|\\ 
+            &={\frac{2|\re z|}{R^{2}}}
+        \end{aligned}
+    \end{equation}
+    For $z\in \C$: \begin{equation}\label{nt-eq8}
+        |e^{z T}|= e^{T\,\mathrm{Re}\,z}
+    \end{equation}
+    and hence \cref{nt-eq4,nt-eq7,nt-eq8} imply: 
+    \begin{equation}\label{nt-eq9}
+        \begin{aligned}
+           &\left|\frac{1}{2\pi i}\int_{C_{R}^{+}}\left(g_{T}(z)-g(z)\right)e^{z T}\left(1+\frac{z^{2}}{R^{2}}\right)\frac{d z}{z}\right|\\
+    \leq&\frac{1}{2\pi}\underbrace{\left(\|f\|_{\infty}\,\frac{e^{-T\re z}}{\re z}\right)}_{\text{by \ref{nt-eq4}}}\underbrace{(e^{T\re z})}_{by \ref{nt-eq8}}\underbrace{\left(\frac{2 |\re z|}{R^{2}}\right)}_{\text{by \ref{nt-eq7}}}(\pi R)\\
+    =&\frac{\|f\|_{\infty}}{R} 
+        \end{aligned}
+    \end{equation}
+
+   
+    \item[\textit{Step 6a:}] We examine the contribution of $C_R^-$ in \cref{nt-eq6} in 6a and 6b. Since
+    the integrand in the following integral is \textbf{analytic}\sidenote{see \cref{gt-entire}} in $\re z<0$, we can replace the contour\sidenote{by Cauchy's deformation} $C_R^-$ with the left-hand side of the circle $|z|=R$ in the
+    computation
+    \begin{equation}
+        \left|\frac{1}{2\pi i} \int_{C_{R}^{-}}g_{T}(z)e^{z T}\left(1+\frac{z^{2}}{R^{2}}\right)\frac{d z}{z}\right|
+    \end{equation}
+    \begin{equation}\label{nt-eq11}
+        \begin{aligned}
+            &=\left|\frac{1}{2\pi i}\int_{|z|=R}g_{T}(z)e^{z T}\left(1+\frac{z^{2}}{R^{2}}\right)\frac{d z}{z}\right|\\
+            &\leq \frac{1}{\mathbf{2}\gt{\pi}}
+            \underbrace{\left(\left\|f\right\|_{\infty}\frac{\bt{e^{-T\re z}}}{\rt{\left|\re z\right|}}\right)}_{\text{by (\ref{nt-eq5})}}(\bt{e^{T\re z}})
+            \underbrace{\left(\frac{\mathbf{2}\rt{\left|\re z\right|}}{R^{2}}\right)}_{\text{by (\ref{nt-eq7})}}(\gt{\pi} R)\\
+            &=\frac{\left\|f\right\|_{\infty}}{R}
+        \end{aligned}
+    \end{equation}
+    \sidenote{The integrand in \cref{nt-eq11} is analytic in $\re  z<0$. Cauchy's theorem ensures that the integral over $C_R^{-}$ equals the integral over the semicircle $\{z:|z|=R, \re  z \leq 0\}$.}\drawing{0.5\linewidth}{image-15.png}
+    
+    \item[\textit{Step 6b:}] Next we focus on the corresponding integral with $g$ in place of $g_T$. Let
+    $$
+    M=\sup _{z \in C_R^{-}}|g(z)|,
+    $$
+    which is finite since $C_R^{-}$is compact. Since $|z| \geq \delta_R$ for $z \in C_R^{-}$,
+    $$
+    \left|g(z) e^{z T}\underbrace{\rt{\left(1+\frac{z^2}{R^2}\right)}}_{\leq 2} \frac{1}{z}\right| \leq \frac{2 M e^{T \re  z}}{\delta_R} .
+    $$
+    
+    Fix $\epsilon>0$ and obtain a curve $C_R^{-}(\epsilon)$ by removing, from the beginning and end of $C_R^{-}$, \textcolor{purple}{two arcs each of length $\epsilon \delta_R /(4 M)$}. 
+    \drawing{0.5\linewidth}{image-16.png}
+    Then there is a $\rho>0$ such that $\re  z<-\rho$ for each $z \in C_R^{-}(\epsilon)$.
+    % \drawing{0.5\linewidth}{image-18.png}
+    Consequently,\sidenote{$\delta_R<R$ so we are bounding above by making the denom. smaller}
+    $$
+    \begin{aligned}
+    \limsup _{T \rightarrow \infty}\left|\int_{C_R^{-}} \gt{g(z)} \bt{e^{z T}}\left(\rt{1+\frac{z^2}{R^2}}\right) \frac{d z}{z}\right| & 
+    \leq \limsup _{T \rightarrow \infty}
+    \Bigg(\underbrace{\textcolor{blue}{\frac{2 M e^{-\rho T}}{\delta_R} \cdot \pi R}}_{\text {from } C_R^{-}(\epsilon)}
+    +\underbrace{\frac{\rt{2}\cdot \bt{1}
+    \cdot \gt{M}}{\delta_R} 
+    \cdot 2\textcolor{purple}{\frac{ \epsilon \delta_R}{4 M}}}_{\text {from the two arcs}}\Bigg) \\
+    & =\epsilon 
+    \end{aligned}
+    $$
+    Since $\epsilon>0$ was arbitrary,\sidenote{we couldn't omit the $\epsilon$ in prev. steps because the two arcs were indep. of $T$ and hence can't get cancelled by having $T\to \infty$.}
+    \begin{equation}\label{nt-eq12}
+        \limsup _{T \rightarrow \infty}\left|\int_{C_R^{-}} g(z) e^{z T}\left(1+\frac{z^2}{R^2}\right) \frac{d z}{z}\right|=0
+    \end{equation}
+    \setcounter{enumi}{6}
+
+    \item For each fixed $R$,
+    \begin{align*}
+        &\limsup_{T\to0}|g_{T}(0)-g(0)|\\
+        =&\limsup_{T\to0}\left|\frac{1}{2\pi i}\int_{C_{R}}\left(g_{T}(z)-g(z)\right)e^{zT}\left(1+\frac{z^{2}}{R^{2}}\right)\frac{\d z}{z}\right| &&\text{by (\ref{nt-eq6})}\\
+        \leq &\underbrace{\left\|f\right\|_{R}}_{\text{from }C_{R}^{+}}+\underbrace{\left(\left\|f\right\|_{\infty}+0\right)}_{\text{from }C_{R}^{-}} &&\text{by \labelcref{nt-eq9,nt-eq11,nt-eq12}}\\
+        =& \frac{2\,||f||_\infty}{R}
+    \end{align*} 
+
+Since $R > 0$ was arbitrary, it follows that we can let $R\to \infty$ and get \[\operatorname*{limsup}_{T\rightarrow0}|g_{T}({0}){-}g({0})|{=}{0}\]
+\end{enumerate}
+Hence, $\operatorname*{lim}_{T\to\infty}g_{T}(0)=g(0)$.\sidenote{Tail is 0 so we are good}
+\end{proof}
+
+\subsection{Statement of PNT}
+\begin{theorem}[Prime Number]
+    Let $\pi(x)$ be the number of primes $\leq x$ for some $x\in \R_{\geq 0}$.\sidenote{For instance, $\pi(10.5) = 4$ since $2,3,5,7\leq 10.5$.} Then \[\lim_{x\to \infty}\frac{\pi(x)}{x/\ln x}=1\]
+\end{theorem}
 
 \end{document} 
