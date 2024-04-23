@@ -3244,7 +3244,7 @@ Thus, $a=0$ is a removable singularity and it yields Euler's celebrated formula:
 A ``Tauberian theorem'' is a result in which a strong convergence result is deduced from a weaker convergence result and an additional hypothesis. G.H. Hardy and J.E. Littlewood, who coined the term in honor of A. Tauber. 
 
 The following is a Tauberian theorem of D.J. Newman, deduced in 1980.
-\begin{theorem}[Newman's]
+\begin{theorem}[Newman's]\label[theorem]{newmans-tauberian}
     Let $f:[0,\infty)\to \C$ be \textbf{bounded} and \textbf{piecewise continuous}\sidenote{piecewise cont. means that it has finite amount of discontinuities on any finite intervals}.
 For $\re z > 0$, let the \textbf{Laplace transfomation} of $f$ be
 \begin{equation*}
@@ -3395,12 +3395,228 @@ Since $R > 0$ was arbitrary, it follows that we can let $R\to \infty$ and get \[
 Hence, $\operatorname*{lim}_{T\to\infty}g_{T}(0)=g(0)$.\sidenote{Tail is 0 so we are good}
 \end{proof}
 
-\subsection{Statement of PNT}
+\subsection{Summary of proof of PNT}
 \begin{theorem}[Prime Number]
     Let $\pi(x)$ be the number of primes $\leq x$ for some $x\in \R_{\geq 0}$.\sidenote{For instance, $\pi(10.5) = 4$ since $2,3,5,7\leq 10.5$.} Then \[\lim_{x\to \infty}\frac{\pi(x)}{x/\ln x}=1\]
 \end{theorem}
-\[\input{pnt_100.tex}\]
-\[\input{pnt_300.tex}\]
-\[\input{pnt_1000.tex}\]
+\begin{figure}[htbp]
+    \centering
+    \input{pnt_100.tex}
+    \input{pnt_300.tex}
+    \input{pnt_1000.tex}
+    \caption{$\pi(x)$ and $x/\ln x$ as $x\to \infty$}
+    \label{fig:pnt}
+\end{figure}
+We now recap the proof.\sidenote{So forth $\ln$ and $\log$ would denote the same thing.}
+\subsubsection{Riemann zeta function}
+\begin{itemize}
+    \item
+      The Riemann zeta function is defined by \[
+      \zeta(s)=\sum_{n=1}^{\infty} \frac{1}{n^s} \quad \text { for } \operatorname{Re} s>1 .
+      \] Ex. 7 of HW3 establishes the convergence of the series and the
+      continuity of the resulting function; Ex. 7 of HW8 establishes the
+      analyticity of \(\zeta(s)\) on \(\operatorname{Re} s>1\).
+    \item
+      The Euler product formula (Ex. 6 of HW4) is \[
+      \zeta(s)=\prod_p\left(1-\frac{1}{p^s}\right)^{-1} \quad \text { for } \operatorname{Re} s>1 .
+      \] Moreover, \(\zeta(s) \neq 0\) for \(\operatorname{Re} s>1\).
+    \item
+      The formula \[
+      \zeta(s)=\frac{1}{s-1}+1-s \int_1^{\infty} \frac{x-\lfloor x\rfloor}{x^{s+1}} d x
+      \] provides the analytic continuation of \(\zeta(s)\) to
+      \(\operatorname{Re} s>0\) except for a simple pole at \(s=1\). Ex. 4
+      of HW5 establishes the convergence of the integral on Re \(s>0\); Ex.
+      8 of HW 8 establishes the analyticity of \(\zeta(s)\) on
+      \(\{s \in \mathbb{C}: \operatorname{Re} s>0\} \backslash\{1\}\).
+    \item
+      Apply the logarithm to the Euler product formula and obtain \[
+      \log \zeta(s)=\sum_{n=1}^{\infty} \frac{c_n}{n^s} \quad \text { for } \operatorname{Re} s>1,
+      \] in which \(c_n \geq 0\) for \(n \in \mathbb{N}\). This is Ex. 8 of
+      HW 6
+    \item
+      If \(s=\sigma+i t\), in which \(\sigma>1\) and \(t \in \mathbb{R}\),
+      then Ex. 4 of HW 7 provides \sidenote{The series looking like \[\sum_{n=1}^{\infty} \frac{c_n}{n^s}\] are called Dirichlet series}\[
+      \log |\zeta(s)|=\operatorname{Re} \log \zeta(s)=\operatorname{Re} \sum_{n=1}^{\infty} \frac{c_n}{n^s}=\sum_{n=1}^{\infty} \operatorname{Re} \frac{c_n e^{-i t \log n}}{n^\sigma}=\sum_{n=1}^{\infty} \frac{c_n \cos (t \log n)}{n^\sigma}
+      \]
+      \item
+  \(\zeta(s)\) has no zeros on \(\operatorname{Re} s=1\) (Ex. 5 of HW
+  10).
+  \begin{proof}
+    Suppose that \(\zeta\left(1+i t_0\right)=0\) for some
+\(t_0 \in \mathbb{R} \backslash\{0\}\) and let\sidenote{This is a very clever bit! The $f$ seems to come from nowhere, but it all works in the end\dots} \[
+f(s)=\zeta^3(s) \zeta^4\left(s+i t_0\right) \zeta\left(s+2 i t_0\right).
+\]
+
+Deduce that the singularity of \(f\) at \(s=1\) is removable and
+\(f(1)=0\), so \[
+\lim _{\sigma \rightarrow 1^{+}} \log |f(\sigma)|=-\infty .
+\]
+
+This is a contradiction since \[
+\begin{aligned}
+\log |f(\sigma)| & =3 \log |\zeta(\sigma)|+4 \log \left|\zeta\left(\sigma+i t_0\right)\right|+\log \left|\zeta\left(\sigma+2 i t_0\right)\right| \\
+& =3 \sum_{n=1}^{\infty} \frac{c_n}{n^\sigma}+4 \sum_{n=1}^{\infty} \frac{c_n \cos \left(t_0 \log n\right)}{n^\sigma}+\sum_{n=1}^{\infty} \frac{c_n \cos \left(2 t_0 \log n\right)}{n^\sigma} \\
+& =\sum_{n=1}^{\infty} \frac{c_n}{n^\sigma}\left(3+4 \cos \left(t_0 \log n\right)+\cos \left(2 t_0 \log n\right)\right) \\
+& \geq 0
+\end{aligned}
+\] since \(c_n \geq 0\) for \(n \in \mathbb{N}\) and
+\(3+4 \cos x+\cos 2 x=2(1+\cos 2 x)^2 \geq 0\).
+  \end{proof}
+    \end{itemize}
+
+\subsubsection{The function Φ$(s)$}
+\begin{itemize}
+    \item
+      \(\Phi(s)=\sum_p \frac{\log p}{p^s}\) is analytic on Re \(s>1\) (Ex. 7
+      of HW 9).
+    \item
+      \(\sum_p \frac{\log p}{p^s\left(p^s-1\right)}\) is analytic on Re
+      \(s>\frac{1}{2}\) (Ex. 6a of HW 10).
+    \item
+      \(-\frac{\zeta^{\prime}(s)}{\zeta(s)}=\Phi(s)+\sum_p \frac{\log p}{p^s\left(p^s-1\right)}\)
+      on Re \(s>1\) (Ex. 6b of HW 10).
+    \item
+      The function \[
+      \Phi(s)=-\frac{\zeta^{\prime}(s)}{\zeta(s)}-\sum_p \frac{\log p}{p^s\left(p^s-1\right)}
+      \] has a meromorphic continuation to
+      \(\operatorname{Re} s>\frac{1}{2}\) with poles only at \(s=1\) and the
+      zeros of \(\zeta(s)\) in \(\frac{1}{2}<\operatorname{Re} s<1\) (Ex. 6c
+      of HW 10).
+    \item
+      \(\Phi(s)-\frac{1}{s-1}\) is analytic on an open set containing Re
+      \(s \geq 1\) (Ex. 6d of HW 10).
+    \end{itemize}
+
+\subsubsection{The function θ$(x)$}
+\begin{itemize}
+    \item
+      The Chebyshev theta function \(\theta(x)=\sum_{p \leq x} \log p\)
+      satisfies \(\theta(x) \leq 3 x\) (Ex. 7 of HW6).
+    \item
+      Let \(f:[0, \infty) \rightarrow \mathbb{C}\) be a piecewise-continuous
+      function such that \[
+      |f(t)| \leq A e^{B t} \quad \text { for } t \geq 0 .
+      \] Then the Laplace transform of \(f\) is analytic on
+      \(\operatorname{Re} z>B\) (Ex. 6 of HW 9): \[
+      g(z)=\int_0^{\infty} f(t) e^{-z t} d t .
+      \]
+    \item
+      \(\frac{\Phi(s)}{s}=\int_0^{\infty} \theta\left(e^t\right) e^{-s t} d t\)
+      for \(\operatorname{Re} s>1\) (Ex. 6, HW 11). 
+      \begin{proof}
+        For
+      \(\operatorname{Re} s>2\), \begin{equation}\label{chebyshev-deriv}
+        \begin{aligned}
+            \Phi(s) & =\sum_p \frac{\log p}{p^s}=\sum_{n=1}^{\infty} \frac{\theta(n)-\theta(n-1)}{n^s} \\
+            & =\sum_{n=1}^{\infty} \frac{\theta(n)}{n^s}-\sum_{n=2}^{\infty} \frac{\theta(n-1)}{n^s}=\sum_{n=1}^{\infty} \frac{\theta(n)}{n^s}-\sum_{n=1}^{\infty} \frac{\theta(n)}{(n+1)^s} \\
+            & =\sum_{n=1}^{\infty} \theta(n)\left(\frac{1}{n^s}-\frac{1}{n^{s+1}}\right)=\sum_{n=1}^{\infty} \theta(n)\left(s \int_n^{n+1} \frac{d x}{x^{s+1}}\right) \\
+            & =s \sum_{n=1}^{\infty} \int_n^{n+1} \frac{\theta(n) d x}{x^{s+1}}=s \sum_{n=1}^{\infty} \int_n^{n+1} \frac{\theta(x) d x}{x^{s+1}}=s \int_1^{\infty} \frac{\theta(x) d x}{x^{s+1}} \\
+            & =s \int_0^{\infty} \frac{\theta\left(e^t\right) e^t d t}{e^{s t+t}}=s \int_0^{\infty} \theta\left(e^t\right) e^{-s t} d t .
+            \end{aligned}
+      \end{equation}
+      \end{proof}
+    This establishes the desired identity for
+      \(\operatorname{Re} s>2\). Since \(\theta\left(e^t\right) \leq 3 e^t\)
+      (Chebyshev's lemma), \cref{chebyshev-deriv} is analytic on \(\operatorname{Re} s>1\). On
+      the other hand, \(\Phi(s)\) is analytic on \(\operatorname{Re} s>1\)
+      so the identity principle implies that the desired representation
+      holds for \(\operatorname{Re} s>1\).
+    \end{itemize}
+
+\subsubsection{Newman's Tauberian theorem and its consequences}
+Newman's Tauberian theorem: See \cref{newmans-tauberian}.
+\begin{itemize}
+    \item Define  $f:[0,\infty)\to \C$ by $f(t) = \theta(e^t)e^{-t}-1$ satisfying $|f(t)| \leq 4$ for all $t \geq 1$.\sidenote{See Ex6 HW12.}
+    \item The Laplace transform $\displaystyle \int_0^{\infty} f(t)e^{-zt}\d t$ of $f$ is analytic on $\re z > 0$.
+    \item We know $\displaystyle\int_0^{\infty} f(t) e^{-zt}\d t = \frac{\Phi(z+1)}{z+1} - \frac{1}{z}$ and $\displaystyle \frac{\Phi(z+1)}{z+1} - \frac{1}{z} $ has an analytic continuation to an open set containing $\re z \geq 0$.
+    \item Newman's Lemma (\cref{newmans-tauberian}) implies that $\displaystyle \int_1^{\infty} \frac{\theta(x)-x}{x^2}\d x$ converges.\begin{proof}
+        We know that since the Laplace transform of $f$ is analytic on a neighborhood of $\re z\geq 0$, by Newman's Lemma, $\int_{0}^\infty f(t)\d t$ converges. Now we let $x=e^t$ such that $\d x = e^t \d t$. We observe:
+	\begin{align*}
+		\int_1^{\infty} \frac{\theta(x)-x}{x^2}\d x &= \int_1^{\infty} \frac{\theta(e^t)-e^t}{e^{2t}}\cdot e^t\d t\\
+		&= \int_1^{\infty} \frac{\theta(e^t)-e^t}{e^{t}}\d t\\
+		&= \int_1^\infty (\theta(e^t)e^{-t}-1)\d t\\
+		&= \int_{0}^\infty f(t)\d t
+	\end{align*}
+	Therefore, \(\int_1^{\infty} \frac{\theta(x)-x}{x^2}\d x \) also converges.
+    \end{proof}
+\end{itemize}
+
+\subsubsection{Asymptotic behavior of θ$(x)$}
+\begin{itemize}
+    \item
+      \(\int_{1}^{\infty}\frac{\theta(t)-t}{t^{2}}\,dt\) exists
+      \(\qquad\Longrightarrow\qquad\lim_{x\to\infty}\int_{x}^{\infty}\frac{\theta(t)-t}{t^{2}}\,dt=0\,\)
+      (Ex. 6a of HW13).
+    \item
+      Suppose toward a contradiction that
+      \(\limsup_{x\to\infty}\frac{\theta(x)}{x}>\alpha>1\).
+    \item
+      Then there are arbitrarily large \(x>1\) such that
+      \(\theta(x)>\alpha x\). For such ``bad'' \(x\),\sidenote{Since $f(x) = x - 1 — \log x$
+      has $f(1) = 0 $ and$ f'(x) =
+      1-1/x$, it follows that$ f(x) >
+      0$ for $x > 1$.} \[
+  \begin{aligned}
+  I(\alpha x)-I(x) & =\int_x^{\alpha x} \frac{\theta(t)-t}{t^2} d t \\
+  & \geq \int_x^{\alpha x} \frac{\alpha x-t}{t^2} d t && \left(\begin{array}{c}
+    \theta(x)>\alpha x \text { and } \\
+    \theta \text { is increasing }
+    \end{array}\right) \\
+  & =\int_1^\alpha \frac{\alpha x-x u}{x^2 u^2} x d u && (t=x u, d t=x d u)\\
+  & =\int_1^\alpha \frac{\alpha-u}{u^2} d u \\
+  & =\alpha-1-\log \alpha \\
+  & >0
+  \end{aligned}
+  \]
+\item
+  \(\liminf _{\substack{x \rightarrow \infty \\ x \text { bad }}}(I(\alpha x)-I(x)) \geq \alpha-1-\log \alpha>0\)
+  contradicts \(\lim _{x \rightarrow \infty} I(x)=0\), so \[
+  \limsup _{x \rightarrow \infty} \frac{\theta(x)}{x} \leq 1 \quad \text { (Ex. 6b of HW13). }
+  \]
+\item
+  Similarly,
+  \(\liminf _{x \rightarrow \infty} \frac{\theta(x)}{x} \geq 1\) (Ex. 6c
+  of HW13).
+\item
+  Thus, \(\lim _{x \rightarrow \infty} \frac{\theta(x)}{x}=1\); that is,
+  \(\theta(x) \sim x\) (Ex. 6d of HW13).
+    \end{itemize}
+
+\subsubsection{Completion of the proof}
+Recall that $\theta(x) \sim x$; that is, $\lim_{x\to \infty} \theta(x)/x = 1$.
+\begin{enumerate}[align=left, label=\textit{Step \arabic*:}]
+    \item Since \[\theta(x)=\sum_{p\leq x}\log p\leq\sum_{p\leq x}\log x=(\log x)\sum_{p\leq x}1=\pi(x)\log x,\] it follows that \[1=\operatorname*{lim}_{x\to\infty}{\frac{\theta(x)}{x}}=\liminf_{x\to\infty}{\frac{\theta(x)}{x}}\leq\liminf_{x\to\infty}{\frac{\pi(x)\log x}{x}}
+    \]
+    We have tackled the liminf, now time for limsup!
+    \item For any $\epsilon>0$,\sidenote{the lower bound is produced by a threshold argument! Very common analysis trick.} \begin{align*}
+        \theta(x) &= \sum_{p\leq x}\log p\\
+        & \geq \sum_{x^{1-\epsilon}<p \leq x} \log p \\
+& \geq \sum_{x^{1-\epsilon}<p \leq x} \log \left(x^{1-\epsilon}\right) \\
+& =\log \left(x^{1-\epsilon}\right) \sum_{x^{1-\epsilon}<p \leq x} 1 \\
+& =(1-\epsilon)(\log x)\left(\rt{\sum_{p \leq x} 1}-\sum_{p \leq x^{1-\epsilon}} 1\right) \\
+& \geq(1-\epsilon)\left(\rt{\pi(x)}-x^{1-\epsilon}\right) \log x .
+    \end{align*}
+    Therefore,\sidenote{L'Hôpital's rule implies $\lim_{x\to\infty}(\log x)/x^\epsilon=0$ for
+    every $\epsilon > 0$.} \[
+\begin{aligned}
+1 & =\lim _{x \rightarrow \infty} \frac{\theta(x)}{x}=\limsup _{x \rightarrow \infty} \frac{\theta(x)}{x} \\
+& \geq \limsup _{x \rightarrow \infty}\left(\frac{(1-\epsilon)\left(\pi(x)-x^{1-\epsilon}\right) \log x}{x}\right) \\
+& =(1-\epsilon) \limsup _{x \rightarrow \infty}\left(\frac{\pi(x) \log x}{x}-\frac{\log x}{x^\epsilon}\right) \\
+& =(1-\epsilon) \limsup _{x \rightarrow \infty} \frac{\pi(x) \log x}{x}-(1-\epsilon) \lim _{x \rightarrow \infty} \frac{\log x}{x^\epsilon} \\
+& =(1-\epsilon) \limsup _{x \rightarrow \infty} \frac{\pi(x) \log x}{x} .
+\end{aligned}
+\]
+
+Since \(\epsilon>0\) was arbitrary, it follows that \[
+\limsup _{x \rightarrow \infty} \frac{\pi(x) \log x}{x} \leq 1 .
+\]
+\item Since \[
+    1 \leq \liminf _{x \rightarrow \infty} \frac{\pi(x)}{x / \log x} \leq \limsup _{x \rightarrow \infty} \frac{\pi(x)}{x / \log x} \leq 1,
+    \] we obtain \[
+    \lim _{x \rightarrow \infty} \frac{\pi(x)}{x / \log x}=1 .
+    \]
+    
+    This concludes the proof of the prime number theorem: \[\lim_{x\to \infty}\frac{\pi(x)}{x/\ln x}=1\]\qed
+\end{enumerate}
 
 \end{document} 
