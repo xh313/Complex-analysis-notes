@@ -2460,7 +2460,7 @@ Poles are nice! They could be removed like the denominators of rational function
 \defn Let the Laurent series $f(z)=\sum_{n=-\infty}^{\infty} a_n(z-z_0)^n$ be analytic at $0<|z-z_0|<R$. The coefficient $a_{-1}$ is the \textbf{residue} of $f$ at $z_0$. Notation:\[\Res (f;z_0)=a_{-1}\]
 
 \addlink{Residue theorem (simple version)}
-\begin{theorem}[Residue, simple vers.] Let $f:\Omega\to \C$ analytic except on the isolated singularity $z_0$. Then:\[\frac{1}{2\pi i}\int_{\gamma}f(\zeta)\,d\zeta=\Res(f\cdotp z_{0}) \]
+\begin{theorem}[Residue, simple vers.] Let $f:\Omega\to \C$ analytic except on the isolated singularity $z_0$. Then:\[\frac{1}{2\pi i}\int_{\gamma}f(\zeta)\,d\zeta=\Res(f; z_{0}) \]
 for any simple closed curve $\gamma$ in $\reg$ with $z_0$ in its interior and whose interior is contained
 in $\reg$.
     \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.7,xscale=.7]
@@ -3569,7 +3569,7 @@ Newman's Tauberian theorem: See \cref{newmans-tauberian}.
   \end{aligned}
   \]
 \item
-  \(\liminf _{\substack{x \rightarrow \infty \\ x \text { bad }}}(I(\alpha x)-I(x)) \geq \alpha-1-\log \alpha>0\)
+  \(\liminf _{\substack{x \rightarrow \infty \\ x \text { bad }}}(I( x)-I(\alpha x)) \geq \alpha-1-\log \alpha>0\)
   contradicts \(\lim _{x \rightarrow \infty} I(x)=0\), so \[
   \limsup _{x \rightarrow \infty} \frac{\theta(x)}{x} \leq 1 \quad \text { (Ex. 6b of HW13). }
   \]
