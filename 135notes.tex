@@ -3698,8 +3698,13 @@ Let $f(x)=cx^d+O(d-1)$. Then \begin{align*}
 where $w_f(p) = $ number of solutions mod $p$ to $f(x)\equiv 0\mod p$.
 
 \addlink{Bateman Horn conjecture}
-\rmk The truth of this conjecture would imply Goldbach!
-\conjecture[Bateman-Horn] Let $f_1,f_2,\dots,f_k\in \Z[x]$ be distinct irreducible, with positive leading coefficients and are nonconstant. Define 
-\tbd{}
+\conjecture[Bateman-Horn] Let $f_1,f_2,\dots,f_k\in \Z[x]$ be distinct irreducible, with positive leading coefficients and are nonconstant.\sidenote{The truth of this conjecture would imply Goldbach!} Define 
+% \tbd{}
+$$Q(f_{1},f_{2},\ldots,f_{k};x)=\#\{n\leq x:f_{1}(n),f_{2}(n),\ldots,f_{k}(n)\text{ are prime}\}$$
+Suppose that $f = f_1f_2\dots f_k$ does not vanish identically modulo any prime. Then
+$$Q(f_{1},f_{2},\ldots,f_{k};x)\ \sim\ \frac{C(f_{1},f_{2},\ldots,f_{k})}{\prod_{i=1}^{k}\deg f_{i}}\int_{2}^{x}\frac{\d t}{(\log t)^{k}},$$
+in which
+$$C(f_{1},f_{2},\ldots,f_{k})\ =\ \prod_{p}\left(1-\frac{1}{p}\right)^{-k}\left(1-\frac{\omega_{f}(p)}{p}\right)$$
+and $\omega_{f}(p)$ is the number of solutions to $f(x)\equiv0$ (mod $p$).
 
 \end{document} 
