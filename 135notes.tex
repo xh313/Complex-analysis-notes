@@ -26,11 +26,16 @@
     \item A region without ``holes'' is \uline{simply connected}.
 \end{itemize}
 
-\noneg This is not a region (not connected): \drawing{80pt}{image.png}
+\noneg This is not a region (not connected): 
+\[\input{noregion.pdf_tex}\]
+% \drawing{80pt}{image.png}
 
 \eg $\C$ is a region.
 \eg $\mathbb{D} = \{z\in \C\mid |z|<1\}$, the open unit disk is a region.
-\eg $\{z\in \C \mid 1<|z|<2\}$, the annulus region is a region that is not \textit{simply-connected}:\drawing{80pt}{image-1.png}
+\eg $\{z\in \C \mid 1<|z|<2\}$, the annulus region is a region that is not \textit{simply-connected}:
+% \drawing{80pt}{image-1.png}
+{\def\svgwidth{80pt}
+\[\input{annulus.pdf_tex}\]}
 
 \subsection{Complex derivatives and analyticity}
 
@@ -109,11 +114,14 @@ In addition, $f(z_0) + f'(z_0)(z-z_0)$ means to take $z-z_0$, rotate and dilate 
     A nonempty open set $\Omega$ in $\C$ is connected \textit{if and only if} each pair of distinct
 points in $\Omega$ can be joined by a sequence of line segments lying in $\Omega$, each of which is
 parallel to either to the real or imaginary axis.
-    \drawing{0.6\linewidth}{image-3.png}
+\[\input{boxy.pdf_tex}\]
+    % \drawing{0.6\linewidth}{image-3.png}
     In other words, between any 2 points in a region $\reg$ there exists a ``\textbf{boxy path}''.
 \end{theorem}
 
-\rmk There is also always a \textbf{smooth path}. That is: \drawing{150pt}{image-4.png}
+\rmk There is also always a \textbf{smooth path}. That is: 
+\[\input{smooth.pdf_tex}\]
+% \drawing{150pt}{image-4.png}
 
 \begin{theorem}[``Smooth-path'']
     A nonempty open set $\reg$ in $\C$ is connected if and only if each pair of distinct
@@ -342,7 +350,8 @@ Therefore, $f(z)=\log |z| + i\cdot \arg(z)$ is analytic!
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=80pt]{Images/image-2.png}
+    % \includegraphics[width=80pt]{Images/image-2.png}
+    \input{temperature.pdf_tex}
 \end{figure}
 
 Now given the heat equation: \begin{align*}
@@ -3618,5 +3627,79 @@ Since \(\epsilon>0\) was arbitrary, it follows that \[
     
     This concludes the proof of the prime number theorem: \[\lim_{x\to \infty}\frac{\pi(x)}{x/\ln x}=1\]\qed
 \end{enumerate}
+
+\subsection{Extra: Consequences of PNT}
+\subsubsection{Zeros of ζ (Riemann hypothesis)}
+\begin{theorem}
+    Let $N(T) = $ number of zeros of $\zeta$ in the box of height $T$. Then \[N(T)_{T\to \infty}\sim \frac{T}{2\pi}\log \frac{T}{2\pi}\]
+\end{theorem}
+\rmk[Lagaria's] At least 60\% of the zeros in the critical strip are on $\re s=\frac{1}{2}$. 
+
+\subsubsection{Goldbach conjecture}
+\conjecture[Goldbach] Every integer $\geq 6$ can be written as a sum of two odd primes.\sidenote{Still open since 1742!}
+
+We have some stuff closer to it\dots
+\begin{theorem}[Vinogradov's]
+    Every \textit{sufficiently large} odd number is the sum of \textbf{3} primes.
+\end{theorem}
+And better yet:
+\begin{theorem}[H. Helfgott]
+    Every \sout{sufficiently large} odd number is the sum of \textbf{3} primes.
+\end{theorem}
+Complex analysis can help us approach these problems. 
+\addlink{Dirichlet's series}
+\defn[Dirichlet's series] Series in the form of \[\sum_{n=1}^{\infty} \frac{a_n}{n^s}\]
+Since $\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}$, we can see by combinatorial arguments that \begin{align*}
+    \zeta(s)^2 &= \sum_{n=1}^{\infty}\frac{\tau(n)}{n^s}&\text{where $\tau(n)$ is \# of divisors of }n\\
+    \zeta(s)\zeta(s-1)&= \sum_{n=1}^{\infty}\frac{\sigma(n)}{n^s}&\text{where $\sigma(n)$ is the sum of divisors of }n\\
+\end{align*}
+
+To approach Goldbach, we observe that if we let \[f_N(z)= \sum_{\substack{p \text{ odd}\\ p\leq N}}z^{p}\]
+with a radius convergence $R=1$. Then we observe that \[f(z)^2= (z^3+z^5+z^7+\dots + z^N)(z^3+z^5+z^7+\dots + z^N) = 1z^6+2z^8+3z^{10}+\dots\]
+so the coefficient of $2n$ is the number of ways to write $2n$ as a sum of two odd primes. In other words, Goldbach's conjecture is equivalent to every even coefficient of the series above is $\neq 0$. However, when we try to find the coefficient of $2n$, we run into problem. 
+
+To get to Vinogradov's theorem, we could use a similar argument (except we raise things to the 3rd power).
+
+\subsubsection{Probablistic interpretation of the PNT}
+Recall PNT said \[\pi(x)\sim \frac{x}{\log x} \sim \operatorname{Li}(x)\] where $\operatorname{Li}(x)=\int_{2}^{x}\frac{\d t}{\log t}$\sidenote{the \textit{offset} logarithmic integral (so that we avoid 0)} and $f\sim g$ means $\lim_{x\to\infty}\frac{f(x)}{g(x)}=1$.
+
+\rmk \[\int_{2}^{x}\frac{\d t}{(\log t)^k}\sim \frac{x}{(\log x)^k}\]
+
+PNT suggests that the \textbf{probability} that $n$ is prime is about $\frac{1}{\log n}$. Why? Suppose this is the case, how many primes $\leq x$ do we expect?
+
+\textit{Handwaving}: \[\pi(x) \text{ ``='' } \sum_{n\leq x}\frac{1}{\log n} = \sum_{n=2}^{\floor{x}} \frac{1}{\log n}\text{``$\sim$''} \int_{2}^{x}\frac{\d t}{\log t}\]
+
+Let $\Z[x]$ be the set of polynomials in $x$ with integer coefficients.\sidenote{not meaningful to talk about noninteger coefficient polys -- they don't assume primes anyway}
+Let \[Q(f;x) = \# \{n\leq x: f(n) \text{ is prime}\}\]
+We observe that $Q(x;x)=\pi(x)$, the prime counting function. 
+
+What conditions must $f$ satisfy if we want $Q(f;x)\to \infty$ as $x\to \infty$? \begin{itemize}
+    \item The leading coefficient has to be positive.
+    \item $f$ should be nonconstant to be interesting.
+    \item $f$ should be irreducible over $\Z$.\sidenote{if the poly factors, then all the values also factor!}
+    \item $f$ should not vanish identically modulo any prime.
+    \noneg \begin{align*}
+        \underbrace{x^3-x+3}_{\text{irred. over }\Z} &\equiv x^3-x\mod 3\\
+        &\equiv x(x-1)(x+1)\mod 3\\
+        &\equiv 0\mod 3
+    \end{align*}
+    So 3 divides $x^3-x+3$ for all $x\in \Z$.
+\end{itemize}
+We observe (still \textit{handwaving}):
+\[Q(f;x) \sim \sum_{n=2}^{\floor{x}}\frac{1}{\log f(n)}\sim \int_{2}^{x}\frac{\d t}{\log f(t)}\]
+Let $f(x)=cx^d+O(d-1)$. Then \begin{align*}
+    \log f(x) &\sim \log (cx^d)\\
+    &= \log c + d\log x\\
+    &\sim d \log x
+\end{align*}
+
+\conjecture \[Q(f;x) \sim \int_{2}^{x}\frac{\d t}{\log f(t)} \sim\frac{1}{d}\int_{2}^{x}\frac{\d t}{\log t} = \frac{1}{d} \operatorname{Li}(x)\]
+\rmk Conjecture is FALSE! However, only off by a constant factor: \[C(f) = \prod_p \left(1-\frac{1}{p}\right)^{-1}\left(1-\frac{w_f(p)}{p}\right)\]
+where $w_f(p) = $ number of solutions mod $p$ to $f(x)\equiv 0\mod p$.
+
+\addlink{Bateman Horn conjecture}
+\rmk The truth of this conjecture would imply Goldbach!
+\conjecture[Bateman-Horn] Let $f_1,f_2,\dots,f_k\in \Z[x]$ be distinct irreducible, with positive leading coefficients and are nonconstant. Define 
+\tbd{}
 
 \end{document} 

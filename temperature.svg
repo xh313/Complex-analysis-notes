@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="temperature.svg"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.6696862"
+     inkscape:cx="100.9482"
+     inkscape:cy="102.25921"
+     inkscape:window-width="1309"
+     inkscape:window-height="456"
+     inkscape:window-x="0"
+     inkscape:window-y="37"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs9">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect200"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffe4e1;fill-opacity:1;stroke:#000000;stroke-width:0.39675;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.587, 1.587;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 16.877963,28.526118 c 0.450248,-2.532664 2.254642,-5.08889 3.484328,-6.367295 1.229685,-1.278406 1.881272,-1.278406 2.933938,-0.650509 1.052665,0.627896 2.506206,1.880948 3.457142,2.330516 0.950936,0.449568 1.402035,0.09871 2.856124,-0.578083 1.45409,-0.676796 3.910072,-1.679238 5.64015,-2.129866 1.730077,-0.450628 2.732519,-0.350384 3.484218,-0.04833 0.751699,0.302059 1.252919,0.803279 1.426806,3.108839 0.173887,2.30556 0.02352,6.415571 -2.004617,7.968374 -2.028137,1.552804 -5.93766,0.550362 -8.117956,-0.07563 C 27.8578,31.458144 27.4067,31.207532 26.00181,31.90805 c -1.40489,0.700518 -3.76063,2.354548 -5.213125,3.20671 -1.452495,0.852162 -2.003838,0.902284 -2.731305,-0.323794 -0.727467,-1.226079 -1.629665,-3.732184 -1.179417,-6.264848 z"
+       id="path198"
+       inkscape:path-effect="#path-effect200"
+       inkscape:original-d="m 15.524228,28.549097 c 1.807371,-2.553251 3.611766,-5.109477 5.413185,-7.66868 0.654563,0.0029 1.30615,0.0029 1.954761,0 1.456517,1.256029 2.910058,2.509081 4.360622,3.759156 0.454076,-0.347877 0.905174,-0.698733 1.353295,-1.052563 2.45896,-0.999466 4.914943,-2.001907 7.367947,-3.007326 1.005419,0.103223 2.007861,0.203465 3.007328,0.300733 0.504196,0.504197 1.005415,1.005418 1.503662,1.503662 -0.147393,4.112988 -0.297758,8.222999 -0.451101,12.330034 -3.906544,-0.999466 -7.816068,-2.001906 -11.728568,-3.007325 -0.448121,-0.247633 -0.89922,-0.498246 -1.353295,-0.751832 -2.352762,1.657004 -4.708501,3.311036 -7.067215,4.962088 -0.548366,0.0531 -1.099709,0.103223 -1.654028,0.150366 -0.899222,-2.50313 -1.80142,-5.009235 -2.706593,-7.518313 z" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352777;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       x="23.790174"
+       y="27.604214"
+       id="text968"><tspan
+         sodipodi:role="line"
+         id="tspan966"
+         style="fill:#cd5c5c;stroke-width:0.352778"
+         x="23.790174"
+         y="27.604214">$\Omega$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.352777;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       x="28.245361"
+       y="18.83024"
+       id="text1022"><tspan
+         sodipodi:role="line"
+         id="tspan1020"
+         style="stroke-width:0.352778"
+         x="28.245361"
+         y="18.83024">$\partial \Omega$</tspan></text>
+  </g>
+</svg>
