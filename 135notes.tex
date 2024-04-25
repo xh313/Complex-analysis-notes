@@ -129,7 +129,8 @@ points in $\reg$ can be joined by a continuously differentiable curve in $\reg$ 
 every point.
 \end{theorem}
 \begin{proof}
-    See \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture02.pdf}{lecture 2 notes}.
+    % See \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture02.pdf}{lecture 2 notes}.
+    Let $\gamma$ be a boxy path in $\Omega$. It suffices to "round the corners" of $\gamma$. Let $z_{0}$ be a "corner" of $\gamma$. Since $\Omega$ is open, let $\delta>0$ be such that the open ball $B(z_{0},\delta)$ of radius $\delta$ centered at $z_{0}$ is contained in $\Omega$. As depicted \bt{above}, remove the two line segments of length $\delta/2$ emanating from $z_{0}$ and construct a quarter circle of radius $\delta/2$ connecting the resulting loose ends. When this operation is performed on every corner of $\gamma$, the resulting curve is continuously differentiable. It can be made regular by an suitable reparametrization.
 \end{proof}
 
 \subsection{Conformality}
@@ -496,7 +497,7 @@ with this, $f$ is a \textbf{bijection} from $\Chat=\C\cup\{\infty\}$ to itself.\
     f(-i)&=-i\\
 \end{align*}
 
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-.9,xscale=.9]
 %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
 
 %Shape: Circle [id:dp46487660565461075] 
@@ -625,7 +626,13 @@ But this only works if both series are absolutely convergent, in which case the 
 
 \subsection{Uniform convergence}
 \defn A sequence of functions $f_n: X\to \C$ where $X\subseteq \C$ \textbf{converges uniformly} to $f:X\to \C$ if for all $\varepsilon>0$, there exists a $N\in \N$ such that $n\geq N$ implies $|f_n(z)-f(z)|<\varepsilon$ for all $z\in X$.\sidenote{This is MATH131!}
-\drawing{0.6\linewidth}{image-5.png}
+% \drawing{0.6\linewidth}{image-5.png}
+\begin{figure}[htbp]
+    \centering
+    \input{uniform_convergence.svg.pdf_tex}
+    \caption{Uniform convergence example}
+    % \label{<label>}
+\end{figure}
 
 \addlink{Uniform convergence preserves continuity}
 \begin{theorem}
@@ -634,7 +641,13 @@ But this only works if both series are absolutely convergent, in which case the 
 \end{theorem}
 
 \rmk $f_n$ converges to $f$ pointwise on $X$ if $\lim_{n\to \infty}f_n(z)=f(z)$ for all $z\in X$.\sidenote{This doesn't say anything about the rate each point converges.}
-\drawing{0.6\linewidth}{image-6.png}
+\begin{figure}[htbp]
+    \centering
+    \input{pointwise_convergence.svg.pdf_tex}
+    \caption{Non-uniform convergence example}
+    % \label{<label>}
+\end{figure}
+% \drawing{0.6\linewidth}{image-6.png}
 
 \addlink{Integrals work with uniform convergence}
 \begin{theorem}
@@ -646,6 +659,8 @@ But this only works if both series are absolutely convergent, in which case the 
 \rmk Uniform convergence doesn't necessarily preserve differentiability, limit or derivatives!
 
 \eg $f_n(x)=\sqrt{x^2+\frac{1}{n}}$ on $[-1,1]$ converges uniformly to $f_n(x)=|x|$. But the limit function is \textbf{not} differentiable at $x=0$ even though every $f_n$ were.
+
+\addlink{Weierstrass $M$-Test}
 
 \begin{theorem}[Weierstrass $M$-Test] 
     Let $f_n:X\to \C$ satisfy $|f_n(z)|\leq M_n$ for all $z\in X$ and $n\in \N$. If $\sum_{n=1}^{\infty}M_n$ converges, then $\sum_{n=1}^{\infty}f_n(z)$ converges both \textbf{absolutely} and \textbf{uniformly} on $X$.
@@ -1164,7 +1179,9 @@ We could graph the function $e^z$ with $z\in \C$:
 \defn If $\Omega$ is a region in $\C$, then a continuous $l:\Omega \to \C$ is a \textbf{branch} of the logarithm if $e^{l(z)}=z$ for all $z\in \Omega$.\sidenote{note $0\notin \Omega$}
 
 \addlink{Principal branch of the logarithm}
-\eg If $\Omega=\C\backslash(-\infty, 0]$ such that $\theta\in (-\pi,\pi)$, a logarithm could be defined on it. This is the \textbf{principal branch} of the logarithm.\sidenote{See \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture10.pdf}{graphed Riemann surface}}
+\eg If $\Omega=\C\backslash(-\infty, 0]$ such that $\theta\in (-\pi,\pi)$, a logarithm could be defined on it. This is the \textbf{principal branch} of the logarithm.
+\sidenote{\def\svgwidth{\linewidth}\[\input{Riemann_surface_log.svg.pdf_tex}\]}
+% \sidenote{See \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture10.pdf}{graphed Riemann surface}}
 
 \addlink{First derivative of ln}
 \rmk Suppose $l(z)$ is a branch of the logarithm and $l$ is analytic, then: \[e^{l(z)}=z\implies \frac{\d}{\d z}e^{l(z)} = l'(z)e^{l(z)}=1\]
@@ -1196,7 +1213,7 @@ We still have a problem: $\ln z$ is still not a function on $\C$! The branch dep
 Answer: let $\ln$ not live on the complex plane, but  infinitely many copies of the slit plane $\C\backslash(-\infty, 0]$, each
 one being glued to the next along the slit $(-\infty, 0]$.
 
-\eg $z^{1/2}$ would live on a surface:
+\eg $z^{1/2}$ would live on a surface:\sidenote{\def\svgwidth{\linewidth}\[\input{Riemann_surface_sqrt.svg.pdf_tex}\]}
 \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
     %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
     
@@ -2195,7 +2212,10 @@ Therefore,
 \begin{theorem}[Morera]
     If $f:\reg\to\C$ is continuous and $\int_{\gamma}f(\zeta)\d\zeta=0$ for all \underline{\hspace{2cm}} $\gamma$ in $\reg$, then $f$ is analytic on $\reg$. \sidenote{the blank can be `rectangles', `triangles', `piecewise $C^1$ closed curves', etc.}
 \end{theorem}
-\begin{proof}[Proof see \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture16.pdf}{notes}]
+% \begin{proof}[Proof see \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture16.pdf}{notes}]
+% \end{proof}
+\begin{proof}[Proof for triangles]
+    Let $z_{0}\in\Omega$ and let $\delta>0$ be so small that the closed disk $B_{\delta}(z_{0})^{-}$ belongs to $\Omega$. Recall from several lectures ago that we used Gorsat's lemma to prove that an analytic function on a convex region has an antiderivative there. The same argument goes through in this setting \textit{mutatis mutandis}. Recall that we used the hypothesis of analyticity to ensure that $\int_{\gamma}f(\zeta)\,d\zeta=0$ holds for every triangle. This now holds by hypothesis. Thus, $f$ has an antiderivative $F$ on $B_{\delta}(z_{0})$ and hence $f^{\prime}(z_{0})$ exists and equals $F^{\prime\prime}(z_{0})$. Since $z_{0}\in\Omega$ was arbitrary, $f$ is analytic on $\Omega$.
 \end{proof}
 
 \subsection{Weierstrass convergence theorem}
@@ -2322,7 +2342,7 @@ $$
 for any $r$ such that $R_1<r<R_2$.
 
 \begin{proof}[Proof gist]
-    For a gist of why this works:\sidenote{For rigorous proof, see \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture17.pdf}{notes}.} \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    For a gist of why this works: Let $R_{1}<r_{1}<\rho_{1}<r<\rho_{2}<r_{2}<R_{2}$.\sidenote{For rigorous proof, see \href{https://stephangarcia.sites.pomona.edu/teaching/24S-135/Lecture/24S-135-Lecture17.pdf}{notes}.} \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
         %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
         
         %Shape: Donut [id:dp6671669505060469] 
